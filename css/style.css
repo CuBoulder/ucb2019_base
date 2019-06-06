@@ -12,6 +12,12 @@ body {
     font: 16px/24px "HelveticaNeue", sans-serif;
 }
 
+.dialog-off-canvas-main-canvas {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .layout-container {
     /*min-height: 100%;*/
     height: auto !important;
@@ -144,4 +150,20 @@ li.main-menu-item a.nav-link.active{
     color: black;
     background: #e7e7e7;
     border-radius: 3px;
+}
+
+/********* Footer ***********/
+.ucb-homepage-footer {
+    background: #1a1a1a;
+    color: white;
+    height: 1em;
+    text-align: center;
+}
+
+.ucb-homepage-footer a {
+    color: #cfb87c;
+}
+
+.ucb-homepage-footer a:hover {
+    color: white;
 }
