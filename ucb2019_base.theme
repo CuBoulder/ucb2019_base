@@ -5,11 +5,28 @@
  * Functions to support the UCB Base 2019 theme.
  **/
 
+/***
+ * This a helper function to set the favicon appropriately
+ */
+function ucb2019_base_page_attachments_alter(array &$page) {
+    foreach($page['#attached']['html_head_link'] as $k => $v) {
+        if (array_key_exists('rel', $v[0]) && $v[0]['rel'] == 'shortcut icon') {
+            $page['#attached']['html_head_link'][$k][0]['href'] = drupal_get_path('theme', 'ucb2019_base') . '/favicon.png';
+        }
+    }
+}
+
+/***
+ * preprocess function to get the variables we'll need on the html template
+ */
 function ucb2019_base_preprocess_html(array  &$variables) {
     $variables['uccs_gtm_account'] = theme_get_setting('uccs_gtm_account');
     $variables['theme_path'] = base_path() . $variables['directory'];
 }
 
+/***
+ * preprocess function to get the variables we'll need on the header region template
+ */
 function ucb2019_base_preprocess_region__header(array  &$variables) {
     $variables['theme_path'] = base_path() . $variables['directory'];
 }

@@ -4,9 +4,6 @@ package: Custom
 core: 8.x
 type: theme
 base theme: stable
-favicon:
-  use_default: false
-  path: 'themes/custom/ucb2019_base/favicon.png'
 
 libraries:
   - ucb2019_base/ucb-global
