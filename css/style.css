@@ -50,6 +50,11 @@ body {
 
 
 /******** Header Region **********/
+.ucb-admin-alert {
+    margin-bottom: 0;
+    padding: 0.25em;
+}
+
 header#ucb-header-block {
     background: black;
     padding: 1em 0;
@@ -88,4 +93,55 @@ header#ucb-header-block {
     min-width: 180px;
     max-width: 240px;
     margin-right: 0;
+}
+
+/*********** Navigations **************/
+section.ucb-main-nav-section {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.ucb-main-nav-continer {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/*********** Main Menu **************/
+ul.ucb-main-menu.nav {
+    flex-grow: 1;
+}
+
+li.main-menu-item a.nav-link {
+    color: #333;
+    line-height: 2rem;
+    border-right: 1px solid #d7d7d7;
+    font-weight: 600;
+}
+
+li.main-menu-item a.nav-link:hover {
+    background: #e7e7e7;
+    color: black;
+}
+li.main-menu-item a.nav-link.active{
+    background: #cfb87c;
+    color: black;
+}
+
+/********** Secondary Menu **********/
+.ucb-menu a.nav-link {
+    font-size: 0.85rem;
+    vertical-align: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1rem;
+    margin: 0.5rem;
+    color: #333;
+    padding: 0.5rem;
+}
+
+.ucb-menu a.nav-link:hover {
+    color: black;
+    background: #e7e7e7;
+    border-radius: 3px;
 }

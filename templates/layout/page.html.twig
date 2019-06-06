@@ -49,15 +49,21 @@
 {#{% endif %}#}
 
 <div class="layout-container">
-{#  {% if user.hasPermission('access administration pages') %}#}
-{#    <div class="alert alert-warning text-center ucb-admin-alert">#}
-{#      You are logged in with Elevated Privileges ... please be careful.#}
-{#    </div>#}
-{#  {% endif %}#}
+  {% if user.hasPermission('access administration pages') %}
+    <div class="alert alert-warning text-center ucb-admin-alert">
+      You are logged in with Elevated Privileges ... please be careful.
+    </div>
+  {% endif %}
 
   <header id="ucb-header-block">
     {{ page.header }}
   </header>
+  <section class="ucb-main-nav-section" role="navigation">
+    <div class="container ucb-main-nav-continer">
+      {{ page.primary_menu }}
+      {{ page.secondary_menu }}
+    </div>
+  </section>
 
   {{ page.breadcrumb }}
 
