@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display a header region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+<div class="container ucb-header-container">
+   <div class="homepage-logo">
+       <a href="https://www.colorado.edu">
+           <img src="{{ theme_path }}/images/cu-boulder-logo-text-white.svg" alt="University of Colorado Boulder" rel="home"/>
+       </a>
+   </div>
+    <div class="homepage-slogan">
+        <img src="{{ theme_path }}/images/be-boulder-white.svg" alt="Be Boulder." />
+    </div>
+</div>

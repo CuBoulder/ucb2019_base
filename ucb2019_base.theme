@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Functions to support the UCB Base 2019 theme.
+ **/
+
+function ucb2019_base_preprocess_html(array  &$variables) {
+    $variables['uccs_gtm_account'] = theme_get_setting('uccs_gtm_account');
+    $variables['theme_path'] = base_path() . $variables['directory'];
+}
+
+function ucb2019_base_preprocess_region__header(array  &$variables) {
+    $variables['theme_path'] = base_path() . $variables['directory'];
+}
+
+/***
+ *  Custom theme settings worker function
+ ***/
+function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL)
+{
+    // Work-around for a core bug affecting admin themes. See issue #943212.
+    if (isset($form_id)) {
+        return;
+    }
+
+    $form['uccs_gtm_account'] = array(
+        '#type'             => 'textfield',
+        '#title'            => t('GTM Account Number'),
+        '#default_value'    => theme_get_setting('uccs_gtm_account'),
+        '#description'      => t('Google Tag Manager account number e.g. GTM-123456.'),
+    );
+
+}

@@ -1,0 +1,38 @@
+name: 'CU Boulder 2019 Base Theme'
+description: 'Drupal 8 base theme for the colorado.edu web properties (2019)'
+package: Custom
+core: 8.x
+type: theme
+base theme: stable
+favicon:
+  use_default: false
+  path: 'themes/custom/ucb2019_base/favicon.png'
+
+libraries:
+  - ucb2019_base/ucb-global
+
+regions:
+  header: 'Header'
+  primary_menu: 'Main Menu'
+  secondary_menu: 'Secondary Menu'
+  alerts: 'Alerts'
+  breadcrumb: 'Breadcrumb Navigation'
+  intro_wide: 'Intro Wide'
+  slider: 'Slider'
+  post_title_wide: 'Post Title Wide'
+  post_title: 'Post Title'
+  above_content: 'Above Content'
+  inner_left: 'Inner Left'
+  content: 'Main Content'
+  inner_right: 'Inner Right'
+  below_content: 'Below Content'
+  left_sidebar: 'Left Sidebar'
+  right_sidebar: 'Right Sidebar'
+  post_wide: 'Post Wide'
+  footer_cta: 'Footer Call-To-Action'
+  footer_nav_one: 'Footer Navigation One'
+  footer_nav_two: 'Footer Navigation Two'
+  footer_nav_three: 'Footer Navigation Three'
+  footer_nav_four: 'Footer Navigation Four'
+  social: 'Social Media Menu'
+  footer: 'Footer'

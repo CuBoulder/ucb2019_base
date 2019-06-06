@@ -1,0 +1,91 @@
+/**** GLOBAL STYLES ******/
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font: 16px/24px "HelveticaNeue", sans-serif;
+}
+
+.layout-container {
+    /*min-height: 100%;*/
+    height: auto !important;
+    height: 100%;
+    padding: 0;
+    flex: 1 0 auto;
+}
+
+/********* Fonts *************/
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueLTW05-55Roman.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Bold';
+    src: url('../fonts/HelveticaNeueLTW05-75Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-CondensedBold';
+    src: url('../fonts/HelveticaNeueLTW05-77BoldCn.woff2') format('woff2');
+}
+
+.ucb-helvetica-bold {
+    font-family: 'HelveticaNeue-Bold';
+}
+
+.ucb-helvetica-condensed-bold {
+    font-family: 'HelveticaNeue-CondensedBold';
+}
+
+.ucb-helvetica {
+    font-family: 'HelveticaNeue';
+}
+
+
+/******** Header Region **********/
+header#ucb-header-block {
+    background: black;
+    padding: 1em 0;
+}
+
+.ucb-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.ucb-header-container .homepage-logo {
+    flex-grow: 1;
+}
+
+.ucb-header-container > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.homepage-logo img {
+    max-width: 320px;
+    min-width: 180px;
+    width: 320px;
+    height: 30px;
+}
+
+.homepage-slogan img {
+    max-width: 240px;
+    min-width: 180px;
+    margin-right: 0;
+}
+
+.homepage-slogan img {
+    min-width: 180px;
+    max-width: 240px;
+    margin-right: 0;
+}
