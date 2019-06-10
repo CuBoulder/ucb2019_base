@@ -82,8 +82,41 @@
 
 </div>{# /.layout-container #}
 <footer class="ucb-homepage-footer">
-    <div class="ucb-footer-container container">
-
-      {{ page.footer }}
+  {% if page.footer_cta|render or page.footer_nav_one|render %}
+    <div class="ucb-footer-top">
+      {% if page.footer_cta|render %}
+        <div class="ucb-footer-container footer-cta-block container">
+          {{ page.footer_cta }}
+        </div>
+      {% endif %}
+      {% if page.footer_nav_one|render %}
+        <div class="ucb-footer-nav-container container">
+          <div class="ucb-footer-nav-block">
+            {{ page.footer_nav_one }}
+          </div>
+          {% if page.footer_nav_two|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_two }}
+            </div>
+          {% endif %}
+          {% if page.footer_nav_three|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_three }}
+            </div>
+          {% endif %}
+          {% if page.footer_nav_four|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_four }}
+            </div>
+          {% endif %}
+      {% endif %}
     </div>
+  {% endif %}
+  <div class="ucb-footer-bottom">
+    {% if page.footer|render %}
+      <div class="ucb-footer-container container">
+        {{ page.footer }}
+      </div>
+    {% endif %}
+  </div>
 </footer>

@@ -154,10 +154,77 @@ li.main-menu-item a.nav-link.active{
 
 /********* Footer ***********/
 .ucb-homepage-footer {
-    background: #1a1a1a;
-    color: white;
-    height: 1em;
+}
+
+.ucb-footer-top {
+    background: #272727;
+    padding: 20px 0;
+}
+
+.ucb-footer-top .ucb-menu li.menu-item {
+    flex-grow: 1;
     text-align: center;
+}
+
+.ucb-footer-top .ucb-menu a.nav-link {
+    background: #0277BD;
+    color: white;
+    font-size: 1.25em;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+.ucb-footer-top .ucb-menu a.nav-link:hover {
+    background: #026baa;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.ucb-footer-nav-block .ucb-menu.nav {
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 1em;
+}
+
+.ucb-footer-nav-block {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+}
+
+.ucb-footer-nav-container {
+    display: flex;
+    flex: 1 0 auto;
+    margin: 2em auto;
+}
+
+.ucb-footer-nav-container .ucb-menu-title {
+    color: white;
+    font-size: 1.4rem;
+}
+
+.ucb-system-menu-block {
+    display: block;
+    width: 100%;
+}
+
+.ucb-footer-nav-block .ucb-menu a.nav-link {
+    color: #CFB87C;
+    background: transparent;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #555;
+    border-radius: 0;
+}
+
+.ucb-footer-nav-block .ucb-menu a.nav-link:hover {
+    color: white;
+    background: transparent;
+    box-shadow: none;
+}
+
+.ucb-footer-bottom {
+    background: black;
+    padding: 1em 0;
 }
 
 .ucb-homepage-footer a {

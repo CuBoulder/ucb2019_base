@@ -6,4 +6,17 @@
  */
 #}
 
-{{ content }}
+{% if label|render %}
+<div class="ucb-system-menu-block">
+    <span class="ucb-menu-title">
+        {{ label|render|striptags|trim }}
+    </span>
+
+    {% if content|render %}
+        {{ content }}
+    {% endif %}
+</div>
+{% else %}
+    {{ content }}
+{% endif %}
+
