@@ -43,15 +43,15 @@ body {
 }
 
 .ucb-helvetica-bold {
-    font-family: 'HelveticaNeue-Bold';
+    font-family: 'HelveticaNeue-Bold', HelveticaNeue, sans-serif;
 }
 
 .ucb-helvetica-condensed-bold {
-    font-family: 'HelveticaNeue-CondensedBold';
+    font-family: 'HelveticaNeue-CondensedBold', HelveticaNeue, sans-serif;
 }
 
 .ucb-helvetica {
-    font-family: 'HelveticaNeue';
+    font-family: 'HelveticaNeue', HelveticaNeue, sans-serif;
 }
 
 
@@ -223,8 +223,21 @@ li.main-menu-item a.nav-link.active{
 }
 
 .ucb-footer-bottom {
-    background: black;
+    background: #1a1a1a;
+    color: white;
     padding: 1em 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.menu.social-media {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+li.social-media-item.menu-item {
+    padding: 0 .25rem;
 }
 
 .ucb-homepage-footer a {

@@ -20,3 +20,8 @@ ucb-alerts:
   js:
     js/ucb-alerts.js: {}
 
+ucb-social-media:
+  version: 1.x
+  css:
+    theme:
+      css/social-media.css: {}
