@@ -50,80 +50,80 @@
 {{ attach_library('ucb2019_base/ucb-social-media') }}
 
 <div class="layout-container">
-  {% if user.hasPermission('access administration pages') %}
-    <div class="alert alert-warning text-center ucb-admin-alert">
-      You are logged in with Elevated Privileges ... please be careful.
-    </div>
-  {% endif %}
+    {% if user.hasPermission('access administration pages') %}
+        <div class="alert alert-warning text-center ucb-admin-alert">
+            You are logged in with Elevated Privileges ... please be careful.
+        </div>
+    {% endif %}
 
-  <header id="ucb-header-block">
-    {{ page.header }}
-  </header>
-  <section class="ucb-main-nav-section" role="navigation">
-    <div class="container ucb-main-nav-continer">
-      {{ page.primary_menu }}
-      {{ page.secondary_menu }}
-    </div>
-  </section>
+    <header id="ucb-header-block">
+        {{ page.header }}
+    </header>
+    <section class="ucb-main-nav-section" role="navigation">
+        <div class="container ucb-main-nav-continer">
+            {{ page.primary_menu }}
+            {{ page.secondary_menu }}
+        </div>
+    </section>
 
-  {{ page.breadcrumb }}
+    {{ page.breadcrumb }}
 
-  {{ page.highlighted }}
+    {{ page.highlighted }}
 
-  {{ page.help }}
+    {{ page.help }}
 
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+    <main role="main">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-    <div class="layout-content">
-      {{ page.content }}
-    </div>{# /.layout-content #}
+        <div class="layout-content">
+            {{ page.content }}
+        </div>{# /.layout-content #}
 
-  </main>
+    </main>
 
 </div>{# /.layout-container #}
 <footer class="ucb-homepage-footer">
-  {% if page.footer_cta|render or page.footer_nav_one|render %}
-    <div class="ucb-footer-top">
-      {% if page.footer_cta|render %}
-        <div class="ucb-footer-container footer-cta-block container">
-          {{ page.footer_cta }}
+    {% if page.footer_cta|render or page.footer_nav_one|render %}
+        <div class="ucb-footer-top">
+            {% if page.footer_cta|render %}
+                <div class="ucb-footer-container footer-cta-block container">
+                    {{ page.footer_cta }}
+                </div>
+            {% endif %}
+            {% if page.footer_nav_one|render %}
+                <div class="ucb-footer-nav-container container">
+                    <div class="ucb-footer-nav-block">
+                        {{ page.footer_nav_one }}
+                    </div>
+                    {% if page.footer_nav_two|render %}
+                        <div class="ucb-footer-nav-block">
+                            {{ page.footer_nav_two }}
+                        </div>
+                    {% endif %}
+                    {% if page.footer_nav_three|render %}
+                        <div class="ucb-footer-nav-block">
+                            {{ page.footer_nav_three }}
+                        </div>
+                    {% endif %}
+                    {% if page.footer_nav_four|render %}
+                        <div class="ucb-footer-nav-block">
+                            {{ page.footer_nav_four }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
-      {% endif %}
-      {% if page.footer_nav_one|render %}
-        <div class="ucb-footer-nav-container container">
-          <div class="ucb-footer-nav-block">
-            {{ page.footer_nav_one }}
-          </div>
-          {% if page.footer_nav_two|render %}
-            <div class="ucb-footer-nav-block">
-              {{ page.footer_nav_two }}
+    {% endif %}
+    <div class="ucb-footer-bottom">
+        {% if page.social|render %}
+            <div class="ucb-social-container container">
+                {{ page.social }}
             </div>
-          {% endif %}
-          {% if page.footer_nav_three|render %}
-            <div class="ucb-footer-nav-block">
-              {{ page.footer_nav_three }}
+        {% endif %}
+        {% if page.footer|render %}
+            <div class="ucb-footer-container container">
+                {{ page.footer }}
             </div>
-          {% endif %}
-          {% if page.footer_nav_four|render %}
-            <div class="ucb-footer-nav-block">
-              {{ page.footer_nav_four }}
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
+        {% endif %}
     </div>
-  {% endif %}
-  <div class="ucb-footer-bottom">
-    {% if page.social|render %}
-      <div class="ucb-social-container container">
-        {{ page.social }}
-      </div>
-    {% endif %}
-    {% if page.footer|render %}
-      <div class="ucb-footer-container container">
-        {{ page.footer }}
-      </div>
-    {% endif %}
-  </div>
 </footer>

@@ -182,7 +182,7 @@ li.main-menu-item a.nav-link.active{
 .ucb-footer-nav-block .ucb-menu.nav {
     flex-direction: column;
     flex-grow: 1;
-    padding-right: 1em;
+    padding-right: 2em;
 }
 
 .ucb-footer-nav-block {
@@ -214,6 +214,8 @@ li.main-menu-item a.nav-link.active{
     font-size: 14px;
     border-bottom: 1px solid #555;
     border-radius: 0;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
 }
 
 .ucb-footer-nav-block .ucb-menu a.nav-link:hover {
