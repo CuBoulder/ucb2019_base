@@ -14,6 +14,14 @@ body {
 h1,h2,h3,h4,h5 {
     font-family: "HelveticaNeue-CondensedBold";
 }
+a:link, a:visited {
+    color: #006DB1;
+}
+
+a:hover {
+    color: #e51c23;
+    text-decoration: none;
+}
 
 .dialog-off-canvas-main-canvas {
     min-height: 100vh;
@@ -177,7 +185,7 @@ li.main-menu-item a.nav-link.active{
     border-radius: 0;
     float: left;
     padding: 0 0 0.25em;
-    font-weight: bolder;
+    font-weight: normal;
     list-style: none;
     width: fit-content;
     line-height: 1em;
@@ -193,6 +201,7 @@ li.main-menu-item a.nav-link.active{
     margin: 0;
     padding: 0;
     list-style: none;
+    font-size: 0.85rem;
 }
 
 .ucb-breadcrumb li {
@@ -201,7 +210,6 @@ li.main-menu-item a.nav-link.active{
 }
 
 .ucb-breadcrumb a {
-    color: #565a5c;
 }
 
 .ucb-breadcrumb li + li:before {

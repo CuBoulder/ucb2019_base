@@ -40,8 +40,7 @@
                                     <li v-for="instruction in howto.attributes.field_ucb_howto_instructions" v-html="instruction.value">
                                     </li>
                                 </ol>
-                                <div class="ucb-howto-contact">Need additional assistance : <a :href="`mailto:${howto.attributes.field_ucb_howto_contact}`" >
-                                        {{ howto.attributes.field_ucb_howto_contact }} </a>
+                                <div class="ucb-howto-contact">Need additional assistance : <a :href="`mailto:${howto.attributes.field_ucb_howto_contact}`" v-html="howto.attributes.field_ucb_howto_contact"></a>
                                 </div>
                             </div>
                         </div>
