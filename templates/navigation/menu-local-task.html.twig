@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override for a local task link.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper element.
+ * - is_active: Whether the task item is an active tab.
+ * - link: A rendered link element.
+ *
+ * Note: This template renders the content for each task item in
+ * menu-local-tasks.html.twig.
+ *
+ * @see template_preprocess_menu_local_task()
+ */
+#}
+
+{% if link['#title'] matches '/View/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="View"><i class="fa fa-2x far fa-eye" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Edit/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Edit"><i class="fa fa-2x fal fa-edit" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Delete/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Delete"><i class="fa fa-2x fal fa-trash" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Devel/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Devel"><i class="fa fa-2x fal fa-cog" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Revisions/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Revisions"><i class="fa fa-2x far fa-history" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Shortcuts/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Favorite"><i class="fa fa-2x fal fa-star" aria-hidden="true"></i></a></li>
+{% elseif link['#title'] matches '/Clone/' %}
+    <li{{ attributes }}><a href="{{ link['#url'] }}" aria-label="Clone"><i class="fa fa-2x fal fa-clone" aria-hidden="true"></i></a></li>
+{% else %}
+    <li{{ attributes }}>{{ link }}</li>
+{% endif %}

@@ -26,15 +26,22 @@ body {
     flex: 1 0 auto;
 }
 
+strong {
+    font-family: 'HelveticaNeue-Bold';
+    font-weight: bold;
+}
+
 /********* Fonts *************/
 @font-face {
     font-family: 'HelveticaNeue';
     src: url('../fonts/HelveticaNeueLTW05-55Roman.woff2') format('woff2');
+    font-weight: normal;
 }
 
 @font-face {
-    font-family: 'HelveticaNeue-Bold';
+    font-family: 'HelveticaNeue';
     src: url('../fonts/HelveticaNeueLTW05-75Bold.woff2') format('woff2');
+    font-weight: bold;
 }
 
 @font-face {
@@ -43,7 +50,8 @@ body {
 }
 
 .ucb-helvetica-bold {
-    font-family: 'HelveticaNeue-Bold', HelveticaNeue, sans-serif;
+    font-family: 'HelveticaNeue', HelveticaNeue, sans-serif;
+    font-weight: bold;
 }
 
 .ucb-helvetica-condensed-bold {
@@ -53,7 +61,6 @@ body {
 .ucb-helvetica {
     font-family: 'HelveticaNeue', HelveticaNeue, sans-serif;
 }
-
 
 /******** Header Region **********/
 .ucb-admin-alert {
@@ -152,6 +159,58 @@ li.main-menu-item a.nav-link.active{
     border-radius: 3px;
 }
 
+/**** Local Tasks *****/
+
+.ucb-local-tasks {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+}
+
+ul.ucb-local-tasks-ul {
+    list-style: none;
+}
+
+ul.ucb-local-tasks-ul li {
+    background: transparent;
+    text-align: center;
+    /*padding-right: 1em;*/
+    padding-top: 0.5em;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid #0077C0;
+    border-bottom: none;
+}
+
+ul.ucb-local-tasks-ul li a {
+    color: #0077C0;
+}
+
+ul.ucb-local-tasks-ul ul {
+    list-style: none;
+    background: transparent;
+    width: fit-content;
+    padding: 0 1em 1em 1em;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+    margin-top: -0.5em;
+    border: 1px solid #0077C0;
+    border-top: none;
+}
+
+ul.ucb-local-tasks-ul:hover ul,
+ul.ucb-local-tasks-ul:hover li {
+    background: #d8d8d8;
+}
+
+ul.ucb-local-tasks-ul ul li a {
+    color: #0077C0;
+}
+
+ul.ucb-local-tasks-ul ul li {
+    margin: 0.5em;
+    border: none;
+}
+
 /********* Footer ***********/
 .ucb-homepage-footer {
 }
@@ -200,6 +259,8 @@ li.main-menu-item a.nav-link.active{
 .ucb-footer-nav-container .ucb-menu-title {
     color: white;
     font-size: 1.4rem;
+    font-family: HelveticaNeue-CondensedBold, HelveticaNeue, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .ucb-system-menu-block {

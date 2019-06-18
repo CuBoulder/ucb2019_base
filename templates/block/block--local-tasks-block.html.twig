@@ -1,0 +1,19 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Theme override for local tasks (primary content editor actions.)
+ */
+#}
+{% block content %}
+    {% if content %}
+        <div class="ucb-local-tasks">
+            <ul class="ucb-local-tasks-ul">
+                <li>
+                    <a href="#" id="ucbCloseLocalTasks" aria-label="Close Local Tasks Menu"><i class="fa fa-2x fal fa-window-close"></i> </a>
+                </li>
+                {{ content }}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

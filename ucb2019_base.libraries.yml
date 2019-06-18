@@ -25,3 +25,12 @@ ucb-social-media:
   css:
     theme:
       css/social-media.css: {}
+
+ucb-external-content:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-external-content.css: {}
+  js:
+    js/Vue/vue.min.js: {}
+    js/external-content.js: {}
