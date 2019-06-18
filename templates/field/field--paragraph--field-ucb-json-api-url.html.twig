@@ -1,0 +1,11 @@
+{#
+/**
+ * Theme layout to display a UCB JSON API URL Field in a JSON DATA Paragraph.
+ *
+ * Created by jsparks on 6/18/19
+ */
+#}
+
+{% for item in items %}
+    {{ item.content|render|striptags|trim }}
+{% endfor %}

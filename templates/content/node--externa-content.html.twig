@@ -26,7 +26,7 @@
     <div class="container">
 
         <div id="vue-app" class="">
-            <ucb-howto dataurl="http://localhost/boulder/jsonapi/node/how_to" inline-template>
+            <ucb-howto dataurl="{{ content.field_ucb_external_content|render|striptags|trim }}" inline-template>
                 <div class="ucb-component">
                     <div class="ucb-error-check" v-if="error">
                         <h4 class=ucb-vue-error>{{ error }} </h4>
