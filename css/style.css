@@ -11,6 +11,9 @@ body {
     flex-direction: column;
     font: 16px/24px "HelveticaNeue", sans-serif;
 }
+h1,h2,h3,h4,h5 {
+    font-family: "HelveticaNeue-CondensedBold";
+}
 
 .dialog-off-canvas-main-canvas {
     min-height: 100vh;
@@ -258,6 +261,11 @@ ul.ucb-local-tasks-ul ul li a {
 ul.ucb-local-tasks-ul ul li {
     margin: 0.5em;
     border: none;
+}
+
+/********* Title ***********/
+.ucb-page-title.container {
+    padding: 1em 0.5em 0.25em 0.5em;
 }
 
 /********* Footer ***********/

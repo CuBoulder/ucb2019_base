@@ -34,13 +34,15 @@
                     <div class="ucb-vue-component" v-else>
                         <div v-for="howto in posts">
                             <div class="ucb-how-to ucb-panel" v-show="howto.attributes.title">
-                                <div class="ucb-howto-title" v-html="howto.attributes.title"></div>
+                                <h2 class="ucb-howto-title" v-html="howto.attributes.title"></h2>
                                 <div class="ucb-howto-description" v-html="howto.attributes.body.value"></div>
                                 <ol class="ucb-howto-instructions">
                                     <li v-for="instruction in howto.attributes.field_ucb_howto_instructions" v-html="instruction.value">
                                     </li>
                                 </ol>
-                                <div class="ucb-howto-contact">Need additional assistance : <a :href="`mailto:${howto.attributes.field_ucb_howto_contact}`" >{{ howto.attributes.field_ucb_howto_contact }}</a></div>
+                                <div class="ucb-howto-contact">Need additional assistance : <a :href="`mailto:${howto.attributes.field_ucb_howto_contact}`" >
+                                        {{ howto.attributes.field_ucb_howto_contact }} </a>
+                                </div>
                             </div>
                         </div>
                     </div>
