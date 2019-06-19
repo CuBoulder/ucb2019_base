@@ -96,7 +96,9 @@
                     {{ page.footer_cta }}
                 </div>
             {% endif %}
-            {% if page.footer_nav_one|render %}
+            {% if ucb_footer_menu %}
+                {% include "@ucb2019_base/includes/ucb-footer-menus.html.twig" %}
+            {% elseif page.footer_nav_one|render %}
                 <div class="ucb-footer-nav-container container">
                     <div class="ucb-footer-nav-block">
                         {{ page.footer_nav_one }}

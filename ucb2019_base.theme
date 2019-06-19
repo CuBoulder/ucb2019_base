@@ -29,6 +29,7 @@ function ucb2019_base_preprocess_html(array  &$variables) {
  */
 function ucb2019_base_preprocess_page(array  &$variables) {
     $variables['ucb_secondary_menu'] = theme_get_setting('ucb_secondary_menu');
+    $variables['ucb_footer_menu'] = theme_get_setting('ucb_footer_menu');
     $variables['theme_path'] = base_path() . $variables['directory'];
 }
 
@@ -59,8 +60,15 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
     $form['ucb_secondary_menu'] = array(
         '#type'           => 'checkbox',
         '#title'          => t('Display the standard Boulder secondary menu in the header navigation region.'),
-        '#default_value'    => theme_get_setting('ucb_header_menu'),
+        '#default_value'    => theme_get_setting('ucb_secondary_menu'),
         '#description'    => t("Check this box if you would like to display the default Boulder secondary menu links in the header."),
+    );
+
+    $form['ucb_footer_menu'] = array(
+        '#type'           => 'checkbox',
+        '#title'          => t('Display the standard Boulder menus in the header footer region.'),
+        '#default_value'    => theme_get_setting('ucb_footer_menu'),
+        '#description'    => t("Check this box if you would like to display the default Boulder footer menu links in the footer."),
     );
 
 }

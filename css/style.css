@@ -23,6 +23,11 @@ a:hover {
     text-decoration: none;
 }
 
+.toolbar-menu a,
+.toolbar-menu a:visited {
+    color: #565656;
+}
+
 .dialog-off-canvas-main-canvas {
     min-height: 100vh;
     display: flex;
@@ -71,6 +76,17 @@ strong {
 
 .ucb-helvetica {
     font-family: 'HelveticaNeue', HelveticaNeue, sans-serif;
+}
+.font-white {
+    color: white;
+}
+
+.font-gold {
+    color: #CFB87C;
+}
+
+.font-black {
+    color: #222222;
 }
 
 /******** Header Region **********/
@@ -311,8 +327,12 @@ ul.ucb-local-tasks-ul ul li {
 
 .ucb-footer-nav-block {
     display: flex;
-    flex: 1 0 auto;
     flex-direction: row;
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    -mx-flex-preferred-size: 0;
 }
 
 .ucb-footer-nav-container {
