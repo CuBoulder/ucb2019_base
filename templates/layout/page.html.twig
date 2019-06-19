@@ -61,8 +61,14 @@
     </header>
     <section class="ucb-main-nav-section" role="navigation">
         <div class="container ucb-main-nav-continer">
-            {{ page.primary_menu }}
-            {{ page.secondary_menu }}
+            {% if page.primary_menu|render %}
+                {{ page.primary_menu }}
+            {% endif %}
+            {% if ucb_secondary_menu %}
+                {% include "@ucb2019_base/includes/ucb-header-secondary-menu.html.twig" %}
+            {% elseif page.secondary_menu|render %}
+                {{ page.secondary_menu }}
+            {% endif %}
         </div>
     </section>
 

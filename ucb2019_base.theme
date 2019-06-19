@@ -20,7 +20,15 @@ function ucb2019_base_page_attachments_alter(array &$page) {
  * preprocess function to get the variables we'll need on the html template
  */
 function ucb2019_base_preprocess_html(array  &$variables) {
-    $variables['uccs_gtm_account'] = theme_get_setting('uccs_gtm_account');
+    $variables['ucb_gtm_account'] = theme_get_setting('ucb_gtm_account');
+    $variables['theme_path'] = base_path() . $variables['directory'];
+}
+
+/***
+ * preprocess function to get the variables we'll need on the page template
+ */
+function ucb2019_base_preprocess_page(array  &$variables) {
+    $variables['ucb_secondary_menu'] = theme_get_setting('ucb_secondary_menu');
     $variables['theme_path'] = base_path() . $variables['directory'];
 }
 
@@ -41,11 +49,18 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
         return;
     }
 
-    $form['uccs_gtm_account'] = array(
+    $form['ucb_gtm_account'] = array(
         '#type'             => 'textfield',
         '#title'            => t('GTM Account Number'),
-        '#default_value'    => theme_get_setting('uccs_gtm_account'),
+        '#default_value'    => theme_get_setting('ucb_gtm_account'),
         '#description'      => t('Google Tag Manager account number e.g. GTM-123456.'),
+    );
+
+    $form['ucb_secondary_menu'] = array(
+        '#type'           => 'checkbox',
+        '#title'          => t('Display the standard Boulder secondary menu in the header navigation region.'),
+        '#default_value'    => theme_get_setting('ucb_header_menu'),
+        '#description'    => t("Check this box if you would like to display the default Boulder secondary menu links in the header."),
     );
 
 }
