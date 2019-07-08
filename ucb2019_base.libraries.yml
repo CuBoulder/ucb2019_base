@@ -34,3 +34,10 @@ ucb-external-content:
   js:
     js/Vue/vue.min.js: {}
     js/external-content.js: {}
+
+ucb-organization-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-organization-page.css: {}
+

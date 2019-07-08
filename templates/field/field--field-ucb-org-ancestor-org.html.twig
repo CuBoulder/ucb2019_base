@@ -1,0 +1,11 @@
+{#
+/**
+ * Theme layout to display a UCB Ancestor Organization field.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{% for item in items %}
+    <span class="ucb-org-other-org ucb-org-ancestor-org">Part of {{ item.content|render }}</span>
+{% endfor %}

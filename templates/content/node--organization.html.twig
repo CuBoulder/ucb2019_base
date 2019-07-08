@@ -1,0 +1,69 @@
+{#
+/**
+ * Theme layout to display a UCB Organization Page.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-organization-page') }}
+
+{%
+    set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{ attributes.addClass(classes) }}>
+    <div class="container ucb-organization">
+        <div class="ucb-org-header">
+            {# check to see if there's is a parent or ancestor org and display that info here#}
+            {% if content.field_ucb_org_ancestor_org|render %}
+                <h4>{{ content.field_ucb_org_ancestor_org }}</h4>
+            {% endif %}
+            {% if content.field_ucb_org_parent_org|render %}
+                <h4>{{ content.field_ucb_org_parent_org }}</h4>
+            {% endif %}
+            {% if content.field_ucb_org_related_org|render %}
+                <h4>{{ content.field_ucb_org_related_org }}</h4>
+            {% endif %}
+        </div>
+        <div class="ucb-org-contact">
+            {% if content.field_ucb_org_description %}
+               <div class="ucb-org-description">
+                   {{ content.field_ucb_org_description|render }}
+               </div>
+            {% endif %}
+
+            <ul class="ucb-org-contact-buttons-list">
+                {% if content.field_ucb_org_telephone|render %}
+                    <li>{{ content.field_ucb_org_telephone }}</li>
+                {% endif %}
+                {% if content.field_ucb_org_email|render %}
+                    <li>{{ content.field_ucb_org_email }}</li>
+                {% endif %}
+                {% if content.field_ucb_org_website_url|render %}
+                    <li>{{ content.field_ucb_org_website_url }}</li>
+                {% endif %}
+                {% if content.field_ucb_org_fax_number|render %}
+                    <li>{{ content.field_ucb_org_fax_number }}</li>
+                {% endif %}
+            </ul>
+
+        </div>
+        <div class="ucb-org-details">
+
+        </div>
+        <div class="ucb-org-children">
+
+        </div>
+    </div>
+</article>
