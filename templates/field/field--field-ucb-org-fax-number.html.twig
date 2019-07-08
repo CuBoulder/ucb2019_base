@@ -1,0 +1,16 @@
+{#
+/**
+ * Theme layout to display a UCB Organization Fax Number field.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{% for item in items %}
+    <a href="tel:{{ item.content|render|striptags|trim }}">
+        <buton class="ucb-org-contact-button ucb-org-fax-number-button">
+            <i class="fas fa-fax"></i> Fax Machine<br/>
+            {{ item.content|render|striptags|trim }}
+        </buton>
+    </a>
+{% endfor %}

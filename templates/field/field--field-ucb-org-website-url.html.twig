@@ -1,0 +1,15 @@
+{#
+/**
+ * Theme layout to display a UCB Organization Website URL field.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{% for item in items %}
+    <a href="{{ item.content|render|striptags|trim }}">
+        <buton class="ucb-org-contact-button ucb-org-website-button">
+            <i class="fal fa-phone-laptop"></i> Website
+        </buton>
+    </a>
+{% endfor %}
