@@ -1,0 +1,11 @@
+{#
+/**
+ * Theme layout to display a UCB Organization Social Contact field.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{% for item in items %}
+    <li class="ucb-org-social-link ucb-org-related-org">{{ item.content|render }}</li>
+{% endfor %}

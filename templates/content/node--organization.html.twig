@@ -22,9 +22,10 @@
 {#Dummy variable to ensure that all content tags are set for caching purposes#}
 {% set content_render = content|render %}
 
-<article{{ attributes.addClass(classes) }}>
+<article{{attributes.addClass(classes)}}>
     <div class="container ucb-organization">
-        <div class="ucb-org-header">
+        <div
+            class="ucb-org-header">
             {# check to see if there's is a parent or ancestor org and display that info here#}
             {% if content.field_ucb_org_ancestor_org|render %}
                 <h4>{{ content.field_ucb_org_ancestor_org }}</h4>
@@ -38,32 +39,66 @@
         </div>
         <div class="ucb-org-contact">
             {% if content.field_ucb_org_description %}
-               <div class="ucb-org-description">
-                   {{ content.field_ucb_org_description|render }}
-               </div>
+                <div class="ucb-org-description">
+                    {{ content.field_ucb_org_description|render }}
+                </div>
             {% endif %}
 
-            <ul class="ucb-org-contact-buttons-list">
-                {% if content.field_ucb_org_telephone|render %}
-                    <li>{{ content.field_ucb_org_telephone }}</li>
-                {% endif %}
-                {% if content.field_ucb_org_email|render %}
-                    <li>{{ content.field_ucb_org_email }}</li>
-                {% endif %}
-                {% if content.field_ucb_org_website_url|render %}
-                    <li>{{ content.field_ucb_org_website_url }}</li>
-                {% endif %}
-                {% if content.field_ucb_org_fax_number|render %}
-                    <li>{{ content.field_ucb_org_fax_number }}</li>
-                {% endif %}
-            </ul>
+            <div class="ucb-org-main-details row">
+                <div class="ucb-org-contact-info col">
+                    <ul class="ucb-org-contact-buttons-list">
+                        {% if content.field_ucb_org_telephone|render %}
+                            <li>{{ content.field_ucb_org_telephone }}</li>
+                        {% endif %}
+                        {% if content.field_ucb_org_email|render %}
+                            <li>{{ content.field_ucb_org_email }}</li>
+                        {% endif %}
+                        {% if content.field_ucb_org_website_url|render %}
+                            <li>{{ content.field_ucb_org_website_url }}</li>
+                        {% endif %}
+                        {% if content.field_ucb_org_fax_number|render %}
+                            <li>{{ content.field_ucb_org_fax_number }}</li>
+                        {% endif %}
+                    </ul>
+                    {% if content.field_ucb_org_social_contact %}
+                        {{ content.field_ucb_org_social_contact }}
+                    {% endif %}
+                </div>
+                <div class="ucb-org-address col">
+                    {% if content.field_ucb_org_id_campus_map|render %}
+                        <a href="https://www.colorado.edu/map/?id=336#!m/{{ content.field_ucb_org_id_campus_map|render|striptags|trim }}">
+                        {% endif %}
+                        <ul class="ucb-org-address-list">
+                            {% if content.field_ucb_org_campus_mail_box|render %}
+                                <li>{{ content.field_ucb_org_campus_mail_box|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_street_address|render %}
+                                <li>{{ content.field_ucb_org_street_address|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_address_locality|render %}
+                                <li>{{ content.field_ucb_org_address_locality|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_address_region|render %}
+                                <li>{{ content.field_ucb_org_address_region|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_postal_code|render %}
+                                <li>{{ content.field_ucb_org_postal_code|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_adress_country|render %}
+                                <li>{{ content.field_ucb_org_adress_country|render|striptags|trim }}</li>
+                            {% endif %}
+                            {% if content.field_ucb_org_location_desc|render %}
+                                <li>{{ content.field_ucb_org_location_desc|render|striptags|trim }}</li>
+                            {% endif %}
+                        </ul>
+                        {% if content.field_ucb_org_id_campus_map|render %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
 
         </div>
-        <div class="ucb-org-details">
-
-        </div>
-        <div class="ucb-org-children">
-
-        </div>
+        <div class="ucb-org-details"></div>
+        <div class="ucb-org-children"></div>
     </div>
 </article>

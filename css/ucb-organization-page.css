@@ -28,3 +28,7 @@
 .ucb-org-contact-button.ucb-org-email-button {
     line-height: 2.5em;
 }
+
+.ucb-org-address-list {
+    list-style: none;
+}
