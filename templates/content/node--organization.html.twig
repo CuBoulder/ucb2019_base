@@ -61,7 +61,12 @@
                         {% endif %}
                     </ul>
                     {% if content.field_ucb_org_social_contact %}
-                        {{ content.field_ucb_org_social_contact }}
+                        <div class="ucb-org-social-div">
+                            <ul class="ucb-org-social-list">
+                                <li>Follow us : </li>
+                                {{ content.field_ucb_org_social_contact }}
+                            </ul>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="ucb-org-address col">
