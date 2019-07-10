@@ -11,7 +11,7 @@
 function ucb2019_base_page_attachments_alter(array &$page) {
     foreach($page['#attached']['html_head_link'] as $k => $v) {
         if (array_key_exists('rel', $v[0]) && $v[0]['rel'] == 'shortcut icon') {
-            $page['#attached']['html_head_link'][$k][0]['href'] = drupal_get_path('theme', 'ucb2019_base') . '/favicon.png';
+            $page['#attached']['html_head_link'][$k][0]['href'] = base_path() . \Drupal::service('extension.list.theme')->getPath('ucb2019_base') . '/favicon.png';
         }
     }
 }

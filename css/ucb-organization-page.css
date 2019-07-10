@@ -40,10 +40,9 @@ ul.ucb-org-social-list {
     font-weight: bolder;
 }
 
-a.ucb-social-link {
+.ucb-org-social-link a.ucb-social-link {
     background: transparent;
     border: 1px solid transparent;
     color: #006db1;
     padding: 1.25em 0.5em 0.5em;
-    border-radius: 0.25em;
 }
