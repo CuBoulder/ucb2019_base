@@ -7,10 +7,8 @@
 #}
 
 {% for item in items %}
+    <i class="fas fa-phone-alt"></i> <strong>Telephone</strong><br/>
     <a href="tel:{{ item.content|render|striptags|trim }}">
-        <buton class="ucb-org-contact-button ucb-org-telephone-button">
-            <i class="fas fa-phone-alt"></i> Main Phone<br/>
-            {{ item.content|render|striptags|trim }}
-        </buton>
+        {{ item.content|render|striptags|trim }}
     </a>
 {% endfor %}

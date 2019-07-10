@@ -8,55 +8,92 @@
 
 {% for item in items %}
 
-    {% set socialLink = item.content|render|striptags|trim %}
+    {% set socialLink = item.content['#url']|render|striptags|trim %}
+    {% set socialTitle = item.content['#title']|render|striptags|trim %}
 
+    {# if there's no custom title you'll get the URL in the title field #}
+    {% if socialLink == socialTitle %}
+        {% set socialTitle = '' %}
+    {% endif %}
 
     <li class="ucb-org-social-link">
         {% if 'FACEBOOK' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-facebook-link" title="FaceBook">
-                <span class="sr-only">Boulder FaceBook</span>
-                <i class="fab fa-2x fa-facebook-f"></i>
+                <i class="fab fa-facebook-f"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Facebook
+                {% endif %}
             </a>
 
         {% elseif 'TWITTER' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-twitter-link" title="Twitter">
-                <span class="sr-only">Boulder Twitter</span>
-                <i class="fab fa-2x fa-twitter"></i>
+                <i class="fab fa-twitter"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Twitter
+                {% endif %}
             </a>
 
         {% elseif 'FLICKR' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-flickr-link" title="Flickr">
-                <span class="sr-only">Boulder Flickr</span>
-                <i class="fab fa-2x fa-flickr"></i>
+                <i class="fab fa-flickr"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Flickr
+                {% endif %}
             </a>
 
         {% elseif 'LINKEDIN' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-linkedin-link" title="LinkedIn">
-                <span class="sr-only">Boulder LinkedIn</span>
-                <i class="fab fa-2x fa-linkedin"></i>
+                <i class="fab fa-linkedin"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    LinkedIn
+                {% endif %}
             </a>
 
         {% elseif 'YOUTUBE' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-youtube-link" title="YouTube">
-                <span class="sr-only">Boulder YouTube</span>
-                <i class="fab fa-2x fa-youtube"></i>
+                <i class="fab fa-youtube"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    YouTube
+                {% endif %}
             </a>
         {% elseif 'INSTAGRAM' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-instagram-link" title="Instagram">
-                <span class="sr-only">Instagram</span>
-                <i class="fab fa-2x fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Instagram
+                {% endif %}
             </a>
         {% elseif 'EVENTS' in socialLink|upper or 'CALENDAR' in socialLink|upper %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-calendar-link" title="Events">
-                <span class="sr-only">Events</span>
-                <i class="far fa-2x fa-calendar-alt"></i>
+                <i class="far fa-calendar-alt"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Events
+                {% endif %}
             </a>
 
 
         {%  else %}
             <a href="{{ socialLink }}" class="ucb-social-link ucb-social-link" title="Social Media">
-                <span class="sr-only">Boulder Social Media</span>
-                <i class="fas fa-2x fa-user-friends"></i>
+                <i class="fas fa-user-friends"></i>
+                {% if socialTitle|render %}
+                    {{ socialTitle }}
+                {% else %}
+                    Social Media
+                {% endif %}
             </a>
         {% endif %}
 

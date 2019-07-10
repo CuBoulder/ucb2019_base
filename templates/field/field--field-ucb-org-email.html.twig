@@ -8,8 +8,6 @@
 
 {% for item in items %}
     <a href="mailto:{{ item.content|render|striptags|trim }}">
-        <buton class="ucb-org-contact-button ucb-org-email-button">
-            <i class="far fa-envelope"></i> Email
-        </buton>
+        <i class="fas fa-envelope"></i> Email
     </a>
 {% endfor %}
