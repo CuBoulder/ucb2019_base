@@ -67,7 +67,7 @@
                     </ul>
                 </div>
 
-                {% if content.field_ucb_org_social_contact %}
+                {% if content.field_ucb_org_social_contact|render %}
                     <div class="ucb-org-social-div">
                         <h2>Social</h2>
                         <ul class="ucb-org-social-list">
@@ -76,6 +76,23 @@
                     </div>
                 {% endif %}
 
+                {% if content.field_ucb_org_additional_contact|render %}
+                    <div class="ucb-org-addtional-contacts">
+                        <h2>Additional Contacts</h2>
+                        <ul class="ucb-org-additional-contact-list list-style-none">
+                            {{ content.field_ucb_org_additional_contact }}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if content.field_ucb_org_additional_links|render %}
+                <div class="ucb-org-additional-links">
+                    <h2>Links</h2>
+                    <ul class="ucb-org-additional-links list-style-none">
+                        {{ content.field_ucb_org_additional_links }}
+                    </ul>
+                </div>
+                {% endif %}
 
             </section>
             <section class="ucb-org-address-section col-md-4">
