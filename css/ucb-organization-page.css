@@ -1,4 +1,13 @@
 
+.ucb-org-relation {
+    font-weight: bolder;
+    display: block;
+}
+
+.ucb-org-header {
+    padding-bottom: 0.5em;
+}
+
 .ucb-org-contact-buttons-list {
     list-style: none;
     display: flex;

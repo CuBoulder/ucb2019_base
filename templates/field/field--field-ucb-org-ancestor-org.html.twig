@@ -7,5 +7,5 @@
 #}
 
 {% for item in items %}
-    <span class="ucb-org-other-org ucb-org-ancestor-org">Part of {{ item.content|render }}</span>
+    <span itemprop="memberOf" class="ucb-org-relation ucb-org-ancestor-org">Member of {{ item.content|render }}</span>
 {% endfor %}

@@ -245,7 +245,7 @@ li.main-menu-item a.nav-link.active{
 .ucb-local-tasks {
     position: fixed;
     z-index: 100;
-    left: 0;
+    right: 10%;
 }
 
 ul.ucb-local-tasks-ul {

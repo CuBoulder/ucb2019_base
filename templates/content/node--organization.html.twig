@@ -24,20 +24,22 @@
 
 <article{{attributes.addClass(classes)}}>
     <div itemscope itemtype="https://schema.org/Organization" class="ucb-org-organization-container container">
+        {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
         <div class="ucb-org-header row">
             <div class="ucb-org-header col">
                 {# check to see if there's is a parent or ancestor org and display that info here#}
                 {% if content.field_ucb_org_ancestor_org|render %}
-                    <span itemprop="memberOf" class="ucb-org-relation">{{ content.field_ucb_org_ancestor_org }}</span>
+                    {{ content.field_ucb_org_ancestor_org }}
                 {% endif %}
                 {% if content.field_ucb_org_parent_org|render %}
-                    <span itemprop="parentOrganization" class="ucb-org-relation">{{ content.field_ucb_org_parent_org }}</span>
+                    {{ content.field_ucb_org_parent_org }}
                 {% endif %}
                 {% if content.field_ucb_org_related_org|render %}
-                    <span class="ucb-org-relation">{{ content.field_ucb_org_related_org }}</span>
+                    {{ content.field_ucb_org_related_org }}
                 {% endif %}
             </div>
         </div>
+        {% endif %}
         <div class="ucb-org-content-row row">
             <section class="ucb-org-content-section col-md-8">
                 {% if content.field_ucb_org_description %}
