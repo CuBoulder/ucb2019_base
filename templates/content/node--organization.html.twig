@@ -23,25 +23,25 @@
 {% set content_render = content|render %}
 
 <article{{attributes.addClass(classes)}}>
-    <div class="ucb-org-organization-container container">
+    <div itemscope itemtype="https://schema.org/Organization" class="ucb-org-organization-container container">
         <div class="ucb-org-header row">
             <div class="ucb-org-header col">
                 {# check to see if there's is a parent or ancestor org and display that info here#}
                 {% if content.field_ucb_org_ancestor_org|render %}
-                    <h4>{{ content.field_ucb_org_ancestor_org }}</h4>
+                    <span itemprop="memberOf" class="ucb-org-relation">{{ content.field_ucb_org_ancestor_org }}</span>
                 {% endif %}
                 {% if content.field_ucb_org_parent_org|render %}
-                    <h4>{{ content.field_ucb_org_parent_org }}</h4>
+                    <span itemprop="parentOrganization" class="ucb-org-relation">{{ content.field_ucb_org_parent_org }}</span>
                 {% endif %}
                 {% if content.field_ucb_org_related_org|render %}
-                    <h4>{{ content.field_ucb_org_related_org }}</h4>
+                    <span class="ucb-org-relation">{{ content.field_ucb_org_related_org }}</span>
                 {% endif %}
             </div>
         </div>
         <div class="ucb-org-content-row row">
             <section class="ucb-org-content-section col-md-8">
                 {% if content.field_ucb_org_description %}
-                    <div class="ucb-org-description">
+                    <div itemprop="description" class="ucb-org-description">
                         {{ content.field_ucb_org_description|render }}
                     </div>
                 {% endif %}
@@ -106,31 +106,31 @@
                         </a>
                     </div>
                 {% endif %}
-                <div class="ucb-org-address-details">
+                <section itemprop="address" itemscope itemtype="https://schema.org/PostaAddress" class="ucb-org-address-details">
                     <ul class="ucb-org-address-list">
                         {% if content.field_ucb_org_campus_mail_box|render %}
                             <li>{{ content.field_ucb_org_campus_mail_box|render|striptags|trim }}</li>
                         {% endif %}
                         {% if content.field_ucb_org_street_address|render %}
-                            <li>{{ content.field_ucb_org_street_address|render|striptags|trim }}</li>
+                            <li><span itemprop="streetAddress">{{ content.field_ucb_org_street_address|render|striptags|trim }}</span></li>
                         {% endif %}
                         {% if content.field_ucb_org_address_locality|render %}
-                            <li>{{ content.field_ucb_org_address_locality|render|striptags|trim }}</li>
+                            <li><span itemprop="addressLocality">{{ content.field_ucb_org_address_locality|render|striptags|trim }}</span></li>
                         {% endif %}
                         {% if content.field_ucb_org_address_region|render %}
-                            <li>{{ content.field_ucb_org_address_region|render|striptags|trim }}</li>
+                            <li><span itemprop="addressRegion">{{ content.field_ucb_org_address_region|render|striptags|trim }}</span></li>
                         {% endif %}
                         {% if content.field_ucb_org_postal_code|render %}
-                            <li>{{ content.field_ucb_org_postal_code|render|striptags|trim }}</li>
+                            <li><span itemprop="postalCode">{{ content.field_ucb_org_postal_code|render|striptags|trim }}</span></li>
                         {% endif %}
                         {% if content.field_ucb_org_adress_country|render %}
-                            <li>{{ content.field_ucb_org_adress_country|render|striptags|trim }}</li>
+                            <li><span itemprop="addressCountry">{{ content.field_ucb_org_adress_country|render|striptags|trim }}</span></li>
                         {% endif %}
                         {% if content.field_ucb_org_location_desc|render %}
                             <li>{{ content.field_ucb_org_location_desc|render|striptags|trim }}</li>
                         {% endif %}
                     </ul>
-                </div>
+                </section>
             </section>
         </div>
     </div>

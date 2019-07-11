@@ -8,7 +8,5 @@
 
 {% for item in items %}
     <i class="fas fa-phone-alt"></i> <strong>Telephone</strong><br/>
-    <a href="tel:{{ item.content|render|striptags|trim }}">
-        {{ item.content|render|striptags|trim }}
-    </a>
+    <span itemprop="telephone">{{ item.content }}</span>
 {% endfor %}

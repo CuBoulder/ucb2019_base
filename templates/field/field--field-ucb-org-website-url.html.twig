@@ -7,7 +7,9 @@
 #}
 
 {% for item in items %}
+    <span itemprop="url">
     <a href="{{ item.content|render|striptags|trim }}">
         <i class="fas fa-phone-laptop"></i> Website
     </a>
+    </span>
 {% endfor %}
