@@ -40,4 +40,8 @@ ucb-organization-page:
   css:
     theme:
       css/ucb-organization-page.css: {}
+  js:
+#    js/Vue/vue.min.js: {}
+    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
+    js/ucb-organization.js: {}
 

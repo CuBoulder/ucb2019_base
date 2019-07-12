@@ -1,4 +1,5 @@
 <?php
+use Drupal\Core\Entity\ContentEntityBase;
 
 /**
  * @file
@@ -46,6 +47,13 @@ function ucb2019_base_preprocess_page(array  &$variables) {
  */
 function ucb2019_base_preprocess_region__header(array  &$variables) {
     $variables['theme_path'] = base_path() . $variables['directory'];
+}
+
+/***
+ * preprocess function to get the variables we'll need on the Organization node template
+ */
+function ucb2019_base_preprocess_node__organization(array  &$variables) {
+    $variables['uuid'] = $variables['node']->uuid();
 }
 
 /***

@@ -24,6 +24,7 @@
 
 <article{{attributes.addClass(classes)}}>
     <div itemscope itemtype="https://schema.org/Organization" class="ucb-org-organization-container container">
+{#        <h3>Entity ID is : {{ uuid }} </h3>#}
         {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
         <div class="ucb-org-header row">
             <div class="ucb-org-header col">
@@ -134,6 +135,76 @@
                     </ul>
                 </section>
             </section>
+        </div>
+        <div class="ucb-org-related-orgs row">
+            <div class="ucb-org-children-orgs col">
+
+                {% set promotedChildrenURL =
+                    "http://localhost/boulder/web/jsonapi/node/organization" ~
+                    "?filter[children][group][conjunction]=AND" ~
+
+                    "&filter[parent-filter][condition][path]=field_ucb_org_parent_org.id" ~
+                    "&filter[parent-filter][condition][operator]=CONTAINS" ~
+                    "&filter[parent-filter][condition][value]="~ uuid  ~
+                    "&filter[parent-filter][condition][memberOf]=children" ~
+
+                    "&filter[status][condition][path]=field_ucb_org_visibility" ~
+                    "&filter[status][condition][operator]=%3D" ~
+                    "&filter[status][condition][value]=Promoted" ~
+                    "&filter[status][condition][memberOf]=children"
+                %}
+
+                {% set standardChildrenURL =
+                    "http://localhost/boulder/web/jsonapi/node/organization" ~
+                    "?filter[children][group][conjunction]=AND" ~
+
+                    "&filter[parent-filter][condition][path]=field_ucb_org_parent_org.id" ~
+                    "&filter[parent-filter][condition][operator]=CONTAINS" ~
+                    "&filter[parent-filter][condition][value]="~ uuid  ~
+                    "&filter[parent-filter][condition][memberOf]=children" ~
+
+                    "&filter[status][condition][path]=field_ucb_org_visibility" ~
+                    "&filter[status][condition][operator]=%3D" ~
+                    "&filter[status][condition][value]=Standard" ~
+                    "&filter[status][condition][memberOf]=children"
+                %}
+
+                <div id="vue-organization-children" class="">
+                    <h2>Departments Under {{ label }}</h2>
+                    <ucb-promoted-children dataurl="{{ promotedChildrenURL }}" inline-template>
+                        <div class="ucb-component">
+                            <div class="ucb-error-check" v-if="error">
+                                <h4 class=ucb-vue-error>{{ error }} </h4>
+                            </div>
+                            <div class="ucb-vue-component" v-else>
+                                <div v-for="child in posts">
+                                    <div class="ucb-how-to ucb-panel" v-show="child.attributes.title">
+                                        <h2 class="ucb-howto-title" v-html="child.attributes.title"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ucb-promoted-children>
+                    <ucb-standard-children dataurl="{{ standardChildrenURL }}" inline-template>
+                        <div class="ucb-component">
+                            <div class="ucb-error-check" v-if="error">
+                                <h4 class=ucb-vue-error>{{ error }} </h4>
+                            </div>
+                            <div class="ucb-vue-component" v-else>
+                                <div v-for="child in posts">
+                                    <div class="ucb-how-to ucb-panel" v-show="child.attributes.title">
+                                        <h2 class="ucb-howto-title" v-html="child.attributes.title"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ucb-standard-children>
+                </div>
+
+
+
+
+            </div>
         </div>
     </div>
 
