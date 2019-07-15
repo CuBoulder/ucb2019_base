@@ -52,3 +52,7 @@ ul.ucb-org-social-list {
     padding: 5px;
     font-size: 85%;
 }
+
+.ucb-org-child-title {
+    font-size: 1.25em;
+}

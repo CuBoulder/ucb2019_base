@@ -170,39 +170,49 @@
                 %}
 
                 <div id="vue-organization-children" class="">
-                    <h2>Departments Under {{ label }}</h2>
+                    <h2>Sub-Divisions of {{ label }}</h2>
+                    <div class="row">
+
                     <ucb-promoted-children dataurl="{{ promotedChildrenURL }}" inline-template>
-                        <div class="ucb-component">
+                        <div class="ucb-org-component col">
                             <div class="ucb-error-check" v-if="error">
                                 <h4 class=ucb-vue-error>{{ error }} </h4>
                             </div>
                             <div class="ucb-vue-component" v-else>
                                 <div v-for="child in posts">
-                                    <div class="ucb-how-to ucb-panel" v-show="child.attributes.title">
-                                        <h2 class="ucb-howto-title" v-html="child.attributes.title"></h2>
+                                    <div class="ucb-org-child ucb-panel" v-show="child.attributes.title">
+                                        <a :href="`{{ url('<front>')|render|trim('/') }}${child.attributes.path.alias}`"><strong class="ucb-org-child-title" v-html="child.attributes.title"></strong></a>
+                                        <ul class="ucb-org-children-contact list-style-none">
+                                            <li v-if="child.attributes.field_ucb_org_email"><i class="fas fa-envelope"></i> <a :href="`mailto:${child.attributes.field_ucb_org_email}`" v-html="child.attributes.field_ucb_org_email"></a>  </li>
+                                            <li v-if="child.attributes.field_ucb_org_telephone"><i class="fas fa-phone-alt"></i> <a :href="`tel:${child.attributes.field_ucb_org_telephone}`" v-html="child.attributes.field_ucb_org_telephone"></a></li>
+                                            <li v-if="child.attributes.field_ucb_org_website_url"><i class="fas fa-phone-laptop"></i> <a :href="`${child.attributes.field_ucb_org_website_url.uri}`">Homepage</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ucb-promoted-children>
                     <ucb-standard-children dataurl="{{ standardChildrenURL }}" inline-template>
-                        <div class="ucb-component">
+                        <div class="ucb-org-component col">
                             <div class="ucb-error-check" v-if="error">
                                 <h4 class=ucb-vue-error>{{ error }} </h4>
                             </div>
                             <div class="ucb-vue-component" v-else>
                                 <div v-for="child in posts">
-                                    <div class="ucb-how-to ucb-panel" v-show="child.attributes.title">
-                                        <h2 class="ucb-howto-title" v-html="child.attributes.title"></h2>
+                                    <div class="ucb-org-child ucb-panel" v-show="child.attributes.title">
+                                        <a :href="`{{ url('<front>')|render|trim('/') }}${child.attributes.path.alias}`"><strong class="ucb-org-child-title" v-html="child.attributes.title"></strong></a>
+                                        <ul class="ucb-org-children-contact list-style-none">
+                                            <li v-if="child.attributes.field_ucb_org_email"><i class="fas fa-envelope"></i> <a :href="`mailto:${child.attributes.field_ucb_org_email}`" v-html="child.attributes.field_ucb_org_email"></a>  </li>
+                                            <li v-if="child.attributes.field_ucb_org_telephone"><i class="fas fa-phone-alt"></i> <a :href="`tel:${child.attributes.field_ucb_org_telephone}`" v-html="child.attributes.field_ucb_org_telephone"></a></li>
+                                            <li v-if="child.attributes.field_ucb_org_website_url"><i class="fas fa-phone-laptop"></i> <a :href="`${child.attributes.field_ucb_org_website_url.uri}`">Homepage</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ucb-standard-children>
                 </div>
-
-
-
+                </div>
 
             </div>
         </div>
