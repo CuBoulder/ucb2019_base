@@ -170,7 +170,7 @@
                 %}
 
                 <div id="vue-organization-children" class="">
-                    <h2>Sub-Divisions of {{ label }}</h2>
+                    <h2 v-if="hasChildren">Sub-Divisions of {{ label }}</h2>
                     <div class="row">
 
                     <ucb-promoted-children dataurl="{{ promotedChildrenURL }}" inline-template>

@@ -16,6 +16,10 @@ Vue.component('ucb-promoted-children', {
             jQuery.getJSON(jsonURL, function (data) {
                 if(data.data) {
                     self.posts = data.data;
+                    // check to see if we received any real data
+                    if (self.posts[0].attributes.title) {
+                        app.hasChildren = true;
+                    }
                 }
             }).fail(function () {
                 self.error = "Unable to pare JSON data from specified URL.";
@@ -33,7 +37,7 @@ Vue.component('ucb-standard-children', {
     data: function() {
         return {
             error: '',
-            posts: []
+            posts: [],
         }
     },
     mounted() { // when the Vue app is booted up, this is run automatically.
@@ -43,6 +47,10 @@ Vue.component('ucb-standard-children', {
             jQuery.getJSON(jsonURL, function (data) {
                 if(data.data) {
                     self.posts = data.data;
+                    // check to see if we received any real data
+                    if (self.posts[0].attributes.title) {
+                        app.hasChildren = true;
+                    }
                 }
             }).fail(function () {
                 self.error = "Unable to pare JSON data from specified URL.";
@@ -55,4 +63,9 @@ Vue.component('ucb-standard-children', {
 
 var app = new Vue({
     el: '#vue-organization-children',
+    data: function () {
+        return {
+            hasChildren: false
+        }
+    }
 });
