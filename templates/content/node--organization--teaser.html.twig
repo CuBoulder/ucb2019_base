@@ -1,0 +1,37 @@
+{#
+/**
+ * Theme layout to display a UCB Organization Page -- Teaser.
+ *
+ * Created by jsparks on 7/8/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-organization-page') }}
+
+{%
+    set classes = [
+    'node',
+    'ucb-org-teaser-content',
+    'col',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+<article{{attributes.addClass(classes)}} itemprop="subOrganization">
+    <strong class="ucb-org-child-title"><a href="{{ url }}">{{ label }}</a></strong>
+    <ul class="ucb-org-children-contact-list">
+        {% if content.field_ucb_org_website_url|render %}
+            <li>{{ content.field_ucb_org_website_url }}</li>
+        {% endif %}
+        {% if content.field_ucb_org_email|render %}
+            <li>{{ content.field_ucb_org_email }}</li>
+        {% endif %}
+        {% if content.field_ucb_org_telephone|render %}
+            <li>{{ content.field_ucb_org_telephone }}</li>
+        {% endif %}
+    </ul>
+</article>

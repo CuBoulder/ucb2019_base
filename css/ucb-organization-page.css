@@ -1,7 +1,12 @@
 
+.ucb-org-organization-container h2 {
+    font-size: 1.6em;
+}
+
 .ucb-org-relation {
     font-weight: bolder;
     display: block;
+    font-size: 1.2em;
 }
 
 .ucb-org-header {
@@ -55,4 +60,9 @@ ul.ucb-org-social-list {
 
 .ucb-org-child-title {
     font-size: 1.25em;
+}
+
+.ucb-org-children-contact-list {
+    list-style: none;
+    padding-left: 1em;
 }
