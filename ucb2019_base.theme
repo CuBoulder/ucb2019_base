@@ -47,6 +47,7 @@ function ucb2019_base_preprocess_page(array  &$variables) {
  */
 function ucb2019_base_preprocess_region__header(array  &$variables) {
     $variables['theme_path'] = base_path() . $variables['directory'];
+    $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
 }
 
 /***
@@ -65,6 +66,13 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
     if (isset($form_id)) {
         return;
     }
+
+    $form['ucb_be_boulder'] = array(
+        '#type'           => 'checkbox',
+        '#title'          => t('Be Boulder Slogan in the header.'),
+        '#default_value'    => theme_get_setting('ucb_be_boulder'),
+        '#description'    => t("Check this box if you would like to display the 'Be Boulder' slogan in the header."),
+    );
 
     $form['ucb_gtm_account'] = array(
         '#type'             => 'textfield',
