@@ -19,6 +19,17 @@
 ]
 %}
 
+{% set parentOrgURL =
+    "http://localhost/boulder/web/jsonapi/node/organization" ~
+    "?filter[parent][group][conjunction]=AND" ~
+
+    "&filter[parent-filter][condition][path]=field_ucb_org_children_org.id" ~
+    "&filter[parent-filter][condition][operator]=CONTAINS" ~
+    "&filter[parent-filter][condition][value]="~ uuid  ~
+    "&filter[parent-filter][condition][memberOf]=parent"
+
+%}
+
 {#Dummy variable to ensure that all content tags are set for caching purposes#}
 {% set content_render = content|render %}
 
@@ -28,12 +39,23 @@
         {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
         <div class="ucb-org-header row">
             <div class="ucb-org-header col">
+                <div id="vue-org-parent">
+                    <ucb-parent-org dataurl="{{ parentOrgURL }}" inline-template>
+                        <div>
+                        <div v-for="parent in posts">
+                            <span class="ucb-org-relation ucb-org-parent-org" v-if="parent.attributes.title">
+                                Part of <a :href="`{{ url('<front>')|render|trim('/') }}${parent.attributes.path.alias}`" itemprop="parentOrganization" v-html="parent.attributes.title"></a>
+                            </span>
+                        </div>
+                        </div>
+                    </ucb-parent-org>
+                </div>
                 {# check to see if there's is a parent or ancestor org and display that info here#}
                 {% if content.field_ucb_org_ancestor_org|render %}
                     {{ content.field_ucb_org_ancestor_org }}
                 {% endif %}
                 {% if content.field_ucb_org_parent_org|render %}
-                    {{ content.field_ucb_org_parent_org }}
+{#                    {{ content.field_ucb_org_parent_org }}#}
                 {% endif %}
                 {% if content.field_ucb_org_related_org|render %}
                     {{ content.field_ucb_org_related_org }}
