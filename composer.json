@@ -1,0 +1,6 @@
+{
+    "name": "cu-boulder/ucb2019_base",
+    "description": "Drupal 8 2019 base theme for CU Boulder",
+    "license": "MIT",
+    "type": "drupal-theme"
+}
