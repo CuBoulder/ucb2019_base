@@ -106,7 +106,7 @@ var children = new Vue({
 });
 
 var parent = new Vue({
-    el: '#vue-org-parent',
+    el: '#vue-parent-org',
     data: function () {
         return {
             foundParent: false

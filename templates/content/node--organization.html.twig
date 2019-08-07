@@ -35,11 +35,10 @@
 
 <article{{attributes.addClass(classes)}}>
   <div itemscope itemtype="https://schema.org/Organization" class="ucb-org-organization-container container">
-    {#        <h3>Entity ID is : {{ uuid }} </h3>#}
-    {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
+{#            <h3>Entity ID is : {{ uuid }} </h3>#}
       <div class="ucb-org-header row">
         <div class="ucb-org-header col">
-          <div id="vue-org-parent">
+          <div id="vue-parent-org">
             <ucb-parent-org dataurl="{{ parentOrgURL }}" inline-template>
               <div>
                 <div v-for="parent in posts">
@@ -50,6 +49,7 @@
               </div>
             </ucb-parent-org>
           </div>
+        {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
           {# check to see if there's is a parent or ancestor org and display that info here#}
           {% if content.field_ucb_org_ancestor_org|render %}
             {{ content.field_ucb_org_ancestor_org }}
@@ -60,9 +60,9 @@
           {% if content.field_ucb_org_related_org|render %}
             {{ content.field_ucb_org_related_org }}
           {% endif %}
+        {% endif %}
         </div>
       </div>
-    {% endif %}
     <div class="ucb-org-content-row row">
       <section class="ucb-org-content-section col-md-8">
         {% if content.field_ucb_org_description %}
