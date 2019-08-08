@@ -20,7 +20,8 @@
 %}
 
 {% set parentOrgURL =
-  "http://localhost/boulder/web/jsonapi/node/organization" ~
+  url('<front>')|render|trim('/') ~
+  "/jsonapi/node/organization" ~
   "?filter[parent][group][conjunction]=AND" ~
 
   "&filter[parent-filter][condition][path]=field_ucb_org_children_org.id" ~
