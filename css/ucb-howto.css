@@ -1,9 +1,60 @@
+
+ol.ucb-how-to-steps-list {
+  list-style: none;
+  counter-reset: ucb-how-to-counter;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+}
+
+ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item {
+  counter-increment: ucb-how-to-counter;
+  display: flex;
+  min-height: 5rem;
+  border-top: 1px solid #BBBBBB;
+  margin-top: 1em;
+  padding-top: 1em;
+  width: 100%;
+}
+
+ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item:before {
+  content: counter(ucb-how-to-counter);
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-right: 2rem;
+  line-height: 1;
+  color: #BBBBBB;
+}
+
+/*ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item:before {*/
+/*  content: counter(ucb-how-to-counter);*/
+/*  font-size: 2rem;*/
+/*  font-weight: bold;*/
+/*  margin-right: 2rem;*/
+/*  line-height: 1;*/
+/*  border: 1px solid #888;*/
+/*  text-align: center;*/
+/*  position: absolute;*/
+/*  left: -4rem;*/
+/*  width: 4rem;*/
+/*  height: 4rem;*/
+/*  padding-top: 1rem;*/
+/*  border-radius: 50%;*/
+/*}*/
+
 .ucb-how-to-step-image {
   float: right;
   max-width: 50%;
 }
 
-.ucb-how-to-step-image img {
-  width: auto;
-  max-height: 100%;
+.ucb-how-to-step-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+article.ucb-org-teaser-content {
+  width: 100%;
+  max-width: 100%;
 }

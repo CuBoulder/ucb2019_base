@@ -9,12 +9,11 @@
 <strong>
   {{ content.field_ucb_howto_step_title|render }}
 </strong>
-<p>
+<div class="row">
   {{ content.field_ucb_howto_step_instruction|render }}
-</p>
 
 {% if content.field_ucb_howto_step_image|render %}
-  <div class="ucb-how-to-step-image">
     {{ content.field_ucb_howto_step_image }}
-  </div>
 {% endif %}
+</div>
+

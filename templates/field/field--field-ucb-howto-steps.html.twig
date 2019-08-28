@@ -9,7 +9,9 @@
 <ol class="ucb-how-to-steps-list">
   {% for item in items %}
     <li class="ucb-how-to-step-list-item">
-      {{ item.content|render }}
+      <div class="ucb-how-to-step-content">
+        {{ item.content|render }}
+      </div>
     </li>
   {% endfor %}
 </ol>
