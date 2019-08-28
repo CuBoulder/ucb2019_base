@@ -1,0 +1,9 @@
+.ucb-how-to-step-image {
+  float: right;
+  max-width: 50%;
+}
+
+.ucb-how-to-step-image img {
+  width: auto;
+  max-height: 100%;
+}

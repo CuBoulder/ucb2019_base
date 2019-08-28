@@ -1,0 +1,15 @@
+{#
+/**
+* Theme layout to display a UCB How To Steps Field .
+*
+* Created by jsparks on 8/27/2019
+*/
+#}
+
+<ol class="ucb-how-to-steps-list">
+  {% for item in items %}
+    <li class="ucb-how-to-step-list-item">
+      {{ item.content|render }}
+    </li>
+  {% endfor %}
+</ol>

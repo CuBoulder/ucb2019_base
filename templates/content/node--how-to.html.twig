@@ -1,0 +1,55 @@
+{#
+/**
+ * Theme layout to display a UCB How To Page.
+ *
+ * Created by jsparks on 8/27/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-howto-page') }}
+
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{attributes.addClass(classes)}}>
+  <div class="container ucb-how-to-node">
+    <div class="ucb-how-to-content row">
+      <div class="ucb-how-to-main col-md-6 col-lg-8 col-sm-12">
+        {% if content.body|render %}
+          <div class="ucb-how-to-body">
+            {{ content.body }}
+          </div>
+        {% endif %}
+
+        <div class="ucb-how-to-steps">
+          {{ content.field_ucb_howto_steps }}
+        </div>
+      </div>
+      <div class="ucb-how-to-main col-md-6 col-lg-4 col-sm-12">
+        {% if content.field_ucb_howto_organization|render %}
+          <div class="ucb-how-to-contact">
+            {{ content.field_ucb_howto_organization|render }}
+          </div>
+        {% endif %}
+
+        {% if content.field_ucb_howto_additional_info|render %}
+          <div class="ucb-how-to-additional-info">
+            <h4>Tips/Reminders/Keep in mind...</h4>
+            {{ content.field_ucb_howto_additional_info|render }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>
