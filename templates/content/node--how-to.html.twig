@@ -49,6 +49,16 @@
             {{ content.field_ucb_howto_additional_info|render }}
           </div>
         {% endif %}
+
+        {% if content.field_ucb_howto_tags|render %}
+          <div class="ucb-how-to-tags">
+            <h4>Tags</h4>
+            <ul class="ucb-how-to-tags-list">
+              {{ content.field_ucb_howto_tags|render }}
+            </ul>
+          </div>
+        {% endif %}
+
       </div>
     </div>
   </div>
