@@ -1,0 +1,46 @@
+{#
+/**
+ * Theme layout to display a UCB Guide Page.
+ *
+ * Created by jsparks on 9/4/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-guide-page') }}
+
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{attributes.addClass(classes)}}>
+  <div class="ucb-guide-page container">
+
+    <div class="ucb-guide-jump-nav">
+      <ul id="ucb-jump-nav" class="ucb-guide-jump-list">
+        <li><a href="#howto">How To</a></li>
+      </ul>
+    </div>
+
+    <section id="howto" class="ucb-guide-how-tos-section">
+      <h3>How to ... </h3>
+      <div class="ucb-guide-howto-row row">
+        {{ content.field_ucb_guide_howtos|render }}
+      </div>
+    </section>
+
+    <section class="ucb-guide-additional-content">
+      {{ content.field_ucb_guide_content_row|render }}
+    </section>
+
+  </div>
+</article>

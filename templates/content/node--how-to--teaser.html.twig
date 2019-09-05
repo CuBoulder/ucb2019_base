@@ -1,0 +1,25 @@
+{#
+/**
+ * Theme layout to display a UCB How To Page -- Teaser.
+ *
+ * Created by jsparks on 9/4/19
+ */
+#}
+
+{#
+/**  We're going to strip out the "How to :" part of the label for this display.  */
+#}
+{% set myTitle = label|render|striptags|trim|split('How to :') %}
+{% set titleDisplay = 'text-center' %}
+{% if myTitle[1]|length > 32  %}
+  {% set titleDisplay = 'text-left' %}
+{% endif %}
+<div class="ucb-guide-how-to-link col-sm-12 col-md-6 col-lg-4">
+  <a href="{{ url }}">
+    <i class="ucb-guide-how-to-icon fa-2x {{ content.field_ucb_howto_icon|render|striptags|trim }}"></i>
+    <p class="{{ titleDisplay }}">
+      {{ myTitle[1]|raw }}
+    </p>
+  </a>
+</div>
+

@@ -41,6 +41,14 @@ ucb-howto-page:
     theme:
       css/ucb-howto.css: {}
 
+ucb-guide-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-guide.css: {}
+  js:
+    js/ucb-guide.js: {}
+
 ucb-organization-page:
   version: 1.x
   css:

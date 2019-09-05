@@ -1,0 +1,23 @@
+{#
+/**
+ * Theme layout to display a UCB Guild Content Row -- Paragraph.
+ *
+ * Created by jsparks on 09/04/2019
+ */
+#}
+
+
+<div id="{{ content.field_ucb_guide_row_link_title|render|striptags|trim|clean_id }}" class="ucb-guide-content-row row" data-link="{{ content.field_ucb_guide_row_link_title|render|striptags|trim }}" {{ attributes }}>
+  <div class="ucb-guide-content-details col-md-12 col-lg">
+    <h3>{{ content.field_ucb_guide_row_title|render }}</h3>
+    <div class="ucb-guide-content-detail-body">
+      {{ content.field_ucb_guide_row_body|render }}
+    </div>
+  </div>
+  <div class="ucb-guide-content-links col-md-12 col-lg">
+    <ul class="ucb-guide-links-list">
+      {{ content.field_ucb_guide_row_links|render }}
+    </ul>
+  </div>
+</div>
+

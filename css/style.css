@@ -23,6 +23,18 @@ a:hover {
     text-decoration: none;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .toolbar-menu a,
 .toolbar-menu a:visited {
     color: #565656;
