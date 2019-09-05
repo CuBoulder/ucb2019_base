@@ -25,22 +25,42 @@
 <article{{attributes.addClass(classes)}}>
   <div class="ucb-guide-page container">
 
-    <div class="ucb-guide-jump-nav">
-      <ul id="ucb-jump-nav" class="ucb-guide-jump-list">
-        <li><a href="#howto">How To</a></li>
-      </ul>
-    </div>
-
-    <section id="howto" class="ucb-guide-how-tos-section">
-      <h3>How to ... </h3>
-      <div class="ucb-guide-howto-row row">
-        {{ content.field_ucb_guide_howtos|render }}
+    <section class="ucb-guide-meta">
+      <div class="ucb-guide-meta-row row">
+        {% if content.field_ucb_guide_body|render %}
+          <div class="ucb-guide-body col-md-12 col-lg">
+            {{ content.field_ucb_guide_body|render }}
+          </div>
+        {% endif %}
+        {% if content.field_ucb_guide_organization|render %}
+          <div class="ucb-guide-org-details col-md-12 col-lg">
+            {{ content.field_ucb_guide_organization|render }}
+          </div>
+        {% endif %}
       </div>
     </section>
 
-    <section class="ucb-guide-additional-content">
-      {{ content.field_ucb_guide_content_row|render }}
-    </section>
+    <div class="ucb-guide-jump-nav">
+      <ul id="ucb-jump-nav" class="ucb-guide-jump-list">
+        {% if content.field_ucb_guide_howtos|render %}
+          <li><a href="#howto">How To</a></li>
+        {% endif %}
+      </ul>
+    </div>
 
+    {% if content.field_ucb_guide_howtos|render %}
+      <section id="howto" class="ucb-guide-how-tos-section">
+        <h3>How to ... </h3>
+        <div class="ucb-guide-howto-row row">
+          {{ content.field_ucb_guide_howtos|render }}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if content.field_ucb_guide_content_row|render %}
+      <section class="ucb-guide-additional-content">
+        {{ content.field_ucb_guide_content_row|render }}
+      </section>
+    {% endif %}
   </div>
 </article>
