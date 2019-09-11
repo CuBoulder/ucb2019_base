@@ -22,16 +22,18 @@
 %}
 
 <article{{attributes.addClass(classes)}} itemprop="subOrganization">
-    <strong class="ucb-org-child-title"><a href="{{ url }}">{{ label }}</a></strong>
+  <div class="ucb-or-teaser-content">
+    <h4 class="ucb-org-child-title"><a href="{{ url }}">{{ label }}</a></h4>
     <ul class="ucb-org-children-contact-list">
-        {% if content.field_ucb_org_website_url|render %}
-            <li>{{ content.field_ucb_org_website_url }}</li>
-        {% endif %}
-        {% if content.field_ucb_org_email|render %}
-            <li>{{ content.field_ucb_org_email }}</li>
-        {% endif %}
-        {% if content.field_ucb_org_telephone|render %}
-            <li>{{ content.field_ucb_org_telephone }}</li>
-        {% endif %}
+      {% if content.field_ucb_org_website_url|render %}
+        <li>{{ content.field_ucb_org_website_url }}</li>
+      {% endif %}
+      {% if content.field_ucb_org_email|render %}
+        <li>{{ content.field_ucb_org_email }}</li>
+      {% endif %}
+      {% if content.field_ucb_org_telephone|render %}
+        <li>{{ content.field_ucb_org_telephone }}</li>
+      {% endif %}
     </ul>
+  </div>
 </article>

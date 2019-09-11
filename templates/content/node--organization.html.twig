@@ -51,7 +51,7 @@
 {#            <h3>Entity ID is : {{ uuid }} </h3>#}
       <div class="ucb-org-header row">
         <div class="ucb-org-header col">
-          <div id="vue-parent-org">
+          <div id="vue-parent-org" class="hidden">
             <ucb-parent-org dataurl="{{ parentOrgURL }}" inline-template>
               <div>
                 <div v-for="parent in posts">
@@ -178,6 +178,26 @@
         {{ content.field_ucb_org_children_org }}
       </div>
     {% endif %}
+
+
+    <section class="ucb-org-addtional-content-section hidden">
+      <h3 class="text-center">Guides</h3>
+      <div class="ucb-org-guides">
+        <div id="vue-guides-org">
+          <ucb-guides-org dataurl="{{ guidesURL}}" inline-template>
+            <div class="row">
+              <div v-for="guide in guides" class="col-md-6 col-lg-4 col-sm-12">
+                <div class="ucb-org-guide-data">
+                  <a :href="`{{ url('<front>')|render|trim('/') }}${guide.attributes.path.alias}`" v-html="guide.attributes.title" class="ucb-org-guide-link"></a>
+                </div>
+              </div>
+            </div>
+          </ucb-guides-org>
+        </div>
+      </div>
+    </section>
+
+
 
     {#        <div class="ucb-org-related-orgs row">#}
     {#            <div class="ucb-org-children-orgs col">#}

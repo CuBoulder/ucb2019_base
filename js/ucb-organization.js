@@ -80,11 +80,12 @@ Vue.component('ucb-parent-org', {
                    self.posts = data.data;
                    // check to see if we received any real data
                    if(self.posts[0].attributes.title) {
-                       parent.foundParent = true;
+                     parent.foundParent = true;
+                     jQuery('#vue-parent-org').show();
                    }
                }
            }).fail(function () {
-               self.error = "Unable to parse JSON data from specified URL."
+               self.error = "Unable to parse JSON data from specified URL.";
            });
        }else {
            self.error = 'Data URL not defined, please check your configuration and retry your request.';
@@ -96,14 +97,50 @@ Vue.component('ucb-parent-org', {
     }
 });
 
-var children = new Vue({
-    el: '#vue-organization-children',
-    data: function () {
-        return {
-            hasChildren: false
-        }
+Vue.component('ucb-guides-org', {
+  props: {
+    dataurl: ''
+  },
+  data: function () {
+    return {
+      error: '',
+      guides: [],
     }
+  },
+  mounted() {
+    var self = this;
+    let jsonURL = self.dataurl;
+    if(jsonURL != '') {
+      jQuery.getJSON(jsonURL, function (data) {
+        if(data.data) {
+          self.guides = data.data;
+          //check to see if we received any real data and not just an empty set
+          if(self.guides[0].attributes.title) {
+            guide.guidesFound = true;
+            jQuery('.ucb-org-addtional-content-section').show();
+          }
+        }
+      }).fail(function () {
+        self.error = 'Unable to parse JSON data from specified URL.';
+      });
+    }else  {
+      self.error = 'Data URL not defined, please check your configuration and retry your request.';
+    }
+
+    if(self.error) {
+      console.log(self.error);
+    }
+  }
 });
+
+// var children = new Vue({
+//     el: '#vue-organization-children',
+//     data: function () {
+//         return {
+//             hasChildren: false
+//         }
+//     }
+// });
 
 var parent = new Vue({
     el: '#vue-parent-org',
@@ -112,4 +149,13 @@ var parent = new Vue({
             foundParent: false
         }
     }
+});
+
+var guide = new Vue({
+  el: '#vue-guides-org',
+  data: function () {
+    return {
+      guidesFound: false
+    }
+  }
 });

@@ -58,6 +58,18 @@ ul.ucb-org-social-list {
     font-size: 85%;
 }
 
+.ucb-or-teaser-content {
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
 .ucb-org-child-title {
     font-size: 1.25em;
 }
@@ -65,4 +77,21 @@ ul.ucb-org-social-list {
 .ucb-org-children-contact-list {
     list-style: none;
     padding-left: 1em;
+}
+
+
+.ucb-org-guides {
+  border-top: 1px solid #bbb;
+}
+
+a.ucb-org-guide-link {
+  display: flex;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 4px;
+  font-weight: bolder;
+  font-size: 1.25em;
+  background: #F0F0F0;
+  justify-content: center;
 }
