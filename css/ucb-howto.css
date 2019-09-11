@@ -1,4 +1,9 @@
 
+
+.ucb-how-to-title {
+  font-size: 1.75rem;
+}
+
 ol.ucb-how-to-steps-list {
   list-style: none;
   counter-reset: ucb-how-to-counter;

@@ -12,6 +12,10 @@ ul.ucb-guide-links-list {
   flex-wrap: wrap;
 }
 
+.ucb-guide-how-to-title {
+  font-size: 1.5rem;
+}
+
 ul.ucb-guide-links-list a {
   padding: 1em;
   margin: 1em;

@@ -31,6 +31,18 @@
 
 %}
 
+{% set guidesURL=
+  url('<front>')|render|trim('/') ~
+  "/jsonapi/node/ucb_guide" ~
+  "?filter[self][group][conjunction]=AND" ~
+
+  "&filter[self-filter][condition][path]=field_ucb_guide_organization.id" ~
+  "&filter[self-filter][condition][operator]=CONTAINS" ~
+  "&filter[self-filter][condition][value]="~ uuid  ~
+  "&filter[self-filter][condition][memberOf]=self"
+
+%}
+
 {#Dummy variable to ensure that all content tags are set for caching purposes#}
 {% set content_render = content|render %}
 
