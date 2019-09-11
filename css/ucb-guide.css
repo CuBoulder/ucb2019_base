@@ -4,6 +4,11 @@ article.ucb-org-teaser-content {
   text-align: right;
 }
 
+.ucb-org-teaser-content-container {
+  background: transparent;
+  border: none;
+}
+
 ul.ucb-guide-links-list {
   display: flex;
   list-style: none;

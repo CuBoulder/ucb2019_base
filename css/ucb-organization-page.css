@@ -58,7 +58,7 @@ ul.ucb-org-social-list {
     font-size: 85%;
 }
 
-.ucb-or-teaser-content {
+.ucb-org-teaser-content-container {
   padding: 1em;
   margin-bottom: 1em;
   border: 1px solid #bbb;
@@ -93,5 +93,6 @@ a.ucb-org-guide-link {
   font-weight: bolder;
   font-size: 1.25em;
   background: #F0F0F0;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

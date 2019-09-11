@@ -188,7 +188,10 @@
             <div class="row">
               <div v-for="guide in guides" class="col-md-6 col-lg-4 col-sm-12">
                 <div class="ucb-org-guide-data">
-                  <a :href="`{{ url('<front>')|render|trim('/') }}${guide.attributes.path.alias}`" v-html="guide.attributes.title" class="ucb-org-guide-link"></a>
+                  <a :href="`{{ url('<front>')|render|trim('/') }}${guide.attributes.path.alias}`" class="ucb-org-guide-link">
+                    <i :class="`fa-2x ${guide.attributes.field_ucb_guide_icon}`" v-if="guide.attributes.field_ucb_guide_icon"></i>
+                    <span v-html="guide.attributes.title"></span>
+                  </a>
                 </div>
               </div>
             </div>
