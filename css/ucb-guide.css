@@ -40,14 +40,16 @@ ul.ucb-guide-links-list a {
   border-top: 1px solid #BBB;
 }
 
-.ucb-guide-how-to-link {
+.ucb-guide-how-to-link,
+.ucb-guide-guide-link {
   font-size: 18px;
   font-weight: bolder;
   text-align: center;
   display: flex;
 }
 
-.ucb-guide-how-to-link a {
+.ucb-guide-how-to-link a,
+.ucb-guide-guide-link a {
   margin: 1em;
   padding: 1em;
   border: 1px solid;
@@ -59,7 +61,8 @@ ul.ucb-guide-links-list a {
   justify-content: center;
 }
 
-.ucb-guide-how-to-icon {
+.ucb-guide-how-to-icon,
+.ucb-guide-guide-icon {
   margin: 0.75rem auto;
 }
 

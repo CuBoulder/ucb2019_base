@@ -78,3 +78,27 @@ ul.ucb-how-to-tags-list li {
   border-radius: 8px;
   background-color: #FAFAFAFA;
 }
+
+.ucb-guide-how-to-link {
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+}
+
+.ucb-guide-how-to-link a {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid;
+  background: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ucb-guide-how-to-title {
+  font-size: 1.5rem;
+}
+

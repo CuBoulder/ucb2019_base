@@ -1,0 +1,21 @@
+{#
+/**
+ * Theme layout to display a UCB Guide Page -- Teaser.
+ *
+ * Created by jsparks on 9/12/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-guide-page') }}
+
+{% set titleDisplay = 'text-left' %}
+
+<div class="ucb-guide-guide-link col">
+  <a href="{{ url }}">
+    <i class="ucb-guide-guide-icon fa-2x {{ content.field_ucb_guide_icon|render|striptags|trim }}"></i>
+    <h3 class="ucb-guide-guide-title {{ titleDisplay }}">
+      {{ label }}
+    </h3>
+  </a>
+</div>
+

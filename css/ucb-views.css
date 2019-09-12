@@ -1,0 +1,32 @@
+
+.views-row {
+  margin: 0 -15px;
+}
+
+.views-row .ucb-guide-guide-link,
+.views-row .ucb-guide-how-to-link {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.views-row .ucb-guide-guide-title,
+.views-row .ucb-guide-how-to-title {
+  line-height: 1.5;
+  font-size: 1.5em;
+}
+
+.views-row .ucb-guide-guide-link a,
+.views-row .ucb-guide-how-to-link a {
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-bottom: 0.75em;
+}
+
+.views-row .ucb-guide-guide-icon,
+.views-row .ucb-guide-how-to-icon {
+  margin: 0 1em 0 0;
+}
+
+h3.ucb-guide-guide-title:before {content: "(Guide) ";}
+
+h3.ucb-guide-how-to-title:before {content: "How To : ";}
