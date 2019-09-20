@@ -91,3 +91,7 @@ ul.ucb-guide-jump-list li {
 ul.ucb-guide-jump-list li:last-of-type {
   border-right: none;
 }
+
+.ucb-guide-page {
+  margin-bottom: 1em;
+}

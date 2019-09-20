@@ -11,8 +11,8 @@
     {% set linkTitle = item.content['#title']|render|striptags|trim %}
 
     <li>
-        <a href="{{ linkURL }}">
-            <i class="far fa-link"></i>
+      <i class="far fa-link"></i>
+      <a href="{{ linkURL }}">
             {{ linkTitle }}
         </a>
     </li>

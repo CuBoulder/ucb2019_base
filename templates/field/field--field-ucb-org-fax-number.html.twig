@@ -7,6 +7,6 @@
 #}
 
 {% for item in items %}
-    <i class="fas fa-fax"></i> Fax<br/>
+    <i class="fas fa-fax"></i> Fax -
     <span itemprop="faxNumber">{{ item.content|render|striptags|trim }}</span>
 {% endfor %}

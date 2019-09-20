@@ -84,7 +84,8 @@
           </div>
         {% endif %}
 
-        <div class="ucb-org-contact-info">
+        <div class="row ucb-org-contact-info-row">
+        <div class="ucb-org-contact-info col-md-12 col-lg">
           <h2>Contact Information</h2>
           <ul class="ucb-org-contact-buttons-list">
             {% if content.field_ucb_org_telephone|render %}
@@ -106,16 +107,19 @@
         </div>
 
         {% if content.field_ucb_org_social_contact|render %}
-          <div class="ucb-org-social-div">
+          <div class="ucb-org-social-div col-md-12 col-lg">
             <h2>Social</h2>
             <ul class="ucb-org-social-list">
               {{ content.field_ucb_org_social_contact }}
             </ul>
           </div>
         {% endif %}
+        </div>
+
+        <div class="row ucb-org-addition-info-row">
 
         {% if content.field_ucb_org_additional_contact|render %}
-          <div class="ucb-org-addtional-contacts">
+          <div class="ucb-org-addtional-contacts col-md-12 col-lg">
             <h2>Additional Contacts</h2>
             <ul class="ucb-org-additional-contact-list list-style-none">
               {{ content.field_ucb_org_additional_contact }}
@@ -124,13 +128,14 @@
         {% endif %}
 
         {% if content.field_ucb_org_additional_links|render %}
-          <div class="ucb-org-additional-links">
+          <div class="ucb-org-additional-links col-md-12 col-lg">
             <h2>Links</h2>
             <ul class="ucb-org-additional-links list-style-none">
               {{ content.field_ucb_org_additional_links }}
             </ul>
           </div>
         {% endif %}
+        </div>
 
       </section>
       <section class="ucb-org-address-section col-md-4">

@@ -8,8 +8,7 @@
 
 {% for item in items %}
     <span itemprop="email">
-    <a href="mailto:{{ item.content|render|striptags|trim }}">
-        <i class="fas fa-envelope"></i> Email
-    </a>
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:{{ item.content|render|striptags|trim }}">Email</a>
     </span>
 {% endfor %}

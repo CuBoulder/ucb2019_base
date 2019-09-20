@@ -18,8 +18,8 @@
 
     <li class="ucb-org-social-link">
         {% if 'FACEBOOK' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-facebook-link" title="FaceBook">
-                <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-facebook-f"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-facebook-link" title="FaceBook">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -28,8 +28,8 @@
             </a>
 
         {% elseif 'TWITTER' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-twitter-link" title="Twitter">
-                <i class="fab fa-twitter"></i>
+          <i class="fab fa-twitter"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-twitter-link" title="Twitter">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -38,8 +38,8 @@
             </a>
 
         {% elseif 'FLICKR' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-flickr-link" title="Flickr">
-                <i class="fab fa-flickr"></i>
+          <i class="fab fa-flickr"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-flickr-link" title="Flickr">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -48,8 +48,8 @@
             </a>
 
         {% elseif 'LINKEDIN' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-linkedin-link" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
+          <i class="fab fa-linkedin"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-linkedin-link" title="LinkedIn">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -58,8 +58,8 @@
             </a>
 
         {% elseif 'YOUTUBE' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-youtube-link" title="YouTube">
-                <i class="fab fa-youtube"></i>
+          <i class="fab fa-youtube"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-youtube-link" title="YouTube">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -67,8 +67,8 @@
                 {% endif %}
             </a>
         {% elseif 'INSTAGRAM' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-instagram-link" title="Instagram">
-                <i class="fab fa-instagram"></i>
+          <i class="fab fa-instagram"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-instagram-link" title="Instagram">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -76,8 +76,8 @@
                 {% endif %}
             </a>
         {% elseif 'EVENTS' in socialLink|upper or 'CALENDAR' in socialLink|upper %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-calendar-link" title="Events">
-                <i class="far fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-calendar-link" title="Events">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}
@@ -87,8 +87,8 @@
 
 
         {%  else %}
-            <a href="{{ socialLink }}" class="ucb-social-link ucb-social-link" title="Social Media">
-                <i class="fas fa-user-friends"></i>
+          <i class="fas fa-user-friends"></i>
+          <a href="{{ socialLink }}" class="ucb-social-link ucb-social-link" title="Social Media">
                 {% if socialTitle|render %}
                     {{ socialTitle }}
                 {% else %}

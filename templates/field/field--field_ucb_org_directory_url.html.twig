@@ -7,7 +7,6 @@
 #}
 
 {% for item in items %}
-    <a href="{{ item.content|render|striptags|trim }}">
-        <i class="fas fa-users"></i> Staff Listing
-    </a>
+  <i class="fas fa-users"></i>
+  <a href="{{ item.content|render|striptags|trim }}">Staff Listing</a>
 {% endfor %}

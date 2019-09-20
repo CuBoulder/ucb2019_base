@@ -8,8 +8,7 @@
 
 {% for item in items %}
     <span itemprop="url">
-    <a href="{{ item.content|render|striptags|trim }}">
-        <i class="fas fa-phone-laptop"></i> Website
-    </a>
+      <i class="fas fa-phone-laptop"></i>
+      <a href="{{ item.content|render|striptags|trim }}">Website</a>
     </span>
 {% endfor %}
