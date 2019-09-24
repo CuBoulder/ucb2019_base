@@ -25,9 +25,20 @@
   margin-right: 1em;
 }
 
-.ucb-org-address-list {
+ul.ucb-org-address-list {
   list-style: none;
   padding: 0;
+  margin-top: 1em;
+}
+
+ul.ucb-org-address-list>li {
+  font-weight: bolder;
+}
+
+ul.ucb-org-address-list-details {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 ul.ucb-org-social-list {
@@ -39,6 +50,10 @@ ul.ucb-org-social-list {
 
 .ucb-org-content-section ul li {
   line-height: 1.65;
+}
+
+.ucb-org-organization-container li svg {
+  margin-right: 0.5rem;
 }
 
 .ucb-org-social-link a.ucb-social-link {

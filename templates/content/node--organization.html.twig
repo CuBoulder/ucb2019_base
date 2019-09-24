@@ -48,34 +48,25 @@
 
 <article{{attributes.addClass(classes)}}>
   <div itemscope itemtype="https://schema.org/Organization" class="ucb-org-organization-container container">
-{#            <h3>Entity ID is : {{ uuid }} </h3>#}
-      <div class="ucb-org-header row">
-        <div class="ucb-org-header col">
-          <div id="vue-parent-org" class="hidden">
-            <ucb-parent-org dataurl="{{ parentOrgURL }}" inline-template>
-              <div>
-                <div v-for="parent in posts">
+    {#            <h3>Entity ID is : {{ uuid }} </h3>#}
+    <div class="ucb-org-header row">
+      <div class="ucb-org-header col">
+        <div id="vue-parent-org" class="hidden">
+          <ucb-parent-org dataurl="{{ parentOrgURL }}" inline-template>
+            <div>
+              <div v-for="parent in posts">
                   <span class="ucb-org-relation ucb-org-parent-org" v-if="parent.attributes.title">
                       Part of <a :href="`{{ url('<front>')|render|trim('/') }}${parent.attributes.path.alias}`" itemprop="parentOrganization" v-html="parent.attributes.title"></a>
                   </span>
-                </div>
               </div>
-            </ucb-parent-org>
-          </div>
-        {% if content.field_ucb_org_ancestor_org|render or content.field_ucb_org_parent_org|render or content.field_ucb_org_related_org|render %}
-          {# check to see if there's is a parent or ancestor org and display that info here#}
-          {% if content.field_ucb_org_ancestor_org|render %}
-            {{ content.field_ucb_org_ancestor_org }}
-          {% endif %}
-          {% if content.field_ucb_org_parent_org|render %}
-            {#                    {{ content.field_ucb_org_parent_org }}#}
-          {% endif %}
-          {% if content.field_ucb_org_related_org|render %}
-            {{ content.field_ucb_org_related_org }}
-          {% endif %}
-        {% endif %}
+            </div>
+          </ucb-parent-org>
         </div>
+        {% if content.field_ucb_org_ancestor_org|render %}
+          {{ content.field_ucb_org_ancestor_org }}
+        {% endif %}
       </div>
+    </div>
     <div class="ucb-org-content-row row">
       <section class="ucb-org-content-section col-md-8">
         {% if content.field_ucb_org_description %}
@@ -85,56 +76,56 @@
         {% endif %}
 
         <div class="row ucb-org-contact-info-row">
-        <div class="ucb-org-contact-info col-md-12 col-lg">
-          <h2>Contact Information</h2>
-          <ul class="ucb-org-contact-buttons-list">
-            {% if content.field_ucb_org_telephone|render %}
-              <li>{{ content.field_ucb_org_telephone }}</li>
-            {% endif %}
-            {% if content.field_ucb_org_fax_number|render %}
-              <li>{{ content.field_ucb_org_fax_number }}</li>
-            {% endif %}
-            {% if content.field_ucb_org_email|render %}
-              <li>{{ content.field_ucb_org_email }}</li>
-            {% endif %}
-            {% if content.field_ucb_org_website_url|render %}
-              <li>{{ content.field_ucb_org_website_url }}</li>
-            {% endif %}
-            {% if content.field_ucb_org_directory_url|render %}
-              <li>{{ content.field_ucb_org_directory_url }}</li>
-            {% endif %}
-          </ul>
-        </div>
-
-        {% if content.field_ucb_org_social_contact|render %}
-          <div class="ucb-org-social-div col-md-12 col-lg">
-            <h2>Social</h2>
-            <ul class="ucb-org-social-list">
-              {{ content.field_ucb_org_social_contact }}
+          <div class="ucb-org-contact-info col-md-12 col-lg">
+            <h2>Contact Information</h2>
+            <ul class="ucb-org-contact-buttons-list">
+              {% if content.field_ucb_org_telephone|render %}
+                <li>{{ content.field_ucb_org_telephone }}</li>
+              {% endif %}
+              {% if content.field_ucb_org_fax_number|render %}
+                <li>{{ content.field_ucb_org_fax_number }}</li>
+              {% endif %}
+              {% if content.field_ucb_org_email|render %}
+                <li>{{ content.field_ucb_org_email }}</li>
+              {% endif %}
+              {% if content.field_ucb_org_website_url|render %}
+                <li>{{ content.field_ucb_org_website_url }}</li>
+              {% endif %}
+              {% if content.field_ucb_org_directory_url|render %}
+                <li>{{ content.field_ucb_org_directory_url }}</li>
+              {% endif %}
             </ul>
           </div>
-        {% endif %}
+
+          {% if content.field_ucb_org_social_contact|render %}
+            <div class="ucb-org-social-div col-md-12 col-lg">
+              <h2>Social</h2>
+              <ul class="ucb-org-social-list">
+                {{ content.field_ucb_org_social_contact }}
+              </ul>
+            </div>
+          {% endif %}
         </div>
 
         <div class="row ucb-org-addition-info-row">
 
-        {% if content.field_ucb_org_additional_contact|render %}
-          <div class="ucb-org-addtional-contacts col-md-12 col-lg">
-            <h2>Additional Contacts</h2>
-            <ul class="ucb-org-additional-contact-list list-style-none">
-              {{ content.field_ucb_org_additional_contact }}
-            </ul>
-          </div>
-        {% endif %}
+          {% if content.field_ucb_org_additional_contact|render %}
+            <div class="ucb-org-addtional-contacts col-md-12 col-lg">
+              <h2>Additional Contacts</h2>
+              <ul class="ucb-org-additional-contact-list list-style-none">
+                {{ content.field_ucb_org_additional_contact }}
+              </ul>
+            </div>
+          {% endif %}
 
-        {% if content.field_ucb_org_additional_links|render %}
-          <div class="ucb-org-additional-links col-md-12 col-lg">
-            <h2>Links</h2>
-            <ul class="ucb-org-additional-links list-style-none">
-              {{ content.field_ucb_org_additional_links }}
-            </ul>
-          </div>
-        {% endif %}
+          {% if content.field_ucb_org_additional_links|render %}
+            <div class="ucb-org-additional-links col-md-12 col-lg">
+              <h2>Links</h2>
+              <ul class="ucb-org-additional-links list-style-none">
+                {{ content.field_ucb_org_additional_links }}
+              </ul>
+            </div>
+          {% endif %}
         </div>
 
       </section>
@@ -151,29 +142,49 @@
         {% endif %}
         <section itemprop="address" itemscope itemtype="https://schema.org/PostaAddress" class="ucb-org-address-details">
           <ul class="ucb-org-address-list">
+            {% if content.field_ucb_org_street_address|render or content.field_ucb_org_address_locality|render or content.field_ucb_org_address_region|render %}
+              <li>Mailing Address</li>
+              <ul class="ucb-org-address-list-details">
+                {% if content.field_ucb_org_street_address|render %}
+                  <li><span itemprop="streetAddress">{{ content.field_ucb_org_street_address|render|striptags|trim }}</span></li>
+                {% endif %}
+                {% if content.field_ucb_org_address_locality|render and content.field_ucb_org_address_region|render%}
+                  <li><span itemprop="addressLocality">{{ content.field_ucb_org_address_locality|render|striptags|trim }}</span>,
+                  <span itemprop="addressRegion">{{ content.field_ucb_org_address_region|render|striptags|trim }}</span>
+                  <span itemprop="postalCode">{{ content.field_ucb_org_postal_code|render|striptags|trim }}</span></li>
+                {% else %}
+                  {% if content.field_ucb_org_address_locality|render %}
+                    <li><span itemprop="addressLocality">{{ content.field_ucb_org_address_locality|render|striptags|trim }}</span></li>
+                  {% endif %}
+                  {% if content.field_ucb_org_address_region|render %}
+                    <li><span itemprop="addressRegion">{{ content.field_ucb_org_address_region|render|striptags|trim }}</span>
+                    <span itemprop="postalCode">{{ content.field_ucb_org_postal_code|render|striptags|trim }}</span></li>
+                  {% endif %}
+                {% endif %}
+                {% if content.field_ucb_org_address_country|render %}
+                  <li><span itemprop="addressCountry">{{ content.field_ucb_org_address_country|render|striptags|trim }}</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}
             {% if content.field_ucb_org_campus_mail_box|render %}
-              <li>{{ content.field_ucb_org_campus_mail_box|render|striptags|trim }}</li>
-            {% endif %}
-            {% if content.field_ucb_org_street_address|render %}
-              <li><span itemprop="streetAddress">{{ content.field_ucb_org_street_address|render|striptags|trim }}</span></li>
-            {% endif %}
-            {% if content.field_ucb_org_address_locality|render %}
-              <li><span itemprop="addressLocality">{{ content.field_ucb_org_address_locality|render|striptags|trim }}</span></li>
-            {% endif %}
-            {% if content.field_ucb_org_address_region|render %}
-              <li><span itemprop="addressRegion">{{ content.field_ucb_org_address_region|render|striptags|trim }}</span></li>
-            {% endif %}
-            {% if content.field_ucb_org_postal_code|render %}
-              <li><span itemprop="postalCode">{{ content.field_ucb_org_postal_code|render|striptags|trim }}</span></li>
-            {% endif %}
-            {% if content.field_ucb_org_adress_country|render %}
-              <li><span itemprop="addressCountry">{{ content.field_ucb_org_adress_country|render|striptags|trim }}</span></li>
+              <li>Campus Mail Box </li>
+              <ul class="ucb-org-address-list-details">
+                <li>{{ content.field_ucb_org_campus_mail_box|render|striptags|trim }}</li>
+              </ul>
             {% endif %}
             {% if content.field_ucb_org_location_desc|render %}
-              <li>{{ content.field_ucb_org_location_desc|render|striptags|trim }}</li>
+              <li>Address Notes</li>
+              <ul class="ucb-org-address-list-details">
+                <li>{{ content.field_ucb_org_location_desc|render|striptags|trim }}</li>
+              </ul>
             {% endif %}
           </ul>
         </section>
+
+        {% if content.field_ucb_org_related_org|render %}
+          {{ content.field_ucb_org_related_org }}
+        {% endif %}
+
       </section>
     </div>
 
