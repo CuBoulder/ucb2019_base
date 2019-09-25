@@ -73,7 +73,7 @@ ul.ucb-guide-links-list a {
 }
 
 ul.ucb-guide-jump-list {
-  display: flex;
+  display: none;
   flex-direction: row;
   list-style: none;
   justify-content: center;

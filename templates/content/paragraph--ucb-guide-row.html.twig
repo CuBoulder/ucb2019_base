@@ -6,8 +6,12 @@
  */
 #}
 
+{% set dataLink = content.field_ucb_guide_row_link_title|render|striptags|trim %}
+{% if dataLink == '' %}
+  {% set dataLink = content.field_ucb_guide_row_title|render|striptags|trim %}
+{% endif %}
 
-<div id="{{ content.field_ucb_guide_row_link_title|render|striptags|trim|clean_id }}" class="ucb-guide-content-row row" data-link="{{ content.field_ucb_guide_row_link_title|render|striptags|trim }}" {{ attributes }}>
+<div id="{{ dataLink|clean_id }}" class="ucb-guide-content-row row" data-link="{{ dataLink }}" {{ attributes }}>
   <div class="ucb-guide-content-details col-md-12 col-lg">
     <h2>{{ content.field_ucb_guide_row_title|render }}</h2>
     <div class="ucb-guide-content-detail-body">
