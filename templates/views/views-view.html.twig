@@ -54,15 +54,17 @@
     {{ exposed }}
     {{ attachment_before }}
 
-    {% if rows -%}
-      {{ rows }}
-    {% elseif empty -%}
-      {{ empty }}
-    {% endif %}
-    {{ pager }}
+    <div class="row views-row-content">
+      {% if rows -%}
+        {{ rows }}
+      {% elseif empty -%}
+        {{ empty }}
+      {% endif %}
+      {{ pager }}
 
-    {{ attachment_after }}
-    {{ more }}
+      {{ attachment_after }}
+      {{ more }}
+    </div>
 
     {% if footer %}
       <footer>
