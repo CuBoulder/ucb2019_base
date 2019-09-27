@@ -8,7 +8,11 @@
 
 {{ attach_library('ucb2019_base/ucb-guide-page') }}
 
-{% set titleDisplay = 'text-left' %}
+{% set myTitle = label|render|striptags|trim %}
+{% set titleDisplay = 'text-center' %}
+{% if myTitle|length > 32  %}
+  {% set titleDisplay = 'text-left' %}
+{% endif %}
 
 <div class="ucb-guide-guide-link col">
   <a href="{{ url }}">
