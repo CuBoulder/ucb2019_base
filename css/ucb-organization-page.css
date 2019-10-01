@@ -52,7 +52,9 @@ ul.ucb-org-social-list {
   line-height: 1.65;
 }
 
-.ucb-org-organization-container li svg {
+.ucb-org-organization-container li i.fa,
+.ucb-org-organization-container li i.fab,
+.ucb-org-organization-container li i.fas {
   margin-right: 0.5rem;
 }
 
@@ -83,9 +85,12 @@ ul.ucb-org-social-list {
   border-radius: 0 0 4px 4px;
 }
 
+.ucb-org-teaser-content {
+  margin-bottom: 1em;
+}
+
 .ucb-org-teaser-content-container {
   padding: 1em;
-  margin-bottom: 1em;
   border: 1px solid #bbb;
   border-radius: 4px;
   display: flex;
@@ -93,6 +98,7 @@ ul.ucb-org-social-list {
   flex-grow: 1;
   justify-content: center;
   background: #f5f5f5;
+  height: 100%;
 }
 
 .ucb-org-child-title {
@@ -104,13 +110,25 @@ ul.ucb-org-social-list {
   padding-left: 1em;
 }
 
+.ucb-org-children-contact-list i.fa,
+.ucb-org-children-contact-list i.fab,
+.ucb-org-children-contact-list i.fas {
+  margin-right: 0.4rem;
+}
 
 .ucb-org-guides {
   border-top: 1px solid #bbb;
 }
 
+.ucb-org-guide-data {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 a.ucb-org-guide-link {
   display: flex;
+  height: 100%;
   margin: 1em;
   padding: 1em;
   border: 1px solid;
@@ -122,8 +140,8 @@ a.ucb-org-guide-link {
   flex-direction: row;
 }
 
-a.ucb-org-guide-link svg {
-  margin-right: 0.5rem;
+a.ucb-org-guide-link i.fa-2x {
+  margin-right: 0.75rem;
 }
 
 .ucb-org-organization-container {
