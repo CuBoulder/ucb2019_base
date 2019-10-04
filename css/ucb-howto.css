@@ -111,3 +111,9 @@ ul.ucb-how-to-tags-list li {
 .ucb-guide-how-to-icon {
   margin: 0.75rem auto;
 }
+
+@media screen and (max-width: 768px) {
+  .ucb-how-to-main {
+    margin-top: 1em;
+  }
+}

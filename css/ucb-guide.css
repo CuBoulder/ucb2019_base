@@ -96,3 +96,9 @@ ul.ucb-guide-jump-list li:last-of-type {
 .ucb-guide-page {
   margin-bottom: 1em;
 }
+
+@media screen and (max-width: 991.98px) {
+  article.ucb-org-teaser-content {
+    text-align: left;
+  }
+}

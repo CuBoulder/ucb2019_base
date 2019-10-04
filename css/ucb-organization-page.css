@@ -147,3 +147,10 @@ a.ucb-org-guide-link i.fa-2x {
 .ucb-org-organization-container {
   padding-bottom: 1em;
 }
+
+@media screen and (max-width: 991.98px) {
+  .ucb-org-content-row {
+    margin-bottom: 2em;
+  }
+}
+

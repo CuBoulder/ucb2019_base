@@ -68,7 +68,7 @@
       </div>
     </div>
     <div class="ucb-org-content-row row">
-      <section class="ucb-org-content-section col-md-8">
+      <section class="ucb-org-content-section col-md-7">
         {% if content.field_ucb_org_description %}
           <div itemprop="description" class="ucb-org-description">
             {{ content.field_ucb_org_description|render }}
@@ -129,7 +129,7 @@
         </div>
 
       </section>
-      <section class="ucb-org-address-section col-md-4">
+      <section class="ucb-org-address-section col-md-5">
         {% if content.field_ucb_org_id_campus_map|render %}
           {% set mapURL = "https://www.colorado.edu/map/?id=336#!m/" ~ content.field_ucb_org_id_campus_map|render|striptags|trim %}
           <div class="ucb-org-map-embed">
