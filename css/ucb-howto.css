@@ -79,6 +79,7 @@ ul.ucb-how-to-tags-list li {
   border: 1px solid #AFAFAF;
   border-radius: 8px;
   background-color: #FAFAFAFA;
+  background-color: var(--ucb-off-white);
 }
 
 .ucb-guide-how-to-link {
@@ -93,6 +94,7 @@ ul.ucb-how-to-tags-list li {
   padding: 1em;
   border: 1px solid;
   background: #f5f5f5;
+  background: var(--ucb-off-white);
   border-radius: 4px;
   display: flex;
   flex-grow: 1;

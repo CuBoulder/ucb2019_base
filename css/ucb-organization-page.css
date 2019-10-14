@@ -62,6 +62,7 @@ ul.ucb-org-social-list {
   background: transparent;
   border: 1px solid transparent;
   color: #006db1;
+  color: var(--ucb-link);
 }
 
 .ucb-org-map-embed {
@@ -75,6 +76,7 @@ ul.ucb-org-social-list {
 .ucb-org-map-embed a .embed-map-label {
   background: black;
   color: #fff;
+  color: var(--ucb-white);
   display: block;
   position: absolute;
   bottom: 0;
@@ -98,6 +100,7 @@ ul.ucb-org-social-list {
   flex-grow: 1;
   justify-content: flex-start;
   background: #f5f5f5;
+  background: var(--ucb-off-white);
   height: 100%;
 }
 
@@ -136,6 +139,7 @@ a.ucb-org-guide-link {
   font-weight: bolder;
   font-size: 1.25em;
   background: #F0F0F0;
+  background: var(--ucb-off-white);
   align-items: center;
   flex-direction: row;
 }

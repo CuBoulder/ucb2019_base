@@ -1,4 +1,14 @@
 /**** GLOBAL STYLES ******/
+:root {
+  --ucb-gold: #CFB87C;
+  --ucb-link: #006DB1;
+  --ucb-link-visited: #e51c23;
+  --ucb-white: #FFFFFF;
+  --ucb-black: #222222;
+  --ucb-darker: #333333;
+  --ucb-light-contrast: #E7E7E7;
+  --ucb-off-white: #F2F2F2;
+}
 html {
   height: 100%;
   margin: 0;
@@ -16,10 +26,12 @@ h1,h2,h3,h4,h5 {
 }
 a:link, a:visited {
   color: #006DB1;
+  color: var(--ucb-link);
 }
 
 a:hover {
   color: #e51c23;
+  color: var(--ucb-link-visited);
   text-decoration: none;
 }
 
@@ -96,14 +108,17 @@ strong {
 }
 .font-white {
   color: white;
+  color: var(--ucb-white);
 }
 
 .font-gold {
   color: #CFB87C;
+  color: var(--ucb-gold);
 }
 
 .font-black {
   color: #222222;
+  color: var(--ucb-black);
 }
 
 /******** Header Region **********/
@@ -172,6 +187,7 @@ ul.ucb-main-menu.nav {
 
 li.main-menu-item a.nav-link {
   color: #333;
+  color: var(--ucb-darker);
   line-height: 2rem;
   border-right: 1px solid #d7d7d7;
   font-weight: 600;
@@ -179,11 +195,14 @@ li.main-menu-item a.nav-link {
 
 li.main-menu-item a.nav-link:hover {
   background: #e7e7e7;
+  background: var(--ucb-light-contrast);
   color: black;
 }
 li.main-menu-item a.nav-link.active{
   background: #cfb87c;
+  background: var(--ucb-gold);
   color: black;
+  color: var(--ucb-black);
 }
 
 /********** Secondary Menu **********/
@@ -195,12 +214,15 @@ li.main-menu-item a.nav-link.active{
   line-height: 1rem;
   margin: 0.5rem;
   color: #333;
+  color: var(--ucb-darker);
   padding: 0.5rem;
 }
 
 .ucb-menu a.nav-link:hover {
   color: black;
+  color: var(--ucb-black);
   background: #e7e7e7;
+  background: var(--ucb-light-contrast);
   border-radius: 3px;
 }
 
@@ -210,6 +232,7 @@ li.main-menu-item a.nav-link.active{
   margin: 2px 0 0;
   padding: 0;
   background: #f2f2f2;
+  background: var(--ucb-off-white);
 }
 
 .ucb-breadcrumb {
@@ -409,8 +432,10 @@ li.social-media-item.menu-item {
 
 .ucb-homepage-footer a {
   color: #cfb87c;
+  color: var(--ucb-gold);
 }
 
 .ucb-homepage-footer a:hover {
   color: white;
+  color: var(--ucb-white);
 }
