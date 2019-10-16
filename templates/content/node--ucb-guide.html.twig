@@ -25,20 +25,22 @@
 <article{{attributes.addClass(classes)}}>
   <div class="ucb-guide-page container">
 
+    {% if content.field_ucb_guide_body|render or content.field_ucb_guide_organization|render %}
     <section class="ucb-guide-meta">
       <div class="ucb-guide-meta-row row">
-        {% if content.field_ucb_guide_body|render %}
-          <div class="ucb-guide-body col-md-12 col-lg">
+        <div class="ucb-guide-body col-md-12 col-lg-8">
+          {% if content.field_ucb_guide_body|render %}
             {{ content.field_ucb_guide_body|render }}
-          </div>
-        {% endif %}
-        {% if content.field_ucb_guide_organization|render %}
-          <div class="ucb-guide-org-details col-md-12 col-lg">
+          {% endif %}
+        </div>
+        <div class="ucb-guide-org-details col-md-12 col-lg-4">
+          {% if content.field_ucb_guide_organization|render %}
             {{ content.field_ucb_guide_organization|render }}
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
     </section>
+    {% endif %}
 
     {% if content.field_ucb_guide_howtos|render or content.field_ucb_guide_content_row|render%}
     <div class="ucb-guide-jump-nav">
