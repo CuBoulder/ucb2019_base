@@ -70,3 +70,10 @@ ucb-organization-page:
     //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
     js/ucb-organization.js: {}
 
+ucb-incident-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-incident-page.css: {}
+  js:
+    js/ucb-incident.js: {}

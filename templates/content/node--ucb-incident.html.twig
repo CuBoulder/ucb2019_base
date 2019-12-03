@@ -1,0 +1,31 @@
+{#
+/**
+ * Theme layout to display a UCB Incident Page.
+ *
+ * Created by jsparks on 11/21/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-incident-page') }}
+
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{attributes.addClass(classes)}}>
+  <div class="container ucb-incident-container">
+    <div class="ucb-incident-row row">
+      {{ content.field_ucb_incident_events }}
+    </div>
+  </div>
+</article>
