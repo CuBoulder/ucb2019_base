@@ -25,7 +25,27 @@
 <article{{attributes.addClass(classes)}}>
   <div class="container ucb-incident-container">
     <div class="ucb-incident-row row">
-      {{ content.field_ucb_incident_events }}
+      {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
+        <div class="ucb-incident-event-col col-sm-12 col-md-8 col-lg-9">
+          {{ content.field_ucb_incident_events }}
+        </div>
+        <div class="ucb-incident-sidebar col-sm-12 col-md-4 col-lg-3">
+          {% if content.field_ucb_incident_sidebar_body|render %}
+            {{ content.field_ucb_incident_sidebar_body }}
+          {% endif %}
+          {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render %}
+            {{ content.field_ucb_incident_type }}
+          {% endif %}
+        </div>
+      {% else %}
+        {{ content.field_ucb_incident_events }}
+      {% endif %}
+{#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
+{#        <ol>#}
+{#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
+{#            <li>{{ key }}</li>#}
+{#          {% endfor %}#}
+{#        </ol>#}
     </div>
   </div>
 </article>

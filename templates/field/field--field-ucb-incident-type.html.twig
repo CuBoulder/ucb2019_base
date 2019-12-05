@@ -1,0 +1,6 @@
+{% for item in items %}
+  <div {{ item.attributes }}class="ucb-incident-type">
+    {{ item.label|render|striptags }}
+    {{ item.content }}
+  </div>
+{% endfor %}
