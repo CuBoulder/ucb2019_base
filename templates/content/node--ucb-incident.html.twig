@@ -1,0 +1,51 @@
+{#
+/**
+ * Theme layout to display a UCB Incident Page.
+ *
+ * Created by jsparks on 11/21/19
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-incident-page') }}
+
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{attributes.addClass(classes)}}>
+  <div class="container ucb-incident-container">
+    <div class="ucb-incident-row row">
+      {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
+        <div class="ucb-incident-event-col col-sm-12 col-md-8 col-lg-9">
+          {{ content.field_ucb_incident_events }}
+        </div>
+        <div class="ucb-incident-sidebar col-sm-12 col-md-4 col-lg-3">
+          {% if content.field_ucb_incident_sidebar_body|render %}
+            {{ content.field_ucb_incident_sidebar_body }}
+          {% endif %}
+          {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render %}
+            {{ content.field_ucb_incident_type }}
+          {% endif %}
+        </div>
+      {% else %}
+        {{ content.field_ucb_incident_events }}
+      {% endif %}
+{#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
+{#        <ol>#}
+{#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
+{#            <li>{{ key }}</li>#}
+{#          {% endfor %}#}
+{#        </ol>#}
+    </div>
+  </div>
+</article>

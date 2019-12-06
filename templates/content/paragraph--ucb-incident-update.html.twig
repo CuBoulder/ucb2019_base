@@ -1,0 +1,25 @@
+{#
+/**
+ * Theme layout to display a UCB Incident Event -- Paragraph.
+ *
+ * Created by jsparks on 11/21/2019
+ */
+#}
+
+<div {{ attributes }} class="ucb-incident-event-card">
+  {% if content.field_ucb_incident_timestamp|render %}
+    <h2 class="ucb-incident-event-timestamp">{{ content.field_ucb_incident_timestamp }}</h2>
+  {% endif %}
+  {% if content.field_ucb_incident_body|render %}
+    <div class="ucb-incident-event-body">{{ content.field_ucb_incident_body }}</div>
+  {% endif %}
+  {% if content.field_ucb_incident_map_link|render %}
+    <div class="ucb-incident-event-map">{{ content.field_ucb_incident_map_link }}</div>
+  {% endif %}
+  {% if content.field_ucb_incident_images|render %}
+    <div class="ucb-incident-event-images row">{{ content.field_ucb_incident_images }}</div>
+  {% endif %}
+  {% if content.field_ucb_incident_links|render %}
+    <ul class="ucb-incident-event-links">{{ content.field_ucb_incident_links }}</ul>
+  {% endif %}
+</div>
