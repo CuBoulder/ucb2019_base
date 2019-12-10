@@ -1,6 +1,6 @@
 {#
 /**
- * Theme layout to display a UCB Incident Page.
+ * Theme layout to display a UCB Incident Node on a View Page.
  *
  * Created by jsparks on 11/21/19
  */
@@ -24,8 +24,14 @@
 
 <article{{attributes.addClass(classes)}}>
   <div class="container ucb-incident-container">
+    <div class="ucb-incident-control">
+      <ol class="ucb-incident-control-list">
+      </ol>
+    </div>
     <div class="ucb-incident-row row">
-{#      <h1>{{ label }}</h1>#}
+      <div class="ucb-incident-title-col col-12">
+        <h1 id="{{ label|render|striptags|trim|clean_id }}">{{ label }}</h1>
+      </div>
       {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
         <div class="ucb-incident-event-col col-sm-12 col-md-8 col-lg-9">
           {{ content.field_ucb_incident_events }}
@@ -41,12 +47,12 @@
       {% else %}
         {{ content.field_ucb_incident_events }}
       {% endif %}
-{#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
-{#        <ol>#}
-{#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
-{#            <li>{{ key }}</li>#}
-{#          {% endfor %}#}
-{#        </ol>#}
+      {#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
+      {#        <ol>#}
+      {#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
+      {#            <li>{{ key }}</li>#}
+      {#          {% endfor %}#}
+      {#        </ol>#}
     </div>
   </div>
 </article>
