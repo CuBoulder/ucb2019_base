@@ -1,60 +1,68 @@
 <?php
+
 use Drupal\Core\Entity\ContentEntityBase;
 
 /**
  * @file
  * Functions to support the UCB Base 2019 theme.
- **/
+ */
 
 /***
  * This a helper function to set the favicon appropriately
  */
 function ucb2019_base_page_attachments_alter(array &$page) {
-    foreach($page['#attached']['html_head_link'] as $k => $v) {
-        if (array_key_exists('rel', $v[0]) && $v[0]['rel'] == 'shortcut icon') {
-            $page['#attached']['html_head_link'][$k][0]['href'] = base_path() . \Drupal::service('extension.list.theme')->getPath('ucb2019_base') . '/favicon.png';
-        }
+  foreach($page['#attached']['html_head_link'] as $k => $v) {
+    if (array_key_exists('rel', $v[0]) && $v[0]['rel'] == 'shortcut icon') {
+      $page['#attached']['html_head_link'][$k][0]['href'] = base_path() . \Drupal::service('extension.list.theme')->getPath('ucb2019_base') . '/favicon.png';
     }
+  }
 }
 
 /***
- * preprocess function to get the variables we'll need on the html template
+ * Preprocess function to get the variables we'll need on the html template
  */
-function ucb2019_base_preprocess_html(array  &$variables) {
-    $variables['ucb_gtm_account'] = theme_get_setting('ucb_gtm_account');
-    $variables['theme_path'] = base_path() . $variables['directory'];
+function ucb2019_base_preprocess_html(array &$variables) {
+  $variables['ucb_gtm_account'] = theme_get_setting('ucb_gtm_account');
+  $variables['theme_path'] = base_path() . $variables['directory'];
 }
 
 /***
- * preprocess function to get the variables we'll need on the page template
+ * Preprocess function to get the variables we'll need on the page template
  */
-function ucb2019_base_preprocess_page(array  &$variables) {
-    $variables['ucb_secondary_menu'] = theme_get_setting('ucb_secondary_menu');
-    $variables['ucb_footer_menu'] = theme_get_setting('ucb_footer_menu');
-    $variables['theme_path'] = base_path() . $variables['directory'];
+function ucb2019_base_preprocess_page(array &$variables) {
+  $variables['ucb_secondary_menu'] = theme_get_setting('ucb_secondary_menu');
+  $variables['ucb_footer_menu'] = theme_get_setting('ucb_footer_menu');
+  $variables['theme_path'] = base_path() . $variables['directory'];
 
-    // check to see if we're on the homepage or not
-    try {
-        $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
-    }
-    catch (Exception $e) {
-        $variables['is_front'] = FALSE;
-    }
+  // check to see if we're on the homepage or not
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    $variables['is_front'] = FALSE;
+  }
 }
 
 /***
- * preprocess function to get the variables we'll need on the header region template
+ * Preprocess function to get the variables we'll need on the header region template
  */
-function ucb2019_base_preprocess_region__header(array  &$variables) {
-    $variables['theme_path'] = base_path() . $variables['directory'];
-    $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+function ucb2019_base_preprocess_region__header(array &$variables) {
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+}
+
+/***
+ * Preprocess function to get the variables we'll need on the Incident node template
+ */
+function ucb2019_base_preprocess_node__ucb_incident(array &$variables) {
+  $variables['uuid'] = $variables['node']->uuid();
 }
 
 /***
  * preprocess function to get the variables we'll need on the Organization node template
  */
-function ucb2019_base_preprocess_node__organization(array  &$variables) {
-    $variables['uuid'] = $variables['node']->uuid();
+function ucb2019_base_preprocess_node__organization(array &$variables) {
+  $variables['uuid'] = $variables['node']->uuid();
 }
 
 /***
@@ -62,37 +70,38 @@ function ucb2019_base_preprocess_node__organization(array  &$variables) {
  ***/
 function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL)
 {
-    // Work-around for a core bug affecting admin themes. See issue #943212.
-    if (isset($form_id)) {
-        return;
-    }
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
 
-    $form['ucb_be_boulder'] = array(
-        '#type'           => 'checkbox',
-        '#title'          => t('Be Boulder Slogan in the header.'),
-        '#default_value'    => theme_get_setting('ucb_be_boulder'),
-        '#description'    => t("Check this box if you would like to display the 'Be Boulder' slogan in the header."),
-    );
+  $form['ucb_be_boulder'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Be Boulder Slogan in the header.'),
+    '#default_value'    => theme_get_setting('ucb_be_boulder'),
+    '#description'    => t("Check this box if you would like to display the 'Be Boulder' slogan in the header."),
+  );
 
-    $form['ucb_gtm_account'] = array(
-        '#type'             => 'textfield',
-        '#title'            => t('GTM Account Number'),
-        '#default_value'    => theme_get_setting('ucb_gtm_account'),
-        '#description'      => t('Google Tag Manager account number e.g. GTM-123456.'),
-    );
+  $form['ucb_gtm_account'] = array(
+    '#type'             => 'textfield',
+    '#title'            => t('GTM Account Number'),
+    '#default_value'    => theme_get_setting('ucb_gtm_account'),
+    '#description'      => t('Google Tag Manager account number e.g. GTM-123456.'),
+  );
 
-    $form['ucb_secondary_menu'] = array(
-        '#type'           => 'checkbox',
-        '#title'          => t('Display the standard Boulder secondary menu in the header navigation region.'),
-        '#default_value'    => theme_get_setting('ucb_secondary_menu'),
-        '#description'    => t("Check this box if you would like to display the default Boulder secondary menu links in the header."),
-    );
+  $form['ucb_secondary_menu'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Display the standard Boulder secondary menu in the header navigation region.'),
+    '#default_value'    => theme_get_setting('ucb_secondary_menu'),
+    '#description'    => t("Check this box if you would like to display the default Boulder secondary menu links in the header."),
+  );
 
-    $form['ucb_footer_menu'] = array(
-        '#type'           => 'checkbox',
-        '#title'          => t('Display the standard Boulder menus in the header footer region.'),
-        '#default_value'    => theme_get_setting('ucb_footer_menu'),
-        '#description'    => t("Check this box if you would like to display the default Boulder footer menu links in the footer."),
-    );
+  $form['ucb_footer_menu'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Display the standard Boulder menus in the header footer region.'),
+    '#default_value'    => theme_get_setting('ucb_footer_menu'),
+    '#description'    => t("Check this box if you would like to display the default Boulder footer menu links in the footer."),
+  );
 
 }
+
