@@ -42,32 +42,50 @@ Vue.component('ucb-incident-event', {
      * @return {string}
      */
     GET_INCIDENT_TIMESTAMP(incidentID) {
-      let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
-      // there's a race condition here... put in a wait if we didn't get any data
+      // let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
+      //
+      // // there's a race condition here... put in a wait if we didn't get any data
+      // if(incidentUpdate === undefined) {
+      //   console.log('Could not find Timestamp for ID : ' + incidentID);
+      //   return '';
+      // }
+      // console.log('Timestamp for ' + incidentID + ' is ' + incidentUpdate.data.attributes.field_ucb_incident_timestamp);
+      // return incidentUpdate.data.attributes.field_ucb_incident_timestamp;
+
+      let incidentUpdate = this.$store.state.IncidentDetails.find(function (v) {
+        return v.data.id === incidentID;
+      });
       if(incidentUpdate === undefined) {
         return '';
       }
-      return incidentUpdate.attributes.field_ucb_incident_timestamp;
+
+      return incidentUpdate.data.attributes.field_ucb_incident_timestamp;
     },
     /**
      * @return {string}
      */
     GET_INCIDENT_BODY(incidentID) {
-      let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
+//      let incidentUpdate =  this.$store.state.IncidentDetails.find( v => v.data.id === incidentID );
+      let incidentUpdate =  this.$store.state.IncidentDetails.find(function (v) {
+         return v.data.id === incidentID;
+      });
       if(incidentUpdate === undefined) {
         return '';
       }
-      return incidentUpdate.attributes.field_ucb_incident_body.value;
+      return incidentUpdate.data.attributes.field_ucb_incident_body.value;
     },
     /**
      * @return {string}
      */
     GET_INCIDENT_MAP(incidentID) {
-      let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
+      let incidentUpdate = this.$store.state.IncidentDetails.find(function (v) {
+        return v.data.id === incidentID;
+      });
       if(incidentUpdate === undefined) {
         return '';
       }
-      let mapLink = incidentUpdate.attributes.field_ucb_incident_map_link;
+
+      let mapLink = incidentUpdate.data.attributes.field_ucb_incident_map_link;
       let mapID = '';
 
       if(!mapLink) {
@@ -92,15 +110,17 @@ Vue.component('ucb-incident-event', {
       return '';
     },
     GET_INCIDENT_LINKS(incidentID) {
-      let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
       let returnLinks = [];
+      let incidentUpdate = this.$store.state.IncidentDetails.find(function (v) {
+        return v.data.id === incidentID;
+      });
       if(incidentUpdate === undefined) {
         return returnLinks;
       }
 
-      for(const linkItem in incidentUpdate.attributes.field_ucb_incident_links) {
-        let linkTitle = incidentUpdate.attributes.field_ucb_incident_links[linkItem].title;
-        let linkURI = incidentUpdate.attributes.field_ucb_incident_links[linkItem].uri;
+      for(const linkItem in incidentUpdate.data.attributes.field_ucb_incident_links) {
+        let linkTitle = incidentUpdate.data.attributes.field_ucb_incident_links[linkItem].title;
+        let linkURI = incidentUpdate.data.attributes.field_ucb_incident_links[linkItem].uri;
         if(linkTitle == '') {
           linkTitle = linkURI;
         }
@@ -109,6 +129,46 @@ Vue.component('ucb-incident-event', {
         returnLinks.push(linkHTML);
       }
       return returnLinks;
+    },
+    /**
+     * @return {string}
+     */
+    GET_INCIDENT_IMAGES(incdidentID) {
+      let incidentUpdate = this.$store.state.IncidentDetails.find(function (v) {
+        return v.data.id === incdidentID;
+      });
+      if(incidentUpdate === undefined) {
+        return '';
+      }
+      let IMAGES = [];
+      let IMG_HTML = "";
+
+      if(incidentUpdate.included !== undefined) {
+        for (let imgIndex in incidentUpdate.included) {
+          if (incidentUpdate.included[imgIndex].type == 'media--image') {
+            // the url will be in the next array item
+            imgIndex++;
+            if (incidentUpdate.included[imgIndex].type == 'file--file') {
+              console.log("Found an image : " + incidentUpdate.included[imgIndex].attributes.uri.url);
+              IMAGES.push(incidentUpdate.included[imgIndex].attributes.uri.url);
+            }
+          }
+        }
+      }
+
+      if(IMAGES.length)  {
+        for(let img in IMAGES) {
+          let imgDATA =  `<div class="col-sm-12 col-md-6 col-lg-4 ucb-incident-event-image">
+                             <a href="${IMAGES[img]}">
+                                <img src="${IMAGES[img]}" alt="foobar"i typeof="foaf:Image">
+                              </a>
+                          </div>`;
+
+          IMG_HTML += imgDATA;
+        }
+      }
+
+      return IMG_HTML;
     }
   },
   mounted() {

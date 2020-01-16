@@ -47,7 +47,9 @@ const store = new Vuex.Store({
     },
     ADD_INCIDENT_EVENT_DATA : (state, payload) => {
       // given the payload (uid), load the data for that Incident Event and store the data
-      const dataURL = "/alerts/web/jsonapi/paragraph/ucb_incident_update/" + encodeURI(payload)
+      const dataURL = "/alerts/web/jsonapi/paragraph/ucb_incident_update/" +
+        encodeURI(payload) +
+        "?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image"
 
       if(DEBUG) {
         console.log("Loading data from : " + dataURL)
@@ -58,7 +60,7 @@ const store = new Vuex.Store({
           let jsonData = JSON.stringify(response.data.data)
           let jsonObject = {}
 
-          Object.assign(jsonObject, response.data.data )
+          Object.assign(jsonObject, response.data)
           // save the data if we haven't already loaded this update
           if(!state.IncidentDetails.find( ({id}) => id === payload) ) {
             state.IncidentDetails.push(jsonObject)

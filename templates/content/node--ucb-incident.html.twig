@@ -74,7 +74,7 @@
                   <h2 class="ucb-incident-event-timestamp" v-html="GET_INCIDENT_TIMESTAMP(updateID)"></h2>
                   <div class="ucb-incident-event-body" v-html="GET_INCIDENT_BODY(updateID)"></div>
                   <div class="ucb-incident-event-map" v-html="GET_INCIDENT_MAP(updateID)"></div>
-                  {#                    <div class="ucb-incident-event-images row">{{ content.field_ucb_incident_images }}</div>#}
+                  <div class="ucb-incident-event-images row" v-html="GET_INCIDENT_IMAGES(updateID)"></div>
                   <ul class="ucb-incident-event-links">
                     <li v-for="link in GET_INCIDENT_LINKS(updateID)" v-html="link"></li>
                   </ul>
