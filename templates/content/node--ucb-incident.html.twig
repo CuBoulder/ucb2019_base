@@ -69,7 +69,7 @@
 
               <div v-for="updateID in GET_INCIDENT_IDS">
                 <div class="ucb-incident-event-card">
-                  <h3>ID is : <span v-html="updateID"></span></h3>
+                  <strong>ID is : <span v-html="updateID"></span></strong>
                   {#                  <p v-html="GET_INCIDENT_DATA_BY_ID(update)"></p>#}
                   <h2 class="ucb-incident-event-timestamp" v-html="GET_INCIDENT_TIMESTAMP(updateID)"></h2>
                   <div class="ucb-incident-event-body" v-html="GET_INCIDENT_BODY(updateID)"></div>

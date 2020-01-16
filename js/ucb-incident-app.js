@@ -42,24 +42,14 @@ Vue.component('ucb-incident-event', {
      * @return {string}
      */
     GET_INCIDENT_TIMESTAMP(incidentID) {
-      // let incidentUpdate =  this.$store.state.IncidentDetails.find( ({id}) => id === incidentID );
-      //
-      // // there's a race condition here... put in a wait if we didn't get any data
-      // if(incidentUpdate === undefined) {
-      //   console.log('Could not find Timestamp for ID : ' + incidentID);
-      //   return '';
-      // }
-      // console.log('Timestamp for ' + incidentID + ' is ' + incidentUpdate.data.attributes.field_ucb_incident_timestamp);
-      // return incidentUpdate.data.attributes.field_ucb_incident_timestamp;
-
       let incidentUpdate = this.$store.state.IncidentDetails.find(function (v) {
         return v.data.id === incidentID;
       });
       if(incidentUpdate === undefined) {
         return '';
       }
-
-      return incidentUpdate.data.attributes.field_ucb_incident_timestamp;
+      // use the Moment.JS library (https://momentjs.com/) to format the date timestamp
+      return moment(incidentUpdate.data.attributes.field_ucb_incident_timestamp).format('ddd, MM/DD/YYYY - h:mm:ss a');
     },
     /**
      * @return {string}
