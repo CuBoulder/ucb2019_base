@@ -57,15 +57,12 @@
           {% endif %}
         </div>
       {% else %}
-        <h4>Id is {{ uuid }}</h4><br>
+{#        <h4>Id is {{ uuid }}</h4><br>#}
         <div id="vue-incident">
-          <h5>Showing data...</h5>
           <ucb-incident-event dataurl="{{ incidentURL }}" inline-template>
             <div>
-              {#              <h4 v-html="this.$store.state.test"></h4>#}
-              {#              <h4 v-html="this.$store.getters.getTest"></h4>#}
-              <h4 v-html="TEST"></h4>
-              <h4 v-html="INCIDENT_COUNT"></h4>
+{#              <h4 v-html="TEST"></h4>#}
+{#              <h4 v-html="INCIDENT_COUNT"></h4>#}
 
               <div v-for="updateID in GET_INCIDENT_IDS">
                 <div class="ucb-incident-event-card">

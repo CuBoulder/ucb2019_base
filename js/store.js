@@ -65,7 +65,9 @@ const store = new Vuex.Store({
           if(!state.IncidentDetails.find( ({id}) => id === payload) ) {
             state.IncidentDetails.push(jsonObject)
           }else {
-            console.log("Not loading duplicate data for : " + payload)
+            if(DEBUG) {
+              console.log("Not loading duplicate data for : " + payload)
+            }
             // maybe check the timestamp to see if we need to update this one?
           }
         })
