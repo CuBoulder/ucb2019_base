@@ -135,12 +135,11 @@ Vue.component('ucb-incident-event', {
 
       if(incidentUpdate.included !== undefined) {
         for (let imgIndex in incidentUpdate.included) {
-          if (incidentUpdate.included[imgIndex].type == 'media--image') {
-            // the url will be in the next array item
-            imgIndex++;
-            if (incidentUpdate.included[imgIndex].type == 'file--file') {
+          if (incidentUpdate.included[imgIndex].type == 'file--file') {
+            let imgURI = incidentUpdate.included[imgIndex].attributes.uri.url;
+            if(imgURI.match(/\.(jpeg|jpg|png|gif)/g)) {
               // console.log("Found an image : " + incidentUpdate.included[imgIndex].attributes.uri.url);
-              IMAGES.push(incidentUpdate.included[imgIndex].attributes.uri.url);
+              IMAGES.push(imgURI);
             }
           }
         }
