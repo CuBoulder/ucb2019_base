@@ -7,6 +7,7 @@ const store = new Vuex.Store({
     errorMsg: '',
     IncidentDetails: [],
     IncidentEventIDs: [],
+    InlineImages: [],
     loaded: false
   },
 
@@ -28,6 +29,9 @@ const store = new Vuex.Store({
     },
     getIncidentEventData : state => {
       return state.IncidentDetails
+    },
+    getInlineImages: state => {
+      return state.InlineImages
     }
 
   },
@@ -44,6 +48,37 @@ const store = new Vuex.Store({
       if(state.IncidentEventIDs.indexOf(payload) === -1) {
         state.IncidentEventIDs.push(payload)
       }
+    },
+    ADD_INLINE_IMAGE : (state, payload) => {
+      const dataURL = "/alerts/web/jsonapi/media/image/" + encodeURI(payload) +
+        "?include=field_media_image"
+
+      if(DEBUG) {
+        console.log("Loading data from : " + dataURL)
+      }
+
+      axios.get(dataURL)
+        .then(function (response) {
+          let jsonData = JSON.stringify(response.data.data)
+          let jsonObject = {}
+
+          Object.assign(jsonObject, response.data)
+          // save the data if we haven't already loaded this update
+          if(!state.InlineImages.find( ({id}) => id === payload) ) {
+            state.InlineImages.push(jsonObject)
+          }else {
+            if(DEBUG) {
+              console.log("Not loading duplicate image for : " + payload)
+            }
+            // maybe check the timestamp to see if we need to update this one?
+          }
+        })
+        .catch(function (error) {
+          console.log("ADD_INLINE_IMAGE (error) : " + error)
+        })
+        .finally(function () {
+          state.loaded = true
+        })
     },
     ADD_INCIDENT_EVENT_DATA : (state, payload) => {
       // given the payload (uid), load the data for that Incident Event and store the data
@@ -92,6 +127,9 @@ const store = new Vuex.Store({
     },
     addIncidentEventData: (context, payload) => {
       context.commit("ADD_INCIDENT_EVENT_DATA", payload)
+    },
+    addInlineImage: (context, payload) => {
+      context.commit("ADD_INLINE_IMAGE", payload)
     }
 
   }

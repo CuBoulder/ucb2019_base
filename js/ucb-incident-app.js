@@ -30,6 +30,9 @@ Vue.component('ucb-incident-event', {
       },
       GET_LOADED_STATE() {
         return this.$store.getters.getLoaded;
+      },
+      GET_INLINE_IMAGES() {
+        return this.$store.getters.getInlineImages;
       }
     },
     methods: {
@@ -62,7 +65,61 @@ Vue.component('ucb-incident-event', {
         if(incidentUpdate === undefined) {
           return '';
         }
-        return incidentUpdate.data.attributes.field_ucb_incident_body.value;
+
+        // we need to determine if there's an inline media-image in there that we have to render.
+        let htmlData = incidentUpdate.data.attributes.field_ucb_incident_body.value;
+
+        if(htmlData.includes("<drupal-media")) {
+          // we've got an inline-image so let's get that image and substitute it in to the <drupal-media> tag
+          const parser = new DOMParser();
+          const htmlCode = parser.parseFromString(htmlData, "text/html");
+          const mediaElement = htmlCode.querySelectorAll('drupal-media');
+
+          for(let i = 0; i < mediaElement.length; ++i) {
+            console.log("Attempting to load image : " + mediaElement[i].dataset.entityUuid);
+            let imageUUID = mediaElement[i].dataset.entityUuid;
+
+            if(imageUUID) {
+              let imageHTML = this.GET_INCIDENT_IMAGE(imageUUID);
+
+              if(imageHTML) {
+                // Replace the <drupal-media> tag with our <img> tag.
+                console.log("Found image : " + imageHTML);
+                htmlData += imageHTML;
+              }
+            }
+          }
+
+        }
+        //return incidentUpdate.data.attributes.field_ucb_incident_body.value;
+        return htmlData;
+      },
+      /**
+       * @return {string}
+       */
+      GET_INCIDENT_IMAGE(imageUUID) {
+        let returnImg = '<h3>Image Goes Here</h3>';
+        if(imageUUID) {
+          let inlineImage = this.$store.state.InlineImages.find(function (v) {
+            return v.data.id === imageUUID;
+          });
+          if(inlineImage === undefined) {
+            // we don't already have the image in storage but we have a UUID... so try to load it
+            // so it will be available next time
+            store.dispatch("addInlineImage", imageUUID);
+
+            // return blank for now... it should be there next time this is called though
+            return '';
+          }
+
+          let imageURL = inlineImage.included[0].attributes.uri.url;
+
+          if(imageURL) {
+            returnImg = `<img src="${imageURL}" alt="Decorative Image">`
+          }
+        }
+
+        return returnImg
       },
       /**
        * @return {string}
