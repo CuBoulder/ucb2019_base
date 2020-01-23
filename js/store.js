@@ -50,14 +50,17 @@ const store = new Vuex.Store({
       }
     },
     ADD_INLINE_IMAGE : (state, payload) => {
-      const dataURL = "/alerts/web/jsonapi/media/image/" + encodeURI(payload) +
-        "?include=field_media_image"
 
-      if(DEBUG) {
-        console.log("Loading data from : " + dataURL)
+      if(!payload.includes('/jsonapi/media/image/')) {
+        console.log('store.js : Likely invalid URL for image load : ' + payload)
+        return;
       }
 
-      axios.get(dataURL)
+      if(DEBUG) {
+        console.log("store.js : Loading data from : " + payload)
+      }
+
+      axios.get(payload)
         .then(function (response) {
           let jsonData = JSON.stringify(response.data.data)
           let jsonObject = {}

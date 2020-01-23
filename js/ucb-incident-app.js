@@ -4,7 +4,8 @@ import store from './store';
 
 Vue.component('ucb-incident-event', {
     props: {
-      dataurl: ''
+      dataurl: '',
+      fronturl: ''
     },
     data: function () {
       return {
@@ -76,7 +77,7 @@ Vue.component('ucb-incident-event', {
           const mediaElement = htmlCode.querySelectorAll('drupal-media');
 
           for(let i = 0; i < mediaElement.length; ++i) {
-            console.log("Attempting to load image : " + mediaElement[i].dataset.entityUuid);
+            // console.log("Attempting to load image : " + mediaElement[i].dataset.entityUuid);
             let imageUUID = mediaElement[i].dataset.entityUuid;
 
             if(imageUUID) {
@@ -84,7 +85,7 @@ Vue.component('ucb-incident-event', {
 
               if(imageHTML) {
                 // Replace the <drupal-media> tag with our <img> tag.
-                console.log("Found image : " + imageHTML);
+                // console.log("Found image : " + imageHTML);
                 let imgAttributes = imageHTML.split(':');
                 // let imageHTMLnode = new DOMParser().parseFromString(imageHTML, 'text/html');
                 let imageHTMLnode = document.createElement('img');
@@ -95,7 +96,6 @@ Vue.component('ucb-incident-event', {
 
                   htmlCode.querySelector('drupal-media[data-entity-uuid="' + imageUUID + '"]').replaceWith(imageHTMLnode);
                 }
-
               }
             }
           }
@@ -115,10 +115,11 @@ Vue.component('ucb-incident-event', {
             return v.data.id === imageUUID;
           });
           if(inlineImage === undefined) {
+            const imageJsonUri = `${this.fronturl}/jsonapi/media/image/${imageUUID}?include=field_media_image`;
+            // console.log("Attempting to load an image from : " + imageJsonUri);
             // we don't already have the image in storage but we have a UUID... so try to load it
             // so it will be available next time
-            store.dispatch("addInlineImage", imageUUID);
-
+            store.dispatch("addInlineImage", imageJsonUri);
             // return blank for now... it should be there next time this is called though
             return '';
           }
@@ -240,6 +241,13 @@ Vue.component('ucb-incident-event', {
   var eventCount = 0;
   var IncidentEventsData = [];
   let jsonURL = self.dataurl;
+  let frontURL = self.fronturl;
+
+  if(!frontURL) {
+    console.log('ucb-incident-app.js : Missing <front> url when mounted()');
+    frontURL = '/';
+  }
+
   if(jsonURL !== '') {
     axios
       .get(jsonURL)
