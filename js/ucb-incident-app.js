@@ -85,11 +85,22 @@ Vue.component('ucb-incident-event', {
               if(imageHTML) {
                 // Replace the <drupal-media> tag with our <img> tag.
                 console.log("Found image : " + imageHTML);
-                htmlData += imageHTML;
+                let imgAttributes = imageHTML.split(':');
+                // let imageHTMLnode = new DOMParser().parseFromString(imageHTML, 'text/html');
+                let imageHTMLnode = document.createElement('img');
+
+                if(imgAttributes.length) {
+                  imageHTMLnode.src = imgAttributes[0];
+                  imageHTMLnode.alt = imgAttributes[1];
+
+                  htmlCode.querySelector('drupal-media[data-entity-uuid="' + imageUUID + '"]').replaceWith(imageHTMLnode);
+                }
+
               }
             }
           }
-
+          let s = new XMLSerializer();
+          return s.serializeToString(htmlCode);
         }
         //return incidentUpdate.data.attributes.field_ucb_incident_body.value;
         return htmlData;
@@ -98,7 +109,7 @@ Vue.component('ucb-incident-event', {
        * @return {string}
        */
       GET_INCIDENT_IMAGE(imageUUID) {
-        let returnImg = '<h3>Image Goes Here</h3>';
+        let returnImg = '';
         if(imageUUID) {
           let inlineImage = this.$store.state.InlineImages.find(function (v) {
             return v.data.id === imageUUID;
@@ -112,10 +123,17 @@ Vue.component('ucb-incident-event', {
             return '';
           }
 
+          // retrieve the image URI
           let imageURL = inlineImage.included[0].attributes.uri.url;
+          if(imageURL !== undefined) {
+            // retrieve the Alt text for the image
+            let altText = inlineImage.data.relationships.field_media_image.data.meta.alt;
 
-          if(imageURL) {
-            returnImg = `<img src="${imageURL}" alt="Decorative Image">`
+            if(altText === undefined) {
+              altText = 'Incident Image';
+            }
+//            returnImg = `<img src="${imageURL}" alt="${altText}" typeof="foaf:Image">`
+              returnImg = imageURL + ':' + altText;
           }
         }
 

@@ -86,3 +86,8 @@ ol.ucb-incident-control-list {
   display: flex;
 }
 
+.ucb-incident-event-body img {
+  max-width: 100%;
+  height: auto;
+}
+
