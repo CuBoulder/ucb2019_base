@@ -1,0 +1,29 @@
+{#
+/**
+ * Theme layout to display a UCB Incident Update Webcomponent
+ *
+ * Created by jsparks on 1/23/20
+ */
+#}
+
+  <ucb-incident-event dataurl="{{ incidentURL }}" fronturl="{{ url('<front>') }}"inline-template>
+    <div>
+      {#              <h4 v-html="TEST"></h4>#}
+      {#              <h4 v-html="INCIDENT_COUNT"></h4>#}
+
+      <div v-for="updateID in GET_INCIDENT_IDS">
+        <div class="ucb-incident-event-card">
+          <strong>ID is : <span v-html="updateID"></span></strong>
+          {#                  <p v-html="GET_INCIDENT_DATA_BY_ID(update)"></p>#}
+          <h2 class="ucb-incident-event-timestamp" v-html="GET_INCIDENT_TIMESTAMP(updateID)"></h2>
+          <div class="ucb-incident-event-body" v-html="GET_INCIDENT_BODY(updateID)"></div>
+          <div class="ucb-incident-event-map" v-html="GET_INCIDENT_MAP(updateID)"></div>
+          <div class="ucb-incident-event-images row" v-html="GET_INCIDENT_IMAGES(updateID)"></div>
+          <ul class="ucb-incident-event-links">
+            <li v-for="link in GET_INCIDENT_LINKS(updateID)" v-html="link"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </ucb-incident-event>

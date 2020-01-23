@@ -1,5 +1,3 @@
-
-
 .ucb-how-to-title {
   font-size: 1.75rem;
 }
@@ -18,7 +16,7 @@ ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item {
   counter-increment: ucb-how-to-counter;
   display: flex;
   min-height: 5rem;
-  border-top: 1px solid #BBBBBB;
+  border-top: 1px solid #bbb;
   margin-top: 1em;
   padding-top: 1em;
   width: 100%;
@@ -30,7 +28,7 @@ ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item:before {
   font-weight: bold;
   margin-right: 2rem;
   line-height: 1;
-  color: #BBBBBB;
+  color: #bbb;
 }
 
 /*ol.ucb-how-to-steps-list li.ucb-how-to-step-list-item:before {*/
@@ -76,9 +74,9 @@ ul.ucb-how-to-tags-list {
 ul.ucb-how-to-tags-list li {
   margin: 0.25rem;
   padding: 0.25rem;
-  border: 1px solid #AFAFAF;
+  border: 1px solid #afafaf;
   border-radius: 8px;
-  background-color: #FAFAFAFA;
+  background-color: #fafafa;
   background-color: var(--ucb-off-white);
 }
 

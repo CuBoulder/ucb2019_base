@@ -22,12 +22,31 @@
 {#Dummy variable to ensure that all content tags are set for caching purposes#}
 {% set content_render = content|render %}
 
+{% set incidentURL =
+  url('<front>')|render|trim('/') ~
+  "/jsonapi/node/ucb_incident/" ~ uuid
+%}
+
+{% set updatesURL=
+  url('<front>')|render|trim('/') ~
+  "/jsonapi/paragraph/ucb_incident_update/"
+%}
+
+
+{#  "?filter[self][group][conjunction]=AND" ~#}
+
+{#  "&filter[self-filter][condition][path]=field_ucb_guide_organization.id" ~#}
+{#  "&filter[self-filter][condition][operator]=CONTAINS" ~#}
+{#  "&filter[self-filter][condition][value]="~ uuid  ~#}
+{#  "&filter[self-filter][condition][memberOf]=self"#}
+
 <article{{attributes.addClass(classes)}}>
-  <div class="container ucb-incident-container">
+  <div id="vue-incident" class="container ucb-incident-container">
     <div class="ucb-incident-row row">
-{#      <h1>{{ label }}</h1>#}
+      {#      <h1>{{ label }}</h1>#}
       {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
         <div class="ucb-incident-event-col col-sm-12 col-md-8 col-lg-9">
+          {% include "@ucb2019_base/includes/ucb-incident-update-webcomponent.html.twig" %}
           {{ content.field_ucb_incident_events }}
         </div>
         <div class="ucb-incident-sidebar col-sm-12 col-md-4 col-lg-3">
@@ -39,14 +58,17 @@
           {% endif %}
         </div>
       {% else %}
+{#        <h4>Id is {{ uuid }}</h4><br>#}
+        {% include "@ucb2019_base/includes/ucb-incident-update-webcomponent.html.twig" %}
+
         {{ content.field_ucb_incident_events }}
       {% endif %}
-{#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
-{#        <ol>#}
-{#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
-{#            <li>{{ key }}</li>#}
-{#          {% endfor %}#}
-{#        </ol>#}
+      {#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
+      {#        <ol>#}
+      {#          {% for key, value in content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value  %}#}
+      {#            <li>{{ key }}</li>#}
+      {#          {% endfor %}#}
+      {#        </ol>#}
     </div>
   </div>
 </article>

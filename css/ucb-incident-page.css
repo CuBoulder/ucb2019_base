@@ -29,7 +29,7 @@ span.embed-map-label {
   background: black;
   text-align: left;
   padding-left: 1em;
-  color: #FAFAFA;
+  color: #fafafa;
   border-radius: 0 0 4px 4px;
 }
 
@@ -70,7 +70,7 @@ a.ucb-incident-node-toggle {
   border-radius: 4px;
   border: 1px solid #8a8a8a;
 }
-a.ucb-incident-node-toggle:hover{
+a.ucb-incident-node-toggle:hover {
   box-shadow: 2px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
 }
 
@@ -78,10 +78,16 @@ a.ucb-incident-node-toggle.active {
   background: white;
 }
 
-a.ucb-incident-node-toggle.active:hover{
+a.ucb-incident-node-toggle.active:hover {
   box-shadow: none;
 }
 
 ol.ucb-incident-control-list {
   display: flex;
 }
+
+.ucb-incident-event-body img {
+  max-width: 100%;
+  height: auto;
+}
+
