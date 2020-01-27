@@ -82,5 +82,5 @@ ucb-incident-page:
     js/Vue/vuex.js: {}
     js/lib/moment.min.js: {}
     js/ucb-incident.js: {}
-    js/store.js: { attributes: { type: "module" } }
+#    js/store.js: { attributes: { type: "module" } }
     js/ucb-incident-app.js: { attributes: { type: "module" } }
