@@ -264,7 +264,8 @@ Vue.component('ucb-incident-event', {
           store.dispatch("addIncidentEventId", IncidentEventsData[event].id);
 
           // get the JSON data for that event and save it
-          store.dispatch("addIncidentEventData", IncidentEventsData[event].id);
+          const eventJsonDataUrl = `${this.fronturl}/jsonapi/paragraph/ucb_incident_update/${IncidentEventsData[event].id}?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image`;
+          store.dispatch("addIncidentEventData", eventJsonDataUrl);
         }
       })
       .catch(error => {
