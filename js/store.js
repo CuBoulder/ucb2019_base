@@ -57,7 +57,7 @@ const store = new Vuex.Store({
       }
 
       if(DEBUG) {
-        console.log("store.js : Loading data from : " + payload)
+        console.log("store.js : Loading Media Image data from : " + payload)
       }
 
       axios.get(payload)
@@ -84,16 +84,22 @@ const store = new Vuex.Store({
         })
     },
     ADD_INCIDENT_EVENT_DATA : (state, payload) => {
-      // given the payload (uid), load the data for that Incident Event and store the data
-      const dataURL = "/alerts/web/jsonapi/paragraph/ucb_incident_update/" +
-        encodeURI(payload) +
-        "?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image"
 
-      if(DEBUG) {
-        console.log("Loading data from : " + dataURL)
+      if(!payload.includes('/jsonapi/paragraph/ucb_incident_update')) {
+        console.log('store.js : Likely invalid URL for image load : ' + payload)
+        return;
       }
 
-      axios.get(dataURL)
+      if(DEBUG) {
+        console.log("store.js : Loading Incident Event Data from : " + payload)
+      }
+
+      // given the payload (uid), load the data for that Incident Event and store the data
+      //const dataURL = "/alerts/web/jsonapi/paragraph/ucb_incident_update/" +
+        //encodeURI(payload) +
+        //"?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image"
+
+      axios.get(payload)
         .then(function (response) {
           let jsonData = JSON.stringify(response.data.data)
           let jsonObject = {}
