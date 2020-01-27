@@ -1,6 +1,6 @@
 // Vue.JS code to deal with the dynamic loading of updated events for Incidents
 
-import store from './store';
+// import store from './store';
 
 Vue.component('ucb-incident-event', {
     props: {
