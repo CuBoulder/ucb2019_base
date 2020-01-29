@@ -1,10 +1,16 @@
 // Vue.JS code to deal with the dynamic loading of updated events for Incidents
 
-import store from './store.js';
+import store from './ucb-vuex-datastore.js';
 
 Vue.component('ucb-incident-event', {
     props: {
-      dataurl: '',
+      /*
+        Node UUID for loading the information via the JSON:API endpoint
+       */
+      nodeid: '',
+      /*
+        url for the frontpage of this webapp, used in building the JSON urls
+       */
       fronturl: ''
     },
     data: function () {
@@ -29,14 +35,25 @@ Vue.component('ucb-incident-event', {
       GET_INCIDENT_DATA() {
         return this.$store.getters.getIncidentEventData;
       },
-      GET_LOADED_STATE() {
-        return this.$store.getters.getLoaded;
-      },
       GET_INLINE_IMAGES() {
         return this.$store.getters.getInlineImages;
       }
     },
     methods: {
+      GET_INCIDENT_IDS_BY_NODE(nodeID) {
+        // console.log('Trying to load updates for Nid : ' + nodeID);
+        const eventUpdateData = this.$store.state.IncidentEventIDs;
+        for(let i = 0; i < eventUpdateData.length; i++){
+          if(nodeID in eventUpdateData[i]) {
+            const returnArray = eventUpdateData[i][nodeID];
+            // we need the events loaded in reverse chronological order
+            // so reverse the array data
+            return returnArray.slice().reverse();
+          }
+        }
+        console.log("Couldn't find ane event updates for node ID : " + nodeID);
+        return [];
+      },
       GET_INCIDENT_DATA_BY_ID(searchID) {
         // return this.$store.getters.getIncidentEventData.find( ({id}) => id === searchID );
         return this.$store.state.IncidentDetails.find( ({id}) => id === searchID );
@@ -240,7 +257,7 @@ Vue.component('ucb-incident-event', {
   var self = this;
   var eventCount = 0;
   var IncidentEventsData = [];
-  let jsonURL = self.dataurl;
+  let nodeid = self.nodeid;
   let frontURL = self.fronturl;
 
   if(!frontURL) {
@@ -248,7 +265,13 @@ Vue.component('ucb-incident-event', {
     frontURL = '/';
   }
 
-  if(jsonURL !== '') {
+  if(!nodeid) {
+    console.log('ucb-incident-app.js : Missing <nodeID> to build JSON:API url');
+  }
+
+  if(nodeid !== '') {
+    const jsonURL = `${frontURL}/jsonapi/node/ucb_incident/${nodeid}`;
+    console.log("Loading : " + jsonURL);
     axios
       .get(jsonURL)
       .then(response => {
@@ -258,15 +281,22 @@ Vue.component('ucb-incident-event', {
         IncidentEventsData = this.posts.relationships.field_ucb_incident_events.data;
         eventCount = IncidentEventsData.length;
 
+        let incidentEvents = {};
+        let incidentEventsIds = [];
         // loop through all of the Incident Updates ...
         for(const event in IncidentEventsData) {
+
           //store the IDs of all the Incidents we've found ...
-          store.dispatch("addIncidentEventId", IncidentEventsData[event].id);
+          // store.dispatch("addIncidentEventId", IncidentEventsData[event].id);
+          incidentEventsIds.push(IncidentEventsData[event].id);
 
           // get the JSON data for that event and save it
           const eventJsonDataUrl = `${this.fronturl}/jsonapi/paragraph/ucb_incident_update/${IncidentEventsData[event].id}?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image`;
           store.dispatch("addIncidentEventData", eventJsonDataUrl);
         }
+        incidentEvents[nodeid] = incidentEventsIds;
+        store.dispatch("addIncidentEventId", incidentEvents);
+
       })
       .catch(error => {
         this.error = error;
@@ -284,7 +314,7 @@ Vue.component('ucb-incident-event', {
 }
 });
 
-var Incident = new Vue({
-  el: '#vue-incident',
+const Incident = new Vue({
+  el: '#vue-app',
   store
 });

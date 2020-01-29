@@ -41,7 +41,7 @@
 {#  "&filter[self-filter][condition][memberOf]=self"#}
 
 <article{{attributes.addClass(classes)}}>
-  <div id="vue-incident" class="container ucb-incident-container">
+  <div class="container ucb-incident-container vue-incident-main">
     <div class="ucb-incident-row row">
       {#      <h1>{{ label }}</h1>#}
       {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
@@ -58,7 +58,7 @@
           {% endif %}
         </div>
       {% else %}
-{#        <h4>Id is {{ uuid }}</h4><br>#}
+        <h4>Id is {{ uuid }}</h4><br>
         {% include "@ucb2019_base/includes/ucb-incident-update-webcomponent.html.twig" %}
 
         {{ content.field_ucb_incident_events }}

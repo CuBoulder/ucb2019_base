@@ -6,12 +6,12 @@
  */
 #}
 
-  <ucb-incident-event dataurl="{{ incidentURL }}" fronturl="{{ url('<front>') }}"inline-template>
+  <ucb-incident-event nodeid="{{ uuid }}" fronturl="{{ url('<front>') }}"inline-template>
     <div>
       {#              <h4 v-html="TEST"></h4>#}
       {#              <h4 v-html="INCIDENT_COUNT"></h4>#}
 
-      <div v-for="updateID in GET_INCIDENT_IDS">
+      <div v-for="updateID in GET_INCIDENT_IDS_BY_NODE('{{ uuid }}')">
         <div class="ucb-incident-event-card">
           <strong>ID is : <span v-html="updateID"></span></strong>
           {#                  <p v-html="GET_INCIDENT_DATA_BY_ID(update)"></p>#}
