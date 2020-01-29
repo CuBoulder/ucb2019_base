@@ -3,20 +3,38 @@ const DEBUG = true
 
 const store = new Vuex.Store({
   state: {
+    /*
+      String : used for development purposes, primarily just to see if the Vuex
+      store is able to read/write data properly.
+     */
     test: 'Testing 1... 2... 3... ',
+    /*
+      Any application-level error message will be stored here
+     */
     errorMsg: '',
+    /*
+      Used by UCB Incident nodes to store the event update details of active
+      incidents
+     */
     IncidentDetails: [],
+    /*
+      array of objects
+      Used by UCB Incident nodes to store the event update IDs of active incidents
+      key format - paragraph UUID
+     */
     IncidentEventIDs: [],
+    /*
+      array of strings
+      Used by UCB Incident nodes to store the inline images that are part of
+      larger body HTML blocks for incident updates
+      format - paragraph UUID
+     */
     InlineImages: [],
-    loaded: false
   },
 
   getters: {
     getTest: state => {
       return state.test
-    },
-    getLoaded: state => {
-      return state.loaded
     },
     getErrorMsg: state => {
       return state.errorMsg
@@ -52,12 +70,12 @@ const store = new Vuex.Store({
     ADD_INLINE_IMAGE : (state, payload) => {
 
       if(!payload.includes('/jsonapi/media/image/')) {
-        console.log('store.js : Likely invalid URL for image load : ' + payload)
+        console.log('ucb-vuex-datastore.js : Likely invalid URL for image load : ' + payload)
         return;
       }
 
       if(DEBUG) {
-        console.log("store.js : Loading Media Image data from : " + payload)
+        console.log("ucb-vuex-datastore.js : Loading Media Image data from : " + payload)
       }
 
       axios.get(payload)
@@ -73,25 +91,21 @@ const store = new Vuex.Store({
             if(DEBUG) {
               console.log("Not loading duplicate image for : " + payload)
             }
-            // maybe check the timestamp to see if we need to update this one?
           }
         })
         .catch(function (error) {
           console.log("ADD_INLINE_IMAGE (error) : " + error)
         })
-        .finally(function () {
-          state.loaded = true
-        })
     },
     ADD_INCIDENT_EVENT_DATA : (state, payload) => {
 
       if(!payload.includes('/jsonapi/paragraph/ucb_incident_update')) {
-        console.log('store.js : Likely invalid URL for image load : ' + payload)
+        console.log('ucb-vuex-datastore.js : Likely invalid URL for image load : ' + payload)
         return;
       }
 
       if(DEBUG) {
-        console.log("store.js : Loading Incident Event Data from : " + payload)
+        console.log("ucb-vuex-datastore.js : Loading Incident Event Data from : " + payload)
       }
 
       // given the payload (uid), load the data for that Incident Event and store the data
@@ -112,14 +126,10 @@ const store = new Vuex.Store({
             if(DEBUG) {
               console.log("Not loading duplicate data for : " + payload)
             }
-            // maybe check the timestamp to see if we need to update this one?
           }
         })
         .catch(function (error) {
           console.log("ADD_INCIDENT_EVENT_DATA (error) : " + error)
-        })
-        .finally(function () {
-          state.loaded = true
         })
     }
   },
