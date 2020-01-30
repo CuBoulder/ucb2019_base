@@ -10,7 +10,7 @@
   <div>
     <div v-for="updateID in GET_INCIDENT_IDS_BY_NODE('{{ uuid }}')" v-cloak>
       <div class="ucb-incident-event-card">
-        {#          <strong>ID is : <span v-html="updateID"></span></strong>#}
+                  <strong>ID is : <span v-html="updateID"></span></strong>
         <h2 class="ucb-incident-event-timestamp" v-html="GET_INCIDENT_TIMESTAMP(updateID)"></h2>
         <div class="ucb-incident-event-body" v-html="GET_INCIDENT_BODY(updateID)"></div>
         <div class="ucb-incident-event-map" v-html="GET_INCIDENT_MAP(updateID)"></div>
