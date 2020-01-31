@@ -1,3 +1,5 @@
 {% for item in items|reverse %}
-  {{ item.attributes }} {{ item.content }}
+  <div class="ucb-incident-static-content">
+    {{ item.attributes }} {{ item.content }}
+  </div>
 {% endfor %}
