@@ -1,25 +1,48 @@
 {#
-/**
- * Theme layout to display a UCB Incident Event -- Paragraph.
- *
- * Created by jsparks on 11/21/2019
- */
+/*
+* Theme layout to display a UCB Incident Event -- Paragraph.
+*
+* Created by jsparks on 11/21/2019
+*/
 #}
 
+{#<h4>ID is : {{ uuid }}</h4>#}
+
 <div {{ attributes }} class="ucb-incident-event-card">
-  {% if content.field_ucb_incident_timestamp|render %}
-    <h2 class="ucb-incident-event-timestamp">{{ content.field_ucb_incident_timestamp }}</h2>
-  {% endif %}
-  {% if content.field_ucb_incident_body|render %}
-    <div class="ucb-incident-event-body">{{ content.field_ucb_incident_body }}</div>
-  {% endif %}
-  {% if content.field_ucb_incident_map_link|render %}
-    <div class="ucb-incident-event-map">{{ content.field_ucb_incident_map_link }}</div>
-  {% endif %}
-  {% if content.field_ucb_incident_images|render %}
-    <div class="ucb-incident-event-images row">{{ content.field_ucb_incident_images }}</div>
-  {% endif %}
-  {% if content.field_ucb_incident_links|render %}
-    <ul class="ucb-incident-event-links">{{ content.field_ucb_incident_links }}</ul>
-  {% endif %}
+
+  <ucb-incident-event nodeid="{{ uuid }}" fronturl="{{ url('<front>') }}" inline-template>
+    <div>
+      <div class="ucb-incident-dynamic-content" v-cloak>
+        <strong>ID is : {{ uuid }}</strong>
+        <h2 class="ucb-incident-event-timestamp" v-html="GET_INCIDENT_TIMESTAMP('{{ uuid }}')"></h2>
+
+        <div class="ucb-incident-event-body" v-if="GET_INCIDENT_BODY('{{ uuid }}')" v-html="GET_INCIDENT_BODY('{{ uuid }}')"></div>
+        <div class="ucb-incident-event-map" v-if="GET_INCIDENT_MAP('{{ uuid }}')" v-html="GET_INCIDENT_MAP('{{ uuid }}')"></div>
+        <div class="ucb-incident-event-images row" v-if="GET_INCIDENT_IMAGES('{{ uuid }}')" v-html="GET_INCIDENT_IMAGES('{{ uuid }}')"></div>
+        <ul class="ucb-incident-event-links" v-if="GET_INCIDENT_LINKS('{{ uuid }}')">
+          <li v-for="link in GET_INCIDENT_LINKS('{{ uuid }}')" v-html="link"></li>
+        </ul>
+      </div>
+
+      <div class="ucb-incident-static-content" v-show="!GET_INCIDENT_TIMESTAMP('{{ uuid }}')">
+        {% if content.field_ucb_incident_timestamp|render %}
+          <h2 class="ucb-incident-event-timestamp">{{ content.field_ucb_incident_timestamp }}</h2>
+        {% endif %}
+        {% if content.field_ucb_incident_body|render %}
+          <div class="ucb-incident-event-body">{{ content.field_ucb_incident_body }}</div>
+        {% endif %}
+        {% if content.field_ucb_incident_map_link|render %}
+          <div class="ucb-incident-event-map">{{ content.field_ucb_incident_map_link }}</div>
+        {% endif %}
+        {% if content.field_ucb_incident_images|render %}
+          <div class="ucb-incident-event-images row">{{ content.field_ucb_incident_images }}</div>
+        {% endif %}
+        {% if content.field_ucb_incident_links|render %}
+          <ul class="ucb-incident-event-links">{{ content.field_ucb_incident_links }}</ul>
+        {% endif %}
+      </div>
+    </div>
+
+  </ucb-incident-event>
 </div>
+

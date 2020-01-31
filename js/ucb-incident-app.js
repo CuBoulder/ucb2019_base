@@ -5,7 +5,7 @@ import store from './ucb-vuex-datastore.js';
 Vue.component('ucb-incident-event', {
   props: {
     /*
-      Node UUID for loading the information via the JSON:API endpoint
+      Paragaph Node UUID for loading the information via the JSON:API endpoint
      */
     nodeid: '',
     /*
@@ -42,8 +42,6 @@ Vue.component('ucb-incident-event', {
   methods: {
     LOAD_DATA() {
       var self = this;
-      var eventCount = 0;
-      var IncidentEventsData = [];
       let nodeid = self.nodeid;
       let frontURL = self.fronturl;
 
@@ -54,44 +52,12 @@ Vue.component('ucb-incident-event', {
 
       if(!nodeid) {
         console.log('ucb-incident-app.js : Missing <nodeID> to build JSON:API url');
-      }
-
-      if(nodeid !== '') {
-        const jsonURL = `${frontURL}/jsonapi/node/ucb_incident/${nodeid}`;
-        console.log("Loading : " + jsonURL);
-        axios
-          .get(jsonURL)
-          .then(response => {
-            store.dispatch("setTest", "Loading data from : " + jsonURL);
-            this.posts = response.data.data;
-            //determine how many Incident updates we have
-            IncidentEventsData = this.posts.relationships.field_ucb_incident_events.data;
-            eventCount = IncidentEventsData.length;
-
-            let incidentEvents = {};
-            let incidentEventsIds = [];
-            // loop through all of the Incident Updates ...
-            for(const event in IncidentEventsData) {
-
-              //store the IDs of all the Incidents we've found ...
-              // store.dispatch("addIncidentEventId", IncidentEventsData[event].id);
-              incidentEventsIds.push(IncidentEventsData[event].id);
-
-              // get the JSON data for that event and save it
-              const eventJsonDataUrl = `${this.fronturl}/jsonapi/paragraph/ucb_incident_update/${IncidentEventsData[event].id}?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image`;
-              store.dispatch("addIncidentEventData", eventJsonDataUrl);
-            }
-            incidentEvents[nodeid] = incidentEventsIds;
-            store.dispatch("addIncidentEventId", incidentEvents);
-
-          })
-          .catch(error => {
-            this.error = error;
-            console.log(error);
-            store.dispatch("setError", error);
-          })
       }else {
-        store.dispatch("setError", 'Data URL not defined, please check your configuration and retry your request.');
+        const paragraphUUID = encodeURI(nodeid);
+        const jsonURL = `${this.fronturl}jsonapi/paragraph/ucb_incident_update/${paragraphUUID}?include=field_ucb_incident_images,field_ucb_incident_images.field_media_image`;
+
+        console.log("Loading : " + jsonURL);
+        store.dispatch("addIncidentEventData", jsonURL);
       }
 
       if(this.$store.getters.getErrorMsg) {
@@ -191,7 +157,7 @@ Vue.component('ucb-incident-event', {
           return v.data.id === imageUUID;
         });
         if(inlineImage === undefined) {
-          const imageJsonUri = `${this.fronturl}/jsonapi/media/image/${imageUUID}?include=field_media_image`;
+          const imageJsonUri = `${this.fronturl}jsonapi/media/image/${imageUUID}?include=field_media_image`;
           // console.log("Attempting to load an image from : " + imageJsonUri);
           // we don't already have the image in storage but we have a UUID... so try to load it
           // so it will be available next time
@@ -313,9 +279,10 @@ Vue.component('ucb-incident-event', {
     }
   },
   mounted() {
-    // setInterval(function () {
+    setInterval(function () {
+      console.log("Reloading Data!");
       this.LOAD_DATA();
-    // }.bind(this), 5000);
+    }.bind(this), 5000);
   }
 });
 
