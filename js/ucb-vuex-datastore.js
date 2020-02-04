@@ -59,7 +59,7 @@ const store = new Vuex.Store({
       state.test = payload
     },
     SET_ERROR : (state, payload) => {
-     state.errorMsg = payload
+      state.errorMsg = payload
     },
     ADD_INCIDENT_EVENT_ID : (state, payload) => {
       // add only unique items (i.e. no dupes)
@@ -68,34 +68,19 @@ const store = new Vuex.Store({
       }
     },
     ADD_INLINE_IMAGE : (state, payload) => {
+      let found = false;
 
-      if(!payload.includes('/jsonapi/media/image/')) {
-        console.log('ucb-vuex-datastore.js : Likely invalid URL for image load : ' + payload)
-        return;
+      // lets loop through all of the loaded data to see if we've already loaded this content before
+      for(let i = 0; i < state.InlineImages.length; i++) {
+        if(payload.data.id === state.InlineImages[i].data.id)  {
+          state.InlineImages.splice(i, 1, payload)
+          found = true;
+        }
       }
-
-      if(DEBUG) {
-        console.log("ucb-vuex-datastore.js : Loading Media Image data from : " + payload)
+      if(!found) {
+        // new data... so add it to the array
+        state.InlineImages.push(payload)
       }
-
-      axios.get(payload)
-        .then(function (response) {
-          let jsonData = JSON.stringify(response.data.data)
-          let jsonObject = {}
-
-          Object.assign(jsonObject, response.data)
-          // save the data if we haven't already loaded this update
-          if(!state.InlineImages.find( ({id}) => id === payload) ) {
-            state.InlineImages.push(jsonObject)
-          }else {
-            if(DEBUG) {
-              console.log("Not loading duplicate image for : " + payload)
-            }
-          }
-        })
-        .catch(function (error) {
-          console.log("ADD_INLINE_IMAGE (error) : " + error)
-        })
     },
     ADD_INCIDENT_EVENT_DATA : (state, payload) => {
       let found = false;
@@ -104,7 +89,6 @@ const store = new Vuex.Store({
       for(let i = 0; i < state.IncidentDetails.length; i++) {
         // console.log("Comparing if : " + payload + 'is the same as : ' + state.IncidentDetails[i].links.self.href);
         if(payload.data.id === state.IncidentDetails[i].data.id)  {
-          console.log("Updating : " + payload)
           state.IncidentDetails.splice(i, 1, payload)
           found = true;
         }
@@ -152,7 +136,29 @@ const store = new Vuex.Store({
         })
     },
     addInlineImage: (context, payload) => {
-      context.commit("ADD_INLINE_IMAGE", payload)
+      if(!payload.includes('/jsonapi/media/image/')) {
+        console.log('ucb-vuex-datastore.js : Likely invalid URL for image load : ' + payload)
+        return;
+      }
+
+      if(DEBUG) {
+        console.log("ucb-vuex-datastore.js : Loading Incident inline image from : " + payload)
+      }
+
+      axios.get(payload)
+        .then(function (response) {
+          // let jsonData = JSON.stringify(response.data.data)
+          let jsonObject = {}
+
+          Object.assign(jsonObject, response.data)
+
+          if(jsonObject) {
+            context.commit("ADD_INLINE_IMAGE", jsonObject)
+          }
+        })
+        .catch(function (error) {
+          console.log("ADD_INLINE_IMAGE (error) : " + error)
+        })
     }
 
   }
