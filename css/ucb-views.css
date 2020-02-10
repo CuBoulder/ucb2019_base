@@ -33,3 +33,8 @@
 /*h3.ucb-guide-guide-title:before {content: "(Guide) ";}*/
 
 /*h3.ucb-guide-how-to-title:before {content: "How To : ";}*/
+
+.ucb-incident-boilerplate-notice {
+  width: 100%;
+  display: none;
+}

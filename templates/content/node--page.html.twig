@@ -1,0 +1,29 @@
+{#
+/**
+ * Theme layout to display a UCB Basic Page.
+ *
+ * Created by jsparks on 2/10/20
+ */
+#}
+
+{{ attach_library('ucb2019_base/ucb-page') }}
+
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+
+{#Dummy variable to ensure that all content tags are set for caching purposes#}
+{% set content_render = content|render %}
+
+<article{{attributes.addClass(classes)}}>
+  <div class="container ucb-page">
+    {{ content }}
+  </div>
+</article>

@@ -1,0 +1,41 @@
+.user-login-form label {
+  float: left;
+  margin-right: 1em;
+  font-size: 1.25rem;
+  font-weight: bolder;
+  padding-top: 0.5rem;
+}
+
+input#edit-submit {
+  background: #CFB87B;
+  font-size: 1.25rem;
+  padding: 0.25em 1em;
+  border-radius: 4px;
+}
+
+div#edit-actions {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+div#block-ucb2019-base-local-tasks {
+  display: none;
+}
+
+form#user-login-form {
+  background: #eaeaea;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  border: 1px solid #a9a9a9;
+  border-radius: 4px;
+}
+
+input#edit-submit:hover {
+  background: #e8dbb6;
+  box-shadow: 2px 2px 2px 0 rgba(20,20,20,0.2);
+}
+

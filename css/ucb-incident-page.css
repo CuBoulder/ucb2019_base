@@ -107,3 +107,18 @@ ol.ucb-incident-control-list {
   padding: 0.75em 0;
 }
 
+.ucb-incident-edit-button-container {
+  position: absolute;
+  right: 1em;
+  z-index: 100;
+}
+
+a.ucb-incident-edit-button {
+  background: #cfcfcf;
+  display: block;
+  padding: 0.4em;
+  border: 1px solid #565a5c;
+  border-radius: 4px;
+}
+
+

@@ -26,6 +26,12 @@ ucb-views:
     theme:
       css/ucb-views.css: {}
 
+ucb-login-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucs-user-login.css: {}
+
 ucb-alerts:
   version: 1.x
   js:
@@ -77,10 +83,21 @@ ucb-incident-page:
       css/ucb-incident-page.css: {}
   js:
     #js/Vue/vue.min.js: {}
-    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
-    //unpkg.com/axios/dist/axios.min.js: {type: external}
-    js/Vue/vuex.js: {}
+#    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
+#    //unpkg.com/axios/dist/axios.min.js: {type: external}
+#    js/Vue/vuex.js: {}
     js/lib/moment.min.js: {}
     js/ucb-incident.js: {}
-#    js/store.js: { attributes: { type: "module" } }
-    js/ucb-incident-app.js: { attributes: { type: "module" } }
+#    js/ucb-incident-app.js: { attributes: { type: "module" } }
+
+ucb-incident-page-admin:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-incident-page-admin.css: {}
+
+ucb-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-page.css: {}

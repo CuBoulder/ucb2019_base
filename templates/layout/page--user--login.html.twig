@@ -47,6 +47,7 @@
 {#{% if ucb_alerts %}#}
 {#  {{ attach_library('ucb2019_base/ucb-alerts') }}#}
 {#{% endif %}#}
+{{ attach_library('ucb2019_base/ucb-user-login') }}
 {{ attach_library('ucb2019_base/ucb-social-media') }}
 
 <div class="layout-container">
@@ -78,7 +79,9 @@
         <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
         <div class="layout-content container">
+          <div class="ucb-user-login-container">
             {{ page.content }}
+          </div>
         </div>{# /.layout-content #}
 
     </main>

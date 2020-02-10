@@ -66,6 +66,13 @@ function ucb2019_base_preprocess_node__view__active_incidents(array &$variables)
 }
 
 /***
+ * Preprocess function to get the variables we'll need on the Incident Event field
+ */
+function ucb2019_base_preprocess_paragraph__ucb_incident_update(array &$variables) {
+  $variables['uuid'] = $variables['paragraph']->uuid();
+}
+
+/***
  * preprocess function to get the variables we'll need on the Organization node template
  */
 function ucb2019_base_preprocess_node__organization(array &$variables) {
