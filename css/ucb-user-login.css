@@ -1,3 +1,9 @@
+.ucb-user-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .user-login-form label {
   float: left;
   margin-right: 1em;
