@@ -2,7 +2,7 @@ jQuery(document).ready(function () {
   /*
     How many milliseconds to wait before reloading the page
    */
-  const reloadInterval = 1000 * 60 * 3; // reload every 3 minutes
+  const reloadInterval = 1000 * 60; // reload every 60 seconds
   // Helper function for the Incident View
   IncidentView();
 
@@ -23,11 +23,11 @@ jQuery(document).ready(function () {
   })
 
   /*
-    Reload the page
+    Reload the page periodically
    */
-  // setInterval(function () {
-  //   window.location.reload();
-  // }, reloadInterval);
+  setInterval(function () {
+    window.location.reload();
+  }, reloadInterval);
 });
 
 function IncidentView() {
