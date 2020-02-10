@@ -32,6 +32,9 @@
 #}
 
 {{ attach_library('ucb2019_base/ucb-views') }}
+{% if user.hasPermission('update') %}
+  {{ attach_library('ucb2019_base/ucb-incident-page-admin') }}
+{% endif %}
 
 {%
   set classes = [

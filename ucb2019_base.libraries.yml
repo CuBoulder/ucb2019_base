@@ -26,6 +26,12 @@ ucb-views:
     theme:
       css/ucb-views.css: {}
 
+ucb-login-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucs-user-login.css: {}
+
 ucb-alerts:
   version: 1.x
   js:
@@ -83,3 +89,15 @@ ucb-incident-page:
     js/lib/moment.min.js: {}
     js/ucb-incident.js: {}
 #    js/ucb-incident-app.js: { attributes: { type: "module" } }
+
+ucb-incident-page-admin:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-incident-page-admin.css: {}
+
+ucb-page:
+  version: 1.x
+  css:
+    theme:
+      css/ucb-page.css: {}
