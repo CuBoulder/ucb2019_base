@@ -77,10 +77,9 @@ ucb-incident-page:
       css/ucb-incident-page.css: {}
   js:
     #js/Vue/vue.min.js: {}
-    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
-    //unpkg.com/axios/dist/axios.min.js: {type: external}
-    js/Vue/vuex.js: {}
+#    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
+#    //unpkg.com/axios/dist/axios.min.js: {type: external}
+#    js/Vue/vuex.js: {}
     js/lib/moment.min.js: {}
     js/ucb-incident.js: {}
-#    js/store.js: { attributes: { type: "module" } }
-    js/ucb-incident-app.js: { attributes: { type: "module" } }
+#    js/ucb-incident-app.js: { attributes: { type: "module" } }

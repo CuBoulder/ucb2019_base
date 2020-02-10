@@ -1,5 +1,5 @@
 Vue.use(Vuex)
-const DEBUG = true
+const DEBUG = false
 
 const store = new Vuex.Store({
   state: {
@@ -40,7 +40,7 @@ const store = new Vuex.Store({
       return state.errorMsg
     },
     getIncidentUpdateCount: state => {
-      return state.IncidentEventIDs.length
+      return state.IncidentDetails.length
     },
     getIncidentEventIDs : state => {
       return state.IncidentEventIDs
@@ -61,9 +61,26 @@ const store = new Vuex.Store({
     SET_ERROR : (state, payload) => {
       state.errorMsg = payload
     },
-    ADD_INCIDENT_EVENT_ID : (state, payload) => {
-      // add only unique items (i.e. no dupes)
-      if(state.IncidentEventIDs.indexOf(payload) === -1) {
+    ADD_INCIDENT_EVENT_IDS : (state, payload) => {
+      let found = false
+      let updateID = Object.keys(payload)
+
+      // we need to loop through our data structure to see if we've already
+      // loaded this information
+      for(let i = 0; i < state.IncidentEventIDs.length; i++) {
+        Object.keys(state.IncidentEventIDs[i]).forEach(function (key) {
+          if(key === updateID[0]) {
+            // we've already loaded this information before so  now ...
+            found = true
+            // ... remove ...
+            state.IncidentEventIDs.splice(i, 1)
+            //and replace with the newest loaded data
+            state.IncidentEventIDs.push(payload)
+          }
+        })
+      }
+
+      if(!found) {
         state.IncidentEventIDs.push(payload)
       }
     },
@@ -99,7 +116,6 @@ const store = new Vuex.Store({
       }
     }
   },
-
   actions: {
     setTest: (context, payload) => {
       context.commit("SET_TEST", payload)
@@ -107,8 +123,8 @@ const store = new Vuex.Store({
     setError: (context, payload) => {
       context.commit("SET_ERROR", payload)
     },
-    addIncidentEventId: (context, payload) => {
-      context.commit("ADD_INCIDENT_EVENT_ID", payload)
+    addIncidentEventIds: (context, payload) => {
+      context.commit("ADD_INCIDENT_EVENT_IDS", payload)
     },
     addIncidentEventData: (context, payload) => {
       if(!payload.includes('/jsonapi/paragraph/ucb_incident_update')) {

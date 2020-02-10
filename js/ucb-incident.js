@@ -1,4 +1,8 @@
 jQuery(document).ready(function () {
+  /*
+    How many milliseconds to wait before reloading the page
+   */
+  const reloadInterval = 1000 * 60 * 3; // reload every 3 minutes
   // Helper function for the Incident View
   IncidentView();
 
@@ -17,6 +21,13 @@ jQuery(document).ready(function () {
     // set the active flag on the currently selected button
     jQuery('a.ucb-incident-node-toggle[data-target=' + myTarget + ']').addClass('active');
   })
+
+  /*
+    Reload the page
+   */
+  setInterval(function () {
+    window.location.reload();
+  }, reloadInterval);
 });
 
 function IncidentView() {

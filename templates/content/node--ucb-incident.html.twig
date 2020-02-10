@@ -47,6 +47,11 @@
       {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
         <div class="ucb-incident-event-col col-sm-12 col-md-8 col-lg-9">
 {#          {% include "@ucb2019_base/includes/ucb-incident-update-webcomponent.html.twig" %}#}
+          <ucb-incident-factory nodeuuid="{{ uuid }}" fronturl="{{ url('<front>') }}" inline-template>
+            <div>
+              <h3>Updates Go Here...</h3>
+            </div>
+          </ucb-incident-factory>
           {{ content.field_ucb_incident_events }}
         </div>
         <div class="ucb-incident-sidebar col-sm-12 col-md-4 col-lg-3">
@@ -58,9 +63,14 @@
           {% endif %}
         </div>
       {% else %}
-        <h4>Id is {{ uuid }}</h4><br>
+{#        <h4>Id is {{ uuid }}</h4><br>#}
 {#        {% include "@ucb2019_base/includes/ucb-incident-update-webcomponent.html.twig" %}#}
 
+        <ucb-incident-factory nodeuuid="{{ uuid }}" fronturl="{{ url('<front>') }}" inline-template>
+          <div>
+            <h3>Updates Go Here...</h3>
+          </div>
+        </ucb-incident-factory>
         {{ content.field_ucb_incident_events }}
       {% endif %}
       {#        {{ content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|raw }}#}
