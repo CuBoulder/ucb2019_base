@@ -73,6 +73,7 @@ ol.ucb-incident-control-list li {
 }
 
 a.ucb-incident-node-toggle {
+  display: flex;
   background: #f2f2f2;
   padding: 0.5rem;
   border-radius: 4px;
