@@ -15,6 +15,11 @@
   display: none;
 }
 
+.ucb-incident-event-body {
+  display: inline-block;
+  width: 100%;
+}
+
 .ucb-incident-event-image img {
   height: auto;
   max-width: 100%;
@@ -96,8 +101,9 @@ ol.ucb-incident-control-list {
 }
 
 .ucb-incident-event-body img {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
+  border-radius: 4px;
 }
 
 .ucb-incident-event-map {
@@ -122,4 +128,15 @@ a.ucb-incident-edit-button {
   border-radius: 4px;
 }
 
+article.align-center {
+  text-align: center;
+}
+
+article.align-right img {
+   float: right;
+}
+
+article.align-left img {
+  float: left;
+}
 
