@@ -25,9 +25,9 @@ jQuery(document).ready(function () {
   /*
     Reload the page periodically
    */
-  // setInterval(function () {
-  //   window.location.reload();
-  // }, reloadInterval);
+  setInterval(function () {
+    window.location.reload();
+  }, reloadInterval);
 });
 
 function IncidentView() {
