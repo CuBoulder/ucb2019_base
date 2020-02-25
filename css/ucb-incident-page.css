@@ -17,6 +17,7 @@
 
 .ucb-incident-event-body {
   display: inline-block;
+  width: 100%;
 }
 
 .ucb-incident-event-image img {
@@ -100,7 +101,7 @@ ol.ucb-incident-control-list {
 }
 
 .ucb-incident-event-body img {
-  max-width: 95%;
+  max-width: 50%;
   height: auto;
   border-radius: 4px;
 }
