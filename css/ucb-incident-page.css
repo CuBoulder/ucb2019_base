@@ -67,14 +67,14 @@ ul.incident-list li {
   display: none;
 }
 
-ul.incident-list li:first-of-type {
-  display: block;
-}
-
 ol.ucb-incident-control-list li {
   display: block;
   margin-right: 0.75rem;
   margin-bottom: 1rem;
+}
+
+ul.incident-list li:first-of-type {
+  display: block;
 }
 
 a.ucb-incident-node-toggle {
@@ -84,6 +84,7 @@ a.ucb-incident-node-toggle {
   border-radius: 4px;
   border: 1px solid #8a8a8a;
 }
+
 a.ucb-incident-node-toggle:hover {
   box-shadow: 2px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
 }
@@ -133,10 +134,9 @@ article.align-center {
 }
 
 article.align-right img {
-   float: right;
+  float: right;
 }
 
 article.align-left img {
   float: left;
 }
-

@@ -122,6 +122,10 @@ strong {
 }
 
 /******** Header Region **********/
+.ucb-brand-bar {
+  padding: 1rem 0;
+}
+
 .ucb-admin-alert {
   margin-bottom: 0;
   padding: 0.25em;
@@ -339,7 +343,6 @@ ul.ucb-local-tasks-ul ul li {
 }
 
 .ucb-footer-top {
-  background: #272727;
   padding: 20px 0;
 }
 
@@ -349,7 +352,6 @@ ul.ucb-local-tasks-ul ul li {
 }
 
 .ucb-footer-top .ucb-menu a.nav-link {
-  background: #0277bd;
   color: white;
   font-size: 1.25em;
   padding: 0.5rem;
@@ -357,7 +359,6 @@ ul.ucb-local-tasks-ul ul li {
 }
 
 .ucb-footer-top .ucb-menu a.nav-link:hover {
-  background: #026baa;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
@@ -413,7 +414,6 @@ ul.ucb-local-tasks-ul ul li {
 }
 
 .ucb-footer-bottom {
-  background: #1a1a1a;
   color: white;
   padding: 1em 0;
   text-align: center;
@@ -424,6 +424,8 @@ ul.ucb-local-tasks-ul ul li {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 1em;
+  font-size: 1.25rem;
+  line-height: 1.25;
 }
 
 li.social-media-item.menu-item {

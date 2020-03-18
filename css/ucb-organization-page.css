@@ -30,7 +30,7 @@ ul.ucb-org-address-list {
   margin-top: 1em;
 }
 
-ul.ucb-org-address-list>li {
+ul.ucb-org-address-list > li {
   font-weight: bolder;
 }
 
@@ -49,6 +49,12 @@ ul.ucb-org-social-list {
 
 .ucb-org-content-section ul li {
   line-height: 1.65;
+}
+
+.ucb-org-children-contact-list i.fa,
+.ucb-org-children-contact-list i.fab,
+.ucb-org-children-contact-list i.fas {
+  margin-right: 0.4rem;
 }
 
 .ucb-org-organization-container li i.fa,
@@ -110,12 +116,6 @@ ul.ucb-org-social-list {
 .ucb-org-children-contact-list {
   list-style: none;
   padding-left: 1em;
-}
-
-.ucb-org-children-contact-list i.fa,
-.ucb-org-children-contact-list i.fab,
-.ucb-org-children-contact-list i.fas {
-  margin-right: 0.4rem;
 }
 
 .ucb-org-guides {
