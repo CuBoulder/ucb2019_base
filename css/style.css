@@ -122,6 +122,10 @@ strong {
 }
 
 /******** Header Region **********/
+.ucb-brand-bar {
+  padding: 1rem 0;
+}
+
 .ucb-admin-alert {
   margin-bottom: 0;
   padding: 0.25em;

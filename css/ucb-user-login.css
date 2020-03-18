@@ -13,7 +13,7 @@
 }
 
 input#edit-submit {
-  background: #CFB87B;
+  background: #cfb87b;
   font-size: 1.25rem;
   padding: 0.25em 1em;
   border-radius: 4px;
@@ -42,6 +42,5 @@ form#user-login-form {
 
 input#edit-submit:hover {
   background: #e8dbb6;
-  box-shadow: 2px 2px 2px 0 rgba(20,20,20,0.2);
+  box-shadow: 2px 2px 2px 0 rgba(20, 20, 20, 0.2);
 }
-

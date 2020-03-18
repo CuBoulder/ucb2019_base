@@ -10,6 +10,9 @@ ucb-global:
       css/fontawesome/fontawesome.min.css: {}
       css/fontawesome/brands.min.css: {}
       css/fontawesome/solid.min.css: {}
+      css/styleguide/branding.css: {}
+      css/styleguide/buttons.css: {}
+      css/styleguide/colors.css: {}
   js:
     js/bootstrap/bootstrap.min.js: {}
 #    js/fontawesome/brands.min.js: {}

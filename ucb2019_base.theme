@@ -30,9 +30,14 @@ function ucb2019_base_preprocess_html(array &$variables) {
  * Preprocess function to get the variables we'll need on the page template
  */
 function ucb2019_base_preprocess_page(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
   $variables['ucb_secondary_menu'] = theme_get_setting('ucb_secondary_menu');
   $variables['ucb_footer_menu'] = theme_get_setting('ucb_footer_menu');
   $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_campus_header_color'] = theme_get_setting('ucb_campus_header_color');
+  $variables['ucb_header_color'] = theme_get_setting('ucb_header_color');
 
   // check to see if we're on the homepage or not
   try {
@@ -88,6 +93,30 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
   if (isset($form_id)) {
     return;
   }
+
+  $form['ucb_campus_header_color'] = array(
+    '#type'         => 'select',
+    '#title'        => t('CU Boulder campus header color'),
+    '#default_value'    => theme_get_setting('ucb_campus_header_color'),
+    '#options'          => array(
+      t('Black'),
+      t('White'),
+    ),
+    '#description'      => t("Select the color for the header background for the campus branding information at the top of the page."),
+  );
+
+  $form['ucb_header_color'] = array(
+    '#type'         => 'select',
+    '#title'        => t('CU Boulder site header color'),
+    '#default_value'    => theme_get_setting('ucb_header_color'),
+    '#options'          => array(
+      t('Black'),
+      t('White'),
+      t('Light'),
+      t('Dark'),
+    ),
+    '#description'      => t("Select the color for the header background for the site information at the top of the page."),
+  );
 
   $form['ucb_be_boulder'] = array(
     '#type'           => 'checkbox',
