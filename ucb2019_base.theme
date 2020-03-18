@@ -38,6 +38,7 @@ function ucb2019_base_preprocess_page(array &$variables) {
   $variables['theme_path'] = base_path() . $variables['directory'];
   $variables['ucb_campus_header_color'] = theme_get_setting('ucb_campus_header_color');
   $variables['ucb_header_color'] = theme_get_setting('ucb_header_color');
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
 
   // check to see if we're on the homepage or not
   try {
@@ -52,6 +53,14 @@ function ucb2019_base_preprocess_page(array &$variables) {
  * Preprocess function to get the variables we'll need on the header region template
  */
 function ucb2019_base_preprocess_region__header(array &$variables) {
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+}
+
+/***
+ * Preprocess function to get the variables we'll need on the footer region template
+ */
+function ucb2019_base_preprocess_region__footer(array &$variables) {
   $variables['theme_path'] = base_path() . $variables['directory'];
   $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
 }
@@ -119,9 +128,14 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
   );
 
   $form['ucb_be_boulder'] = array(
-    '#type'           => 'checkbox',
-    '#title'          => t('Be Boulder Slogan in the header.'),
+    '#type'           => 'select',
+    '#title'          => t('Where to display the Be Boulder slogan on the site.'),
     '#default_value'    => theme_get_setting('ucb_be_boulder'),
+    '#options'        => array(
+      t('None'),
+      t('Footer'),
+      t('Header'),
+    ),
     '#description'    => t("Check this box if you would like to display the 'Be Boulder' slogan in the header."),
   );
 

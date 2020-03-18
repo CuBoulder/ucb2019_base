@@ -1,0 +1,23 @@
+{#
+/**
+ * Theme layout to display a UCB Breadcrumb Region page.
+ *
+ * Created by jsparks on 6/18/19
+ */
+#}
+
+{% if content|render or ucb_be_bolder == 1 %}
+  <div class="ucb-footer-content-row row background-black">
+    {% if content|render %}
+    <div class="col text-left">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    {% if ucb_be_boulder == 1%}
+      <div class="col">
+        <script type="text/javascript" src="https://cdn.colorado.edu/static/brand-assets/live/js/footer.js" id="ucb-footer-embed" data-color="white"></script>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
