@@ -110,7 +110,13 @@
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-    <div id="vue-app" class="layout-content">
+    <div class="layout-content">
+      {% if page.above_content|render %}
+        <div class="ucb-above-content-region container">
+          {{ page.above_content }}
+        </div>
+      {% endif %}
+
       {% if page.left_sidebar|render or page.right_sidebar|render %}
         {% if page.left_sidebar|render %}
           <div class="ucb-layout-container container">
@@ -140,6 +146,11 @@
       {% endif %}
     </div>{# /.layout-content #}
 
+    {% if page.below_content|render %}
+      <div class="ucb-below-content-region container">
+        {{ page.below_content }}
+      </div>
+    {% endif %}
   </main>
 
 </div>{# /.layout-container #}
