@@ -49,85 +49,112 @@
 {#{% endif %}#}
 {{ attach_library('ucb2019_base/ucb-social-media') }}
 
+{% set header_color = 'black' %}
+{% set campus_header_color = 'black' %}
+
+{% if ucb_campus_header_color == 1  %}
+  {% set campus_header_color = 'white' %}
+{% endif %}
+
+{% if ucb_header_color == 1  %}
+  {% set header_color = 'white' %}
+{% elseif ucb_header_color == 2  %}
+  {% set header_color = 'light' %}
+{% elseif ucb_header_color == 3  %}
+  {% set header_color = 'dark' %}
+{% endif %}
+
 <div class="layout-container">
-    <header id="ucb-header-block">
-        {{ page.header }}
-    </header>
-    <section class="ucb-main-nav-section" role="navigation">
-        <div class="container ucb-main-nav-continer">
-            {% if page.primary_menu|render %}
-                {{ page.primary_menu }}
-            {% endif %}
-            {% if ucb_secondary_menu %}
-                {% include "@ucb2019_base/includes/ucb-header-secondary-menu.html.twig" %}
-            {% elseif page.secondary_menu|render %}
-                {{ page.secondary_menu }}
-            {% endif %}
+  <div class="background-{{ campus_header_color }} brand-bar brand-bar-{{ campus_header_color }} padding-vertical-small">
+    <div class="container">
+      <script type="text/javascript" src="https://cdn.colorado.edu/static/brand-assets/live/js/brand-bar.js" id="ucb-brand-bar-embed" data-color="{{ campus_header_color }}"></script>
+    </div>
+  </div>
+  <header class="ucb {{ header_color }} margin-bottom" role="banner">
+    <div class="container">
+      <a href="{{ front_page }}">{{ site_name }}</a>
+      {% if site_slogan|render|striptags|trim %}
+        <div class="affiliation">
+          {{ site_slogan }}
         </div>
-    </section>
+      {% endif %}
+    </div>
+  </header>
+  <section class="ucb-main-nav-section" role="navigation">
+    <div class="container ucb-main-nav-continer">
+      {% if page.primary_menu|render %}
+        {{ page.primary_menu }}
+      {% endif %}
+      {% if ucb_secondary_menu %}
+        {% include "@ucb2019_base/includes/ucb-header-secondary-menu.html.twig" %}
+      {% elseif page.secondary_menu|render %}
+        {{ page.secondary_menu }}
+      {% endif %}
+    </div>
+  </section>
 
-    {% if not is_front %}
-        {{ page.breadcrumb }}
-    {% endif %}
+  {% if not is_front %}
+    {{ page.breadcrumb }}
+  {% endif %}
 
-    {{ page.highlighted }}
+  {{ page.highlighted }}
 
-    {{ page.help }}
+  {{ page.help }}
 
-    <main role="main">
-        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-        <div class="layout-content container">
-            {{ page.content }}
-        </div>{# /.layout-content #}
+    <div class="layout-content container">
+      {{ page.content }}
+    </div>{# /.layout-content #}
 
-    </main>
+  </main>
 
 </div>{# /.layout-container #}
-<footer class="ucb-homepage-footer">
-    {% if page.footer_cta|render or page.footer_nav_one|render or ucb_footer_menu %}
-        <div class="ucb-footer-top">
-            {% if page.footer_cta|render %}
-                <div class="ucb-footer-container footer-cta-block container">
-                    {{ page.footer_cta }}
-                </div>
-            {% endif %}
-            {% if ucb_footer_menu %}
-                {% include "@ucb2019_base/includes/ucb-footer-menus.html.twig" %}
-            {% elseif page.footer_nav_one|render %}
-                <div class="ucb-footer-nav-container container">
-                    <div class="ucb-footer-nav-block">
-                        {{ page.footer_nav_one }}
-                    </div>
-                    {% if page.footer_nav_two|render %}
-                        <div class="ucb-footer-nav-block">
-                            {{ page.footer_nav_two }}
-                        </div>
-                    {% endif %}
-                    {% if page.footer_nav_three|render %}
-                        <div class="ucb-footer-nav-block">
-                            {{ page.footer_nav_three }}
-                        </div>
-                    {% endif %}
-                    {% if page.footer_nav_four|render %}
-                        <div class="ucb-footer-nav-block">
-                            {{ page.footer_nav_four }}
-                        </div>
-                    {% endif %}
-                </div>
-            {% endif %}
+<footer class="ucb-homepage-footer background-black">
+  {% if page.footer_cta|render or page.footer_nav_one|render or ucb_footer_menu %}
+    <div class="ucb-footer-top">
+      {% if page.footer_cta|render %}
+        <div class="ucb-footer-container footer-cta-block container">
+          {{ page.footer_cta }}
         </div>
-    {% endif %}
-    <div class="ucb-footer-bottom">
-        {% if page.social|render %}
-            <div class="ucb-social-container container">
-                {{ page.social }}
+      {% endif %}
+      {% if ucb_footer_menu %}
+        {% include "@ucb2019_base/includes/ucb-footer-menus.html.twig" %}
+      {% elseif page.footer_nav_one|render %}
+        <div class="ucb-footer-nav-container container">
+          <div class="ucb-footer-nav-block">
+            {{ page.footer_nav_one }}
+          </div>
+          {% if page.footer_nav_two|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_two }}
             </div>
-        {% endif %}
-        {% if page.footer|render %}
-            <div class="ucb-footer-container container">
-                {{ page.footer }}
+          {% endif %}
+          {% if page.footer_nav_three|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_three }}
             </div>
-        {% endif %}
+          {% endif %}
+          {% if page.footer_nav_four|render %}
+            <div class="ucb-footer-nav-block">
+              {{ page.footer_nav_four }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
+  {% endif %}
+  <div class="ucb-footer-bottom">
+    {% if page.social|render %}
+      <div class="ucb-social-container container">
+        {{ page.social }}
+      </div>
+    {% endif %}
+    {% if page.footer|render %}
+      <div class="ucb-footer-container container">
+        {{ page.footer }}
+      </div>
+    {% endif %}
+  </div>
 </footer>

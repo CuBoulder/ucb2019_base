@@ -93,12 +93,6 @@ ucb-incident-page:
     js/ucb-incident.js: {}
 #    js/ucb-incident-app.js: { attributes: { type: "module" } }
 
-ucb-incident-page-admin:
-  version: 1.x
-  css:
-    theme:
-      css/ucb-incident-page-admin.css: {}
-
 ucb-page:
   version: 1.x
   css:

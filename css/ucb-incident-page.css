@@ -1,3 +1,7 @@
+.ucb-default-frontpage-block {
+  display: none;
+}
+
 .ucb-incident-static-content {
   width: 100%;
 }
