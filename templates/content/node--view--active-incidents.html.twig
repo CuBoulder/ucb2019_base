@@ -38,8 +38,7 @@
       <ol class="ucb-incident-control-list">
       </ol>
     </div>
-{#    {% if user.hasPermission('update') %}#}
-    {% if user.hasPermission('access administration menu') %}
+    {% if user.hasPermission('edit any ucb_incident content') %}
       {% set editURL =
           url('<front>')|render|trim('/') ~
           "/node/" ~ node.id ~ "/edit"

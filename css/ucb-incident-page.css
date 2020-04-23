@@ -2,6 +2,10 @@
   display: none;
 }
 
+.ucb-incident-container {
+  position: relative;
+}
+
 .ucb-incident-static-content {
   width: 100%;
 }
