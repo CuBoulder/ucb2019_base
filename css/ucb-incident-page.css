@@ -39,6 +39,15 @@
   width: 100%;
 }
 
+.ucb-incident-sidebar {
+  border: 1px solid #dadada;
+  padding: 1.5em;
+}
+
+.ucb-incident-event-col {
+  padding: 0;
+}
+
 .ucb-incident-event-card {
   width: 100%;
   padding: 1em 0;
@@ -208,4 +217,13 @@ article.align-right img {
 
 article.align-left img {
   float: left;
+}
+
+.views-element-container footer {
+  margin: 0 -15px;
+  padding: 0;
+}
+
+.views-element-container footer .container {
+  padding: 1em;
 }
