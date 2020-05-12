@@ -1,3 +1,32 @@
+.ucb-page-title-wrapper.container-fluid {
+  background: #B71C1C;
+  color: white;
+  padding: 0.25em;
+  margin-bottom: 1em;
+}
+
+.ucb-page-title.container {
+  padding: 0;
+}
+
+.ucb-page-title h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.ucb-incident-title-col {
+  padding: 1.75em 1em;
+}
+
+.ucb-incident-title-container {
+  margin-bottom: 1.25em;
+}
+
+.ucb-incident-title-col h1 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
 .ucb-default-frontpage-block {
   display: none;
 }
@@ -10,15 +39,50 @@
   width: 100%;
 }
 
+.ucb-incident-sidebar {
+  border: 1px solid #dadada;
+  padding: 1.5em;
+}
+
+.ucb-incident-event-col {
+  padding: 0;
+}
+
 .ucb-incident-event-card {
   width: 100%;
-  padding: 1em;
+  padding: 1em 0;
   margin-bottom: 1em;
   border-bottom: 1px solid #dadada;
 }
 
 [v-cloak] {
   display: none;
+}
+
+.ucb-incident-cta-section {
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+ul.ucb-incident-cta-links {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+ul.incident-list li ul.ucb-incident-cta-links li {
+  display: block;
+}
+
+ul.ucb-incident-cta-links li {
+  margin-right: 1em;
+}
+
+.ucb-incident-cta-image-col img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 .ucb-incident-event-body {
@@ -60,8 +124,15 @@ span.embed-map-label {
   border-radius: 4px;
 }
 
-h2.ucb-incident-event-timestamp {
+h2.ucb-incident-event-title {
   font-size: 1.75rem;
+}
+
+.ucb-incident-event-timestamp {
+  font-size: 1.25em;
+  font-weight: bolder;
+  color: #444;
+  padding-bottom: 0.25em;
 }
 
 ul.incident-list {
@@ -124,15 +195,16 @@ ol.ucb-incident-control-list {
 .ucb-incident-edit-button-container {
   position: absolute;
   right: 1em;
+  top: -5em;
   z-index: 100;
 }
 
 a.ucb-incident-edit-button {
   background: #cfcfcf;
   display: block;
-  padding: 0.4em;
+  padding: 0.4em 0.4em 0.4em 0.75em;
   border: 1px solid #565a5c;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 article.align-center {
@@ -145,4 +217,13 @@ article.align-right img {
 
 article.align-left img {
   float: left;
+}
+
+.views-element-container footer {
+  margin: 0 -15px;
+  padding: 0;
+}
+
+.views-element-container footer .container {
+  padding: 1em;
 }

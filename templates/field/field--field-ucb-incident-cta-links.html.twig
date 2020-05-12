@@ -1,0 +1,11 @@
+{%
+  set classes = [
+  'button',
+  'button-blue'
+  ]
+%}
+
+{% for item in items %}
+  <li><a href="{{ item.content['#url'] }}" {{ item.attributes.addClass(classes) }}>{{ item.content|render|striptags|trim }}</a></li>
+{% endfor %}
+

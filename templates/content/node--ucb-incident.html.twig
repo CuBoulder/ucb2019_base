@@ -42,6 +42,24 @@
 
 <article{{attributes.addClass(classes)}}>
   <div class="container ucb-incident-container vue-incident-main">
+    {% if content.field_ucb_incident_cta_body|render %}
+      <div class="ucb-incident-cta-section row">
+        <div class="col-md col-sm-12">
+          {{ content.field_ucb_incident_cta_body }}
+
+          {% if content.field_ucb_incident_cta_links|render %}
+            <ul class="ucb-incident-cta-links">
+              {{ content.field_ucb_incident_cta_links }}
+            </ul>
+          {% endif %}
+        </div>
+        {% if content.field_ucb_incident_cta_image|render %}
+          <div class="col-md col-sm-12 ucb-incident-cta-image-col">
+            {{ content.field_ucb_incident_cta_image }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
     <div class="ucb-incident-row row">
       {#      <h1>{{ label }}</h1>#}
       {% if content.field_ucb_incident_type[0]['#taxonomy_term'].field_ucb_incident_sidebar_boil[0].value|render or content.field_ucb_incident_sidebar_body|render %}
