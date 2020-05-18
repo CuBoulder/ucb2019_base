@@ -227,3 +227,12 @@ article.align-left img {
 .views-element-container footer .container {
   padding: 1em;
 }
+
+p.ucb-toggle-update-body{
+  color: #007bff;
+}
+p.ucb-toggle-update-body:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+

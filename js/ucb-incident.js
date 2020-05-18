@@ -28,6 +28,49 @@ jQuery(document).ready(function () {
   // setInterval(function () {
   //   window.location.reload();
   // }, reloadInterval);
+
+  /*
+   * Collapse the body of the updates if there are more than 3
+   * styles in ucb-incident-page.css
+   */
+
+  let updates = document.getElementsByClassName('ucb-incident-event-body'); // the update bodies
+  let parents = document.getElementsByClassName('ucb-incident-event-card'); // the cards
+  let arr = Array.from(updates);
+
+  function toggleUpdate(e){
+    // console.log(e.target);
+    let status = e.target.nextElementSibling.style.display;  // block | none
+    if(status === 'none'){
+        // nextElementSibling is the update body
+        e.target.nextElementSibling.style.display = 'block'; // show the update
+        if(e.target.nextElementSibling.nextElementSibling){  // check if a map exists
+          e.target.nextElementSibling.nextElementSibling.style.display = 'block';
+        }
+        e.target.innerHTML = 'Show Less';
+    }
+    else{
+        e.target.nextElementSibling.style.display = 'none'; // hide the update again
+        if(e.target.nextElementSibling.nextElementSibling){
+          e.target.nextElementSibling.nextElementSibling.style.display = 'none';
+        }
+        e.target.innerHTML = 'Show More';
+    }
+  }
+
+  if(arr.length > 3){
+      for(let i=3; i< arr.length; i++){
+          var showUpdate = document.createElement("p");
+          showUpdate.setAttribute('class', 'ucb-toggle-update-body');
+          showUpdate.innerHTML = 'Show More';
+          showUpdate.addEventListener('click', e => toggleUpdate(e)); // add click event to toggle the update body
+          parents[i].insertBefore(showUpdate, updates[i]);            // insert the <p> right before the event body
+          updates[i].style.display = 'none';                          // hide the update body
+          if(updates[i].nextElementSibling){
+            updates[i].nextElementSibling.style.display ='none';      // hide the map if there is one
+          }
+      }
+  }
 });
 
 function IncidentView() {
@@ -53,4 +96,3 @@ function addIncidentToggle() {
   })
 
 }
-
