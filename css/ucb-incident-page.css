@@ -195,7 +195,6 @@ ol.ucb-incident-control-list {
 .ucb-incident-edit-button-container {
   position: absolute;
   right: 1em;
-  top: -5em;
   z-index: 100;
 }
 
@@ -227,3 +226,40 @@ article.align-left img {
 .views-element-container footer .container {
   padding: 1em;
 }
+
+/* for the collapsed update bodies */
+p.ucb-toggle-update-body{
+  color: #007bff;
+}
+p.ucb-toggle-update-body:hover{
+  cursor: pointer;
+}
+
+/* for the nav */
+.alert-page-nav{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+  background: #e7e7e7;
+  align-items: bottom;
+  justify-content: space-between;
+  padding: 10px 10px 0 10px;
+  font-size: 85%;
+  overflow: hidden;
+}
+.alert-page-nav .col-updates {
+  background: #fff;
+  padding: 10px 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+}
+.col-updates > h1{
+  font-size: 2em;
+  margin: 0px;
+}
+
+.alert-page-nav.col-info{
+  padding-top: 3px;
+}
+
