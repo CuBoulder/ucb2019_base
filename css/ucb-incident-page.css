@@ -195,7 +195,6 @@ ol.ucb-incident-control-list {
 .ucb-incident-edit-button-container {
   position: absolute;
   right: 1em;
-  top: -5em;
   z-index: 100;
 }
 
