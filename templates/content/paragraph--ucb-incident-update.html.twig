@@ -32,14 +32,16 @@
   {#        </ul>#}
   {#      </div>#}
 
+  {% set incidentDate = content.field_ucb_incident_timestamp|render|striptags|trim %}
+
   {#  <div class="ucb-incident-static-content" v-show="!GET_INCIDENT_TIMESTAMP('{{ uuid }}')">#}
   {% if content.field_ucb_incident_title|render %}
     <h2 class="ucb-incident-event-title">{{ content.field_ucb_incident_title }}</h2>
   {% endif %}
   {% if content.field_ucb_incident_timestamp|render and content.field_ucb_incident_title|render %}
-    <div class="ucb-incident-event-timestamp">{{ content.field_ucb_incident_timestamp }}</div>
+    <div class="ucb-incident-event-timestamp">{{ incidentDate|date('F d - h:m A') }}</div>
   {% elseif content.field_ucb_incident_timestamp|render %}
-    <h2 class="ucb-incident-event-timestamp">{{ content.field_ucb_incident_timestamp }}</h2>
+    <h2 class="ucb-incident-event-timestamp">{{ incidentDate|date('F d - h:m A') }}</h2>
   {% endif %}
   {% if content.field_ucb_incident_body|render %}
     <div class="ucb-incident-event-body">{{ content.field_ucb_incident_body }}</div>
