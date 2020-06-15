@@ -2,6 +2,7 @@ name: 'CU Boulder 2019 Base Theme'
 description: 'Drupal 8 base theme for the colorado.edu web properties (2019)'
 package: Custom
 core: 8.x
+core_version_requirement: ^8 || ^9
 type: theme
 base theme: stable
 
