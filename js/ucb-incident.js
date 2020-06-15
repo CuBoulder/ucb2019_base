@@ -44,8 +44,9 @@ function collapseUpdates(){
   let arr = Array.from(updates);
   if(arr.length > 3){
       for(let i=3; i< arr.length; i++){
-          let showUpdate = document.createElement("p");
+          let showUpdate = document.createElement("a");
           showUpdate.setAttribute('class', 'ucb-toggle-update-body');
+          showUpdate.setAttribute('href', '#');
           showUpdate.addEventListener('click', e => toggleUpdate(e), false); // add click event to toggle the update body
           showUpdate.innerHTML = '<i class="fas fa-plus-square"></i> Read More';
           parents[i].insertBefore(showUpdate, updates[i]);                   // insert the <p> right before the event body
@@ -58,6 +59,7 @@ function collapseUpdates(){
 }
 
 function toggleUpdate(e){
+  e.preventDefault();
   let status = e.currentTarget.nextElementSibling.style.display;  // block | none
   if(status === 'none'){
       // nextElementSibling is the update body

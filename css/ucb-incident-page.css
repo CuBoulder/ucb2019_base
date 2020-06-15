@@ -248,6 +248,7 @@ p.ucb-toggle-update-body:hover{
   padding: 10px 10px 0 10px;
   font-size: 85%;
   overflow: hidden;
+  border-left: 15px solid white;
 }
 .alert-page-nav .col-updates {
   background: #fff;
@@ -259,6 +260,10 @@ p.ucb-toggle-update-body:hover{
 .col-updates > h1{
   font-size: 2em;
   margin: 0px;
+}
+
+.container.ucb-incident-container {
+  padding: 0;
 }
 
 .alert-page-nav.col-info{
