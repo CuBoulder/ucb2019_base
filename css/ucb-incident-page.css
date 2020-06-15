@@ -130,10 +130,11 @@ h2.ucb-incident-event-title {
 
 .ucb-incident-event-timestamp {
   font-family: "HelveticaNeue", sans-serif;
-  font-size: 1.25em;
+  font-size: 1.2em;
   font-weight: bolder;
-  color: #444;
+  color: #666;
   padding-bottom: 0.25em;
+  text-transform: uppercase;
 }
 
 ul.incident-list {
