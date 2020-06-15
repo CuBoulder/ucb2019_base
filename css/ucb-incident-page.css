@@ -65,6 +65,10 @@
   margin-bottom: 1em;
 }
 
+.ucb-incident-cta-content {
+  padding: 1em 0;
+}
+
 ul.ucb-incident-cta-links {
   list-style: none;
   display: flex;
@@ -83,6 +87,7 @@ ul.ucb-incident-cta-links li {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+  float: right;
 }
 
 .ucb-incident-event-body {
