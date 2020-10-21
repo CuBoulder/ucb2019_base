@@ -2,3 +2,6 @@
 .incident-list-container {
   width: 100%;
 }
+
+/* hide fields from the page for any web components, but show them in the editor */
+.ucb-wc-field{ display: none;}

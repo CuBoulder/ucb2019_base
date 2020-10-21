@@ -98,3 +98,16 @@ ucb-page:
   css:
     theme:
       css/ucb-page.css: {}
+
+# include Vue and the Web component Library  
+vue:
+  version: 3.0
+  header: true
+  js:
+    js/vue3/vue.global.js: {preprocess: false}
+      
+ucb-vue-component-lib:
+  version: 1.x
+  footer: true
+  js:
+    js/dist/bundle.js: { preprocess: false, attributes: { defer: true, async: true} }

@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Entity\ContentEntityBase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * @file
@@ -122,6 +124,34 @@ function ucb2019_base_preprocess_paragraph__ucb_incident_update(array &$variable
  */
 function ucb2019_base_preprocess_node__organization(array &$variables) {
   $variables['uuid'] = $variables['node']->uuid();
+}
+
+/***
+ * Preprocess function to get the variables we'll need on the Vue Web Components
+ */
+function ucb2019_base_preprocess_media(array &$variables) {
+    $media = $variables['elements']['#media']; 
+    switch($media->bundle()){
+        case 'campus_resource':
+            $id = $media->get('field_resource_name')->value;
+            $apiEndpoint = 'https://dev-ucb-d9-resources-api.pantheonsite.io/jsonapi/node/ucb_resource/' . $id;
+            $variables['json_api_id'] = $id;
+            $variables['wc_name'] = 'ucbResource';
+            $variables['app_id'] = $media->id();
+            $variables['api_endpoint'] = $apiEndpoint;
+            try{
+                // fetch the data server side to avoid CORS issues
+                $client = new \GuzzleHttp\Client();
+                $res = $client->get($apiEndpoint, ['verify' => false]);
+                // add the response to the global drupalSettings object
+                $variables['#attached']['drupalSettings']['wcState']["vue-root-{$media->id()}"] = json_decode($res->getBody(), true);
+            }
+            catch(RequestException $e){
+                \Drupal::logger('Web Components')->notice($e->getMessage());
+                $variables['#attached']['drupalSettings']['wcState']["vue-root-{$media->id()}"] = null;
+            }
+            break;
+    }
 }
 
 /***

@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+{{attach_library('ucb2019_base/vue')}}
+{{attach_library('ucb2019_base/ucb-vue-component-lib')}}
+
+<article{{ attributes }}>
+  {{ title_suffix.contextual_links }}
+  {% if content %}
+    {{ content }}
+    <div class="vue-root"
+    id="vue-root-{{app_id}}"
+    data-wc-name="{{wc_name}}"
+    data-id="{{json_api_id}}"
+    data-app-id="{{app_id}}"
+    data-api-endpoint="{{api_endpoint}}"
+    </div>
+  {% endif %}
+</article>
