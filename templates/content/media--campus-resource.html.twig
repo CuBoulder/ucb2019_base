@@ -10,7 +10,14 @@
  * @see template_preprocess_media()
  */
 #}
-{{attach_library('ucb2019_base/vue')}}
+
+<!-- check to see if we're using the development version of Vue3 or not -->
+{% if Vue3Dev %}
+  {{attach_library('ucb2019_base/ucb-vue3-dev')}}
+{% else %}
+  {{attach_library('ucb2019_base/ucb-vue3')}}
+{% endif %}
+
 {{attach_library('ucb2019_base/ucb-vue-component-lib')}}
 
 <article{{ attributes }}>

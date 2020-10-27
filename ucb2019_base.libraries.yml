@@ -15,9 +15,9 @@ ucb-global:
       css/styleguide/colors.css: {}
   js:
     js/bootstrap/bootstrap.min.js: {}
-#    js/fontawesome/brands.min.js: {}
-#    js/fontawesome/solid.min.js: {}
-#    js/fontawesome/fontawesome.min.js: {}
+    #    js/fontawesome/brands.min.js: {}
+    #    js/fontawesome/solid.min.js: {}
+    #    js/fontawesome/fontawesome.min.js: {}
     js/ucb-main.js: {}
   dependencies:
     - core/drupal
@@ -75,8 +75,8 @@ ucb-organization-page:
     theme:
       css/ucb-organization-page.css: {}
   js:
-#    js/Vue/vue.min.js: {}
-    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
+    #    js/Vue/vue.min.js: {}
+    //cdn.jsdelivr.net/npm/vue/dist/vue.js: { type: external }
     js/ucb-organization.js: {}
 
 ucb-incident-page:
@@ -86,9 +86,9 @@ ucb-incident-page:
       css/ucb-incident-page.css: {}
   js:
     #js/Vue/vue.min.js: {}
-#    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
-#    //unpkg.com/axios/dist/axios.min.js: {type: external}
-#    js/Vue/vuex.js: {}
+    #    //cdn.jsdelivr.net/npm/vue/dist/vue.js: {type: external}
+    #    //unpkg.com/axios/dist/axios.min.js: {type: external}
+    #    js/Vue/vuex.js: {}
     js/lib/moment.min.js: {}
     js/ucb-incident.js: {}
 #    js/ucb-incident-app.js: { attributes: { type: "module" } }
@@ -99,15 +99,22 @@ ucb-page:
     theme:
       css/ucb-page.css: {}
 
-# include Vue and the Web component Library  
-vue:
+# include Vue and the Web component Library
+ucb-vue3:
   version: 3.0
   header: true
   js:
-    js/vue3/vue.global.js: {preprocess: false}
-      
+    js/vue3/vue.global.prod.js: { preprocess: false }
+
+ucb-vue3-dev:
+  version: 3.0
+  header: true
+  js:
+    js/vue3/vue.global.js: { preprocess: false }
+
 ucb-vue-component-lib:
   version: 1.x
   footer: true
   js:
-    js/dist/bundle.js: { preprocess: false, attributes: { defer: true, async: true} }
+    js/dist/bundle.js:
+      { preprocess: false, attributes: { defer: true, async: true } }

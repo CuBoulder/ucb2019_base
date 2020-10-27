@@ -106,6 +106,13 @@ function ucb2019_base_preprocess_node__ucb_incident(array &$variables) {
 }
 
 /***
+ * Preprocess function to get the variables we'll need on the Media Campus Resource node template
+ */
+function ucb2019_base_preprocess_media__campus_resource(array &$variables) {
+  $variables['Vue3Dev'] = theme_get_setting('ucb_vue3_dev');
+}
+
+/***
  * Preprocess function to get the variables we'll need on the Incident node template
  */
 function ucb2019_base_preprocess_node__view__active_incidents(array &$variables) {
@@ -220,6 +227,14 @@ function ucb2019_base_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
     '#default_value'    => theme_get_setting('ucb_footer_menu'),
     '#description'    => t("Check this box if you would like to display the default Boulder footer menu links in the footer."),
   );
+
+  $form['ucb_vue3_dev'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Use the development version of Vue3?'),
+    '#default_value'    => theme_get_setting('ucb_vue3_dev'),
+    '#description'    => t("Check this box if you would like to use the development version of Vue3."),
+  );
+
 
 }
 
