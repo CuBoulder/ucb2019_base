@@ -16,7 +16,7 @@
     {% set cuMapID = item.content|render|striptags|trim %}
 
     <div class="ucb-org-map-embed">
-      <a href="{{ item.content|render }}" style="display:block; width:100%; height:300px; background-size: cover; background-image:url(https://staticmap.concept3d.com/map/static-map/?map=336&loc={{ cuMapID }});">
+      <a href="https://www.colorado.edu/map/?id=336#!m/{{ cuMapID }}" style="display:block; width:100%; height:300px; background-size: cover; background-image:url(https://staticmap.concept3d.com/map/static-map/?map=336&loc={{ cuMapID }});">
         <span class="embed-map-label">View location on the Campus Map</span>
       </a>
     </div>
